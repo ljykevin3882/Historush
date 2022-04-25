@@ -7,6 +7,7 @@ public class Player_Move : MonoBehaviour
     public GameManager gameManager;
     public float maxSpeed;
     public float jumpPower;
+    public int jumpCount;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator anim;
@@ -22,30 +23,34 @@ public class Player_Move : MonoBehaviour
     private void Update()
     {
         //Move by control
-        float h = Input.GetAxisRaw("Horizontal");
+        float h = 20.0f;
         rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse);
-
+        anim.SetBool("IsWalking", true);
         if (rigid.velocity.x > maxSpeed) //오른쪽
         {
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         }
+        /*
         else if (rigid.velocity.x < maxSpeed * (-1)) //왼쪽
         {
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
-        }
+        }*/
         //점프할때
-        if (Input.GetButtonDown("Jump")&&!anim.GetBool("isJumping"))
+        if (Input.GetButtonDown("Jump")&&jumpCount>0)//&&!anim.GetBool("isJumping")
         {
+            jumpCount--;
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             anim.SetBool("isJumping", true);
         }
         //방향키 떼서 멈출때 
+        /*
         if (Input.GetButtonUp("Horizontal"))
         {
 
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
-        }
+        }*/
         //방향전환
+        /*
         if (Input.GetButton("Horizontal"))
             spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
 
@@ -56,7 +61,7 @@ public class Player_Move : MonoBehaviour
         else
         {
             anim.SetBool("IsWalking", true);
-        }
+        }*/
     }
 
     private void FixedUpdate()
@@ -70,8 +75,11 @@ public class Player_Move : MonoBehaviour
 
             if (rayhit.collider != null)
             {
-                if (rayhit.distance < 0.5f)
+                if (rayhit.distance < 1f)
+                {
                     anim.SetBool("isJumping", false);
+                    jumpCount = 2;
+                }
             }
         }
     }
