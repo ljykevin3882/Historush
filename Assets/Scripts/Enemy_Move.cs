@@ -8,7 +8,7 @@ public class Enemy_Move : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     CapsuleCollider2D capsuleCollider;
-
+    public GameObject Enemy;
     public int nextMove;
     // Start is called before the first frame update
     void Awake()
@@ -64,7 +64,11 @@ public class Enemy_Move : MonoBehaviour
         //죽는 점프 효과
         rigid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
         //1초뒤 삭제
-        Invoke("DeActive", 5);
+        Invoke("Disappear", 1);
 
+    }
+    public void Disappear()
+    {
+        Enemy.SetActive(false);
     }
 }

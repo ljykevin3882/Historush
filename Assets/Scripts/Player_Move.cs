@@ -203,4 +203,11 @@ public class Player_Move : MonoBehaviour
         rigid.velocity = Vector2.zero;
 
     }
+    public void Respawn()  //3번 죽고 부활할때 위치 원위치. 색깔 원위치
+    {
+        spriteRenderer.flipY = false;
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+        capsuleCollider.enabled = true;
+    }
+
 }

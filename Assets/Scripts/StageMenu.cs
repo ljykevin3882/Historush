@@ -9,14 +9,16 @@ public class StageMenu : MonoBehaviour
     public Color white;
     public Image[] ButtonImages;
     public GameObject[] LockImages;
-    public int stage_phase = -1;
-
+    public int stage_phase = 0;
+    public GameObject Stage_Menu,Player;
+    public GameObject Stage1, Stage2, Stage3;
     public void Start()
     {
         //처음 단군신화 빼고 다 잠금
-        if (stage_phase == -1)
+        if (stage_phase == 0)
         {
-            for (int i = 0; i < 8; i++)
+
+            for (int i = 1; i < 8; i++)
             {
                 ButtonImages[i].color = black;
                 LockImages[i].gameObject.SetActive(true);
@@ -27,7 +29,7 @@ public class StageMenu : MonoBehaviour
     public void Update()
     {
         //스테이지 클리어후, 버튼 색 변경 및 자물쇠 해금
-        for (int i = 0; i < 8; i++)
+        for (int i = 1; i < 8; i++)
         {
             if (stage_phase == i)
             {
@@ -42,6 +44,9 @@ public class StageMenu : MonoBehaviour
     public void ClickDangun()
     {
         print("단군신화 버튼 누름");
+        Stage_Menu.SetActive(false);
+        Stage1.SetActive(true);
+        Player.SetActive(true);
     }
 
     // 고조선 버튼
