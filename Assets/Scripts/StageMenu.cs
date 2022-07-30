@@ -10,8 +10,9 @@ public class StageMenu : MonoBehaviour
     public Image[] ButtonImages;
     public GameObject[] LockImages;
     public int stage_phase = 0;
-    public GameObject Stage_Menu,Player;
+    public GameObject Stage_Menu, Player;
     public GameObject Stage1, Stage2, Stage3;
+
     public void Start()
     {
         //처음 단군신화 빼고 다 잠금
