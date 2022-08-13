@@ -128,6 +128,9 @@ public class Player_Move : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Enemy")
+            OnDamaged(collision.transform.position);
+
         if (collision.gameObject.tag == "Item")
         {
             //점수얻기

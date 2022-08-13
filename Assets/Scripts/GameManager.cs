@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-
+    public float bossStageTime = 0;
     public int totalPoint;
     public int stagePoint;
     public int stageIndex;
@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         UIPoint.text = (totalPoint + stagePoint).ToString();
+        if (stageIndex % 4 == 0 && stageIndex != 0) bossStageTime += Time.deltaTime;
+        else bossStageTime = 0;
     }
     public void NextStage()
     {
