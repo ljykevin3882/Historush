@@ -49,8 +49,10 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\StageMenu.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Boss.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Player_Move.cs" />
+     <Compile Include="Assets\Scripts\BulletControl.cs" />
      <Compile Include="Assets\Scripts\Enemy_Move.cs" />
      <Compile Include="Assets\Scripts\Define.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
