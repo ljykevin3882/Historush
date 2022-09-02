@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     public Color white;
     public Image[] ButtonImages;
     public GameObject[] LockImages;
-    public GameObject Main_Menu,Stage_Menu;
+    public GameObject Main_Menu,Stage_Menu,Book_Menu;
 
     public void Start()
     {
@@ -38,7 +38,8 @@ public class MainMenu : MonoBehaviour
 
     public void ClickCollection()
     {
-
+        Book_Menu.SetActive(true);
+        Main_Menu.SetActive(false);
         print("Collection 버튼 누름");
     }
 

@@ -23433,7 +23433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &720710564
 Transform:
   m_ObjectHideFlags: 0
@@ -23467,6 +23467,7 @@ MonoBehaviour:
   LockImages: []
   Main_Menu: {fileID: 720710563}
   Stage_Menu: {fileID: 1534225315}
+  Book_Menu: {fileID: 1883598932}
 --- !u!1 &723548786
 GameObject:
   m_ObjectHideFlags: 0
@@ -59715,7 +59716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1883598933
 MonoBehaviour:
   m_ObjectHideFlags: 0
