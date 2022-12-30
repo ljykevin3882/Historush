@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     Vector3 _delta;
 
     [SerializeField]
-    Player_Move _player;
+    PlayerController _player;
     void LateUpdate()
     {
         if (_mode == Define.CameraMode.QuaterView)

@@ -9,37 +9,55 @@ public class StageMenu : MonoBehaviour
     public Color white;
     public Image[] ButtonImages;
     public GameObject[] LockImages;
-    public int stage_phase = 0;
-    public GameObject Stage_Menu, Player;
+    public Button[] StageButtons;
+    public GameObject Stage_Menu, Player,Main_Menu;
     public GameObject Stage1, Stage2, Stage3;
-
+    public GameManager gameManager;
+    
     public void Start()
     {
-        //처음 단군신화 빼고 다 잠금
-        if (stage_phase == 0)
-        {
+        
+        
+        
 
-            for (int i = 1; i < 8; i++)
-            {
-                ButtonImages[i].color = black;
-                LockImages[i].gameObject.SetActive(true);
-            }
-        }
     }
 
     public void Update()
     {
-        //스테이지 클리어후, 버튼 색 변경 및 자물쇠 해금
+        
+    }
+    public void StartStageMenu()
+    {
+        
+
+        //시작할때 DB없어서 듀토리얼만 가능
+        
         for (int i = 1; i < 8; i++)
         {
-            if (stage_phase == i)
+            ButtonImages[i].color = black;
+            LockImages[i].SetActive(true);
+            StageButtons[i].interactable = false;
+
+        }
+        gameManager.LoadPlayerDataFromJson(); //DB 불러오기 
+        int MaxStageindex = gameManager.playerData.MaxStageLevel;
+        if (MaxStageindex > 0)
+        { //한번 플레이해서 DB가 만들어졌으면
+            for (int i = 1; i < Mathf.CeilToInt((MaxStageindex - 1) / 4) + 2; i++)
             {
-                ButtonImages[i].color = new Color (1, 1, 1, 1);
-                LockImages[i].gameObject.SetActive(false);
+                ButtonImages[i].color = white;
+                StageButtons[i].interactable = true;
+                LockImages[i].SetActive(false);
+            }
+            for (int i = Mathf.CeilToInt((MaxStageindex - 1) / 4) + 2; i < 8; i++)
+            {
+
+                ButtonImages[i].color = black;
+                StageButtons[i].interactable = false;
+                LockImages[i].SetActive(true);
             }
         }
     }
-
 
     // 단군신화 버튼
     public void ClickDangun()
@@ -48,18 +66,36 @@ public class StageMenu : MonoBehaviour
         Stage_Menu.SetActive(false);
         Stage1.SetActive(true);
         Player.SetActive(true);
+        gameManager.LoadPlayerDataFromJson();
+        gameManager.ItemSet();
+        gameManager.stageIndex = 0;
+        gameManager.StageName(gameManager.stageIndex);
     }
 
     // 고조선 버튼
     public void ClickGojoseon()
     {
         print("고조선 버튼 누름");
+        Stage_Menu.SetActive(false);
+        Stage2.SetActive(true);
+        Player.SetActive(true);
+        gameManager.LoadPlayerDataFromJson();
+        gameManager.ItemSet();
+        gameManager.stageIndex = 1;
+        gameManager.StageName(gameManager.stageIndex);
     }
 
     // 삼국시대 버튼
     public void ClickThreeState()
     {
         print("삼국시대 버튼 누름");
+        Stage_Menu.SetActive(false);
+        Stage3.SetActive(true);
+        Player.SetActive(true);
+        gameManager.LoadPlayerDataFromJson();
+        gameManager.ItemSet();
+        gameManager.stageIndex = 5;
+        gameManager.StageName(gameManager.stageIndex);
     }
 
     // 통일신라 버튼
@@ -90,5 +126,12 @@ public class StageMenu : MonoBehaviour
     public void ClickMordernHistory()
     {
         print("고조선 버튼 누름");
+    }
+    //뒤로가기 버튼
+    public void GoBack()
+    {
+        Stage_Menu.SetActive(false);
+        Main_Menu.SetActive(true);
+        print("뒤로가기 누름");
     }
 }

@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Item
+  - Treasure
+  - Savepoint
+  - Platform
+  - SookGarlic
   layers:
   - Default
   - TransparentFX

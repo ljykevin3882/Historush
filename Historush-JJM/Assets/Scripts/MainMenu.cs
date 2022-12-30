@@ -10,10 +10,11 @@ public class MainMenu : MonoBehaviour
     public Image[] ButtonImages;
     public GameObject[] LockImages;
     public GameObject Main_Menu,Stage_Menu,Book_Menu;
-
+    public StageMenu StageMenu;
+    public GameManager gameManager;
     public void Start()
     {
-
+        
     }
 
     public void Update()
@@ -27,7 +28,11 @@ public class MainMenu : MonoBehaviour
     {
         Stage_Menu.SetActive(true);
         Main_Menu.SetActive(false);
-        
+        StageMenu.StartStageMenu();
+        //for (int i = 0; i < gameManager.Stages.Length; i++)
+        //{
+        //    gameManager.Stages[i].SetActive(false);
+        //}
     }
 
     public void ClickCustom()
