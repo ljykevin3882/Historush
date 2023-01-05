@@ -10,6 +10,7 @@ ScriptsOnlyBuild:
     - FixedJoystick
     - FloatingJoystick
     - GameManager
+    - ItemMoving
     - MainMenu
     - PlayerController
     - StageMenu
@@ -22,7 +23,10 @@ ScriptsOnlyBuild:
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
+    - UnityEditor.Tilemaps.GridBrush
     - UnityEditor.Tilemaps.GridPaintingState
+    - UnityEditor.Tilemaps.GridPaletteBrushes
+    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -35,8 +39,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -94,41 +100,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1514}
     - Class: 114
-      Script: {instanceID: 1986}
+      Script: {instanceID: 1520}
     - Class: 114
-      Script: {instanceID: 2044}
+      Script: {instanceID: 1988}
     - Class: 114
-      Script: {instanceID: 2050}
+      Script: {instanceID: 2046}
     - Class: 114
-      Script: {instanceID: 2092}
+      Script: {instanceID: 2052}
     - Class: 114
-      Script: {instanceID: 2352}
+      Script: {instanceID: 2094}
     - Class: 114
-      Script: {instanceID: 2464}
+      Script: {instanceID: 2354}
     - Class: 114
-      Script: {instanceID: 2610}
+      Script: {instanceID: 2466}
     - Class: 114
-      Script: {instanceID: 2712}
+      Script: {instanceID: 2612}
     - Class: 114
-      Script: {instanceID: 2782}
+      Script: {instanceID: 2714}
     - Class: 114
-      Script: {instanceID: 2994}
+      Script: {instanceID: 2784}
     - Class: 114
-      Script: {instanceID: 3096}
+      Script: {instanceID: 2996}
     - Class: 114
-      Script: {instanceID: 3566}
+      Script: {instanceID: 3098}
     - Class: 114
-      Script: {instanceID: 3626}
+      Script: {instanceID: 3568}
     - Class: 114
-      Script: {instanceID: 3748}
+      Script: {instanceID: 3628}
     - Class: 114
-      Script: {instanceID: 3764}
+      Script: {instanceID: 3750}
     - Class: 114
-      Script: {instanceID: 4494}
+      Script: {instanceID: 3766}
     - Class: 114
-      Script: {instanceID: 4606}
+      Script: {instanceID: 4496}
     - Class: 114
-      Script: {instanceID: 4900}
+      Script: {instanceID: 4608}
+    - Class: 114
+      Script: {instanceID: 4902}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -186,6 +194,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraController
+  - hash:
+      serializedVersion: 2
+      Hash: 45ac84f1178595928b2a6e94877ca2c8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ItemMoving
   - hash:
       serializedVersion: 2
       Hash: 77aaaaa51f7a8d8ff333a879741e47d2
@@ -284,7 +298,7 @@ ScriptsOnlyBuild:
     className: MainMenu
   - hash:
       serializedVersion: 2
-      Hash: 043c3362fa2fb20bacf6a9a282cca68f
+      Hash: 32311049fca97fc86ffb8d9e5d2bb54f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController

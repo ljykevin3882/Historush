@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public float bossStageTime = 0;
     public int totalPoint;
     public int stagePoint;
+    public Text SookGarlicCount;
+
     public int stageIndex; //현재 스테이지
     public int health;
     public PlayerController player;
@@ -21,7 +23,7 @@ public class GameManager : MonoBehaviour
     public Text UIPoint;
     public Text UIStage;
     public GameObject UIRestartBtn,UIRespawnBtn,Player;
-    public GameObject Main_Menu, Stage_Menu,Stage1;
+    public GameObject Main_Menu, Stage_Menu,Stage1,SookGarlic;
     // Start is called before the first frame update
     /* 해상도 설정하는 함수 */
     private void Start()
@@ -70,6 +72,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         UIPoint.text = (totalPoint + stagePoint).ToString();
+        SookGarlicCount.text = (player.SookGarlic).ToString();
+
         if (stageIndex % 4 == 0 && stageIndex != 0) bossStageTime += Time.deltaTime;
         else bossStageTime = 0;
     }
@@ -111,6 +115,14 @@ public class GameManager : MonoBehaviour
     }
     public void StageName(int stage_Index) //화면 중간 위에 뜨는 현재 스테이지 이름 지정 함수
     {
+        if (stage_Index != 0)
+        {
+            SookGarlic.SetActive(false);
+        }
+        else
+        {
+            SookGarlic.SetActive(true); 
+        }
         if (stage_Index < 1)
         {
             UIStage.text = "단군신화";

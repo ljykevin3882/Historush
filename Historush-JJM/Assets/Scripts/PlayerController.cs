@@ -6,8 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     public FloatingJoystick joy;
     public FixedJoystick fixjoy;
-
+    public Sprite Human1;
     public GameManager gameManager;
+    public RuntimeAnimatorController Human1_animator;
     public int SookGarlic=0;
     public float maxSpeed;
     public float jumpPower;
@@ -174,13 +175,14 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (rigid.velocity.y > 0)
+        if (rigid.velocity.y > 0 && jumpCount<2)
         {
             Debug.DrawRay(rigid.position, Vector3.up, new Color(0, 1, 0));
-            RaycastHit2D jumpPlatform = Physics2D.Raycast(rigid.position, Vector3.up, 0.01f, LayerMask.GetMask("Platform"));
+            RaycastHit2D jumpPlatform = Physics2D.Raycast(rigid.position, Vector3.up, 1, LayerMask.GetMask("Platform"));
 
-            if (jumpPlatform.transform.gameObject.tag == "Platform")
+            if (jumpPlatform.transform.gameObject.tag == "Platform" )
             {
+                print("dds");
                 capsuleCollider.isTrigger = true;
             }
         }
@@ -188,6 +190,7 @@ public class PlayerController : MonoBehaviour
         //LandingPlatform
         if (rigid.velocity.y < 0)
         {
+            capsuleCollider.isTrigger = false; //내려올때는 다시 collider 만들기
             Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
             RaycastHit2D rayhit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
 
@@ -238,9 +241,10 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "SookGarlic")
         {
             SookGarlic++; 
-            if(SookGarlic == 10)
+            if(SookGarlic >= 10)
             {
-                spriteRenderer.color = new Color(0, 0, 0, 1f);
+                spriteRenderer.sprite = Human1;
+                anim.runtimeAnimatorController = Human1_animator;
             }
             collision.gameObject.SetActive(false);
         }
