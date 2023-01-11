@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public PlayerData playerData;
     public FloatingJoystick joy;
     public FixedJoystick fixjoy;
     public Sprite Human1;
@@ -16,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool isSliding;
     Rigidbody2D rigid;
     public TreasurePopUp TreasurePopup;
-    public GameObject TreasurePopupObject;
+    public GameObject TreasurePopupObject,SettingPopup;
     SpriteRenderer spriteRenderer;
     Animator anim;
     CapsuleCollider2D capsuleCollider;
@@ -68,7 +69,11 @@ public class PlayerController : MonoBehaviour
         }
         print("뗐음");
     }
-
+    public void settingButton()
+    {
+        SettingPopup.SetActive(true);
+        Time.timeScale = 0;
+    }
     private void Update()
     {
         //Move by control
@@ -175,22 +180,23 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.DrawRay(rigid.position, Vector3.up*0.6f, new Color(0, 1, 0));
+        RaycastHit2D jumpPlatform = Physics2D.Raycast(rigid.position, Vector3.up*0.6f, 0.6f, LayerMask.GetMask("Platform"));
         if (rigid.velocity.y > 0 && jumpCount<2)
         {
-            Debug.DrawRay(rigid.position, Vector3.up, new Color(0, 1, 0));
-            RaycastHit2D jumpPlatform = Physics2D.Raycast(rigid.position, Vector3.up, 1, LayerMask.GetMask("Platform"));
-
             if (jumpPlatform.transform.gameObject.tag == "Platform" )
             {
                 print("dds");
                 capsuleCollider.isTrigger = true;
             }
+
         }
+        
         
         //LandingPlatform
         if (rigid.velocity.y < 0)
         {
-            capsuleCollider.isTrigger = false; //내려올때는 다시 collider 만들기
+            //capsuleCollider.isTrigger = false; //내려올때는 다시 collider 만들기
             Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
             RaycastHit2D rayhit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
 
@@ -241,8 +247,9 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "SookGarlic")
         {
             SookGarlic++; 
-            if(SookGarlic >= 10)
+            if(SookGarlic >= 10) //쑥마늘 먹으면 사람으로 변함
             {
+                playerData.avatar = 1; //현재 아바타 데이터를 저장
                 spriteRenderer.sprite = Human1;
                 anim.runtimeAnimatorController = Human1_animator;
             }

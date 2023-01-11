@@ -59,14 +59,18 @@
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
     <Compile Include="Assets\Scripts\StageMenu.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\ItemMoving.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
+    <Compile Include="Assets\Scripts\TreasureMenu.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
+    <Compile Include="Assets\Scripts\SettingMenu.cs" />
     <Compile Include="Assets\Scripts\BookMenu.cs" />
     <Compile Include="Assets\Scripts\TreasurePopUp.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
+    <Compile Include="Assets\Scripts\CustomMenu.cs" />
     <Compile Include="Assets\Scripts\CameraResolution.cs" />
     <Compile Include="Assets\Scripts\Enemy_Move.cs" />
     <Compile Include="Assets\Scripts\BulletControl.cs" />
@@ -76,7 +80,7 @@
     <Compile Include="Assets\Scripts\BookEach.cs" />
     <Compile Include="Assets\Scripts\Boss.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\ItemMoving.cs" />
+    <Compile Include="Assets\Scripts\SettingPopup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

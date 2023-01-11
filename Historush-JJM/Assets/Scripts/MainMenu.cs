@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     public Color white;
     public Image[] ButtonImages;
     public GameObject[] LockImages;
-    public GameObject Main_Menu,Stage_Menu,Book_Menu;
+    public GameObject Main_Menu,Stage_Menu,Book_Menu,Setting_Menu,Custom_Menu;
     public StageMenu StageMenu;
     public GameManager gameManager;
     public void Start()
@@ -37,7 +37,8 @@ public class MainMenu : MonoBehaviour
 
     public void ClickCustom()
     {
-
+        Main_Menu.SetActive(false);
+        Custom_Menu.SetActive(true);
         print("Custom 버튼 누름");
     }
 
@@ -50,7 +51,8 @@ public class MainMenu : MonoBehaviour
 
     public void ClickSettings()
     {
-
+        Setting_Menu.SetActive(true);
+        Main_Menu.SetActive(false);
         print("Settings 버튼 누름");
     }
 

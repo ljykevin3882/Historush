@@ -57,6 +57,8 @@ public class StageMenu : MonoBehaviour
                 LockImages[i].SetActive(true);
             }
         }
+        // 아바타 변경
+        //어쩌고 저쩌고
     }
 
     // 단군신화 버튼

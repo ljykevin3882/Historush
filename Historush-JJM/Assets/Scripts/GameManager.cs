@@ -34,10 +34,8 @@ public class GameManager : MonoBehaviour
     {
         int setWidth = 1920; // 사용자 설정 너비
         int setHeight = 1080; // 사용자 설정 높이
-
         int deviceWidth = Screen.width; // 기기 너비 저장
         int deviceHeight = Screen.height; // 기기 높이 저장
-
         Screen.SetResolution(setWidth,setHeight, true); // SetResolution 함수 제대로 사용하기
 
         
@@ -58,6 +56,7 @@ public class GameManager : MonoBehaviour
         }
         playerData.score = 0;
         playerData.MaxStageLevel = 0;
+        playerData.avatar = 0;
         string jsonData = JsonUtility.ToJson(playerData, true);
         string path = Path.Combine(Application.persistentDataPath, "playerData.json");
         File.WriteAllText(path, jsonData);
@@ -73,7 +72,6 @@ public class GameManager : MonoBehaviour
     {
         UIPoint.text = (totalPoint + stagePoint).ToString();
         SookGarlicCount.text = (player.SookGarlic).ToString();
-
         if (stageIndex % 4 == 0 && stageIndex != 0) bossStageTime += Time.deltaTime;
         else bossStageTime = 0;
     }
@@ -239,4 +237,5 @@ public class PlayerData //사용자 데이터 베이스
     public int MaxStageLevel;
     public int score;
     public bool[] items;
+    public int avatar;
 }
