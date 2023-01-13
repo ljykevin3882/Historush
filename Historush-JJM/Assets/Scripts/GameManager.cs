@@ -18,12 +18,14 @@ public class GameManager : MonoBehaviour
     public GameObject[] Stages;
     public GameObject[] items; 
     SpriteRenderer spriteRenderer;
+
     CapsuleCollider2D capsuleCollider;
     public Image[] UIhealth;
     public Text UIPoint;
     public Text UIStage;
     public GameObject UIRestartBtn,UIRespawnBtn,Player;
     public GameObject Main_Menu, Stage_Menu,Stage1,SookGarlic;
+    
     // Start is called before the first frame update
     /* 해상도 설정하는 함수 */
     private void Start()
@@ -56,7 +58,9 @@ public class GameManager : MonoBehaviour
         }
         playerData.score = 0;
         playerData.MaxStageLevel = 0;
+        playerData.avatar_color = 0;
         playerData.avatar = 0;
+        playerData.avatar_accessory = 0;
         string jsonData = JsonUtility.ToJson(playerData, true);
         string path = Path.Combine(Application.persistentDataPath, "playerData.json");
         File.WriteAllText(path, jsonData);
@@ -187,6 +191,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    
     // Update is called once per frame
     void PlayerReposition()
     {
@@ -237,5 +242,7 @@ public class PlayerData //사용자 데이터 베이스
     public int MaxStageLevel;
     public int score;
     public bool[] items;
-    public int avatar;
+    public int avatar; //곰일때는 0, 사람일때는 1
+    public int avatar_color; //아바타 색 나타내는 값
+    public int avatar_accessory; //아바타 머리장식 나타내는 값
 }

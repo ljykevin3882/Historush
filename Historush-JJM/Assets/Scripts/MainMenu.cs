@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public Image[] ButtonImages;
     public GameObject[] LockImages;
     public GameObject Main_Menu,Stage_Menu,Book_Menu,Setting_Menu,Custom_Menu;
+    public CustomMenu custom_Menu;
     public StageMenu StageMenu;
     public GameManager gameManager;
     public void Start()
@@ -40,6 +41,16 @@ public class MainMenu : MonoBehaviour
         Main_Menu.SetActive(false);
         Custom_Menu.SetActive(true);
         print("Custom 버튼 누름");
+
+        gameManager.LoadPlayerDataFromJson();
+        if (gameManager.playerData.avatar == 0)
+        {
+            custom_Menu.OpenBearcustom();
+        }
+        else if (gameManager.playerData.avatar == 1)
+        {
+            custom_Menu.OpenHumancustom();
+        }
     }
 
     public void ClickCollection()

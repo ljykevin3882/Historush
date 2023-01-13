@@ -13,7 +13,7 @@ public class StageMenu : MonoBehaviour
     public GameObject Stage_Menu, Player,Main_Menu;
     public GameObject Stage1, Stage2, Stage3;
     public GameManager gameManager;
-    
+    public PlayerController playerController;
     public void Start()
     {
         
@@ -72,6 +72,8 @@ public class StageMenu : MonoBehaviour
         gameManager.ItemSet();
         gameManager.stageIndex = 0;
         gameManager.StageName(gameManager.stageIndex);
+        playerController.avatarColorChange();
+        playerController.avatarChange();
     }
 
     // 고조선 버튼
@@ -85,6 +87,8 @@ public class StageMenu : MonoBehaviour
         gameManager.ItemSet();
         gameManager.stageIndex = 1;
         gameManager.StageName(gameManager.stageIndex);
+        playerController.avatarColorChange();
+        playerController.avatarChange();
     }
 
     // 삼국시대 버튼
@@ -98,6 +102,8 @@ public class StageMenu : MonoBehaviour
         gameManager.ItemSet();
         gameManager.stageIndex = 5;
         gameManager.StageName(gameManager.stageIndex);
+        playerController.avatarColorChange();
+        playerController.avatarChange();
     }
 
     // 통일신라 버튼

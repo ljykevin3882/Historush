@@ -7,14 +7,15 @@ public class PlayerController : MonoBehaviour
     public PlayerData playerData;
     public FloatingJoystick joy;
     public FixedJoystick fixjoy;
-    public Sprite Human1;
+    public Sprite Bear,Human1;
     public GameManager gameManager;
-    public RuntimeAnimatorController Human1_animator;
+    public RuntimeAnimatorController Bear_animator,Human1_animator;
     public int SookGarlic=0;
     public float maxSpeed;
     public float jumpPower;
     public int jumpCount;
     public bool isSliding;
+    public CustomMenu Custom_Menu;
     Rigidbody2D rigid;
     public TreasurePopUp TreasurePopup;
     public GameObject TreasurePopupObject,SettingPopup;
@@ -249,7 +250,9 @@ public class PlayerController : MonoBehaviour
             SookGarlic++; 
             if(SookGarlic >= 10) //쑥마늘 먹으면 사람으로 변함
             {
-                playerData.avatar = 1; //현재 아바타 데이터를 저장
+                gameManager.LoadPlayerDataFromJson();
+                gameManager.playerData.avatar = 1; //현재 아바타 데이터를 저장, 1 이면 사람
+                gameManager.SavePlayerDataToJson();
                 spriteRenderer.sprite = Human1;
                 anim.runtimeAnimatorController = Human1_animator;
             }
@@ -359,6 +362,65 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.color = new Color(1, 1, 1, 1);
         capsuleCollider.enabled = true;
     }
-   
+    public void avatarChange()
+    {
+        if (gameManager.playerData.avatar == 0) //곰
+        {
+            spriteRenderer.sprite = Bear;
+            anim.runtimeAnimatorController = Bear_animator;
+        }
+        else //사람
+        {
+            spriteRenderer.sprite = Human1;
+            anim.runtimeAnimatorController = Human1_animator;
+        }
+    }
+    public void avatarColorChange()
+    {
 
+        if (gameManager.playerData.avatar_color == 1)
+        {
+            spriteRenderer.color = Custom_Menu.red;
+        }
+        else if (gameManager.playerData.avatar_color == 2)
+        {
+            spriteRenderer.color = Custom_Menu.orange;
+        }
+        else if (gameManager.playerData.avatar_color == 3)
+        {
+            spriteRenderer.color = Custom_Menu.yellow;
+        }
+        else if (gameManager.playerData.avatar_color == 4)
+        {
+            spriteRenderer.color = Custom_Menu.lightgreen;
+        }
+        else if (gameManager.playerData.avatar_color == 5)
+        {
+            spriteRenderer.color = Custom_Menu.green;
+        }
+        else if (gameManager.playerData.avatar_color == 6)
+        {
+            spriteRenderer.color = Custom_Menu.skyblue;
+        }
+        else if (gameManager.playerData.avatar_color == 7)
+        {
+            spriteRenderer.color = Custom_Menu.blue;
+        }
+        else if (gameManager.playerData.avatar_color == 8)
+        {
+            spriteRenderer.color = Custom_Menu.nam;
+        }
+        else if (gameManager.playerData.avatar_color == 9)
+        {
+            spriteRenderer.color = Custom_Menu.purple;
+        }
+        else if (gameManager.playerData.avatar_color == 10)
+        {
+            spriteRenderer.color = Custom_Menu.gray;
+        }
+        else if (gameManager.playerData.avatar_color == 11)
+        {
+            spriteRenderer.color = Custom_Menu.white;
+        }
+    }
 }
