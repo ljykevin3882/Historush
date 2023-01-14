@@ -11,7 +11,8 @@ public class CustomMenu : MonoBehaviour
     public SpriteRenderer avatar,head;
     public Sprite garlic_sprite, bowl, what, koreajungja,heart; //머리에 달 유물들 사진 넣으면 됨
     public GameManager gameManager;
-    public GameObject Main_menu, Custom_menu,Bear_custom,Human_custom;
+    public GameObject Main_menu, Custom_menu,Bear_custom,Human_custom,change_lock;
+    public Button change_Button;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,16 @@ public class CustomMenu : MonoBehaviour
         gameManager.playerData.avatar = 0;
         gameManager.playerData.avatar_color = 0;
         gameManager.SavePlayerDataToJson();
+        if (gameManager.playerData.MaxStageLevel == 0)
+        {
+            change_Button.interactable = false;
+            change_lock.SetActive(true);
+        }
+        else
+        {
+            change_Button.interactable = true;
+            change_lock.SetActive(false);
+        }
     }
     public void OpenHumancustom()
     {

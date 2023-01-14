@@ -193,7 +193,7 @@ public class GameManager : MonoBehaviour
 
     
     // Update is called once per frame
-    void PlayerReposition()
+    public void PlayerReposition()
     {
         player.transform.position = new Vector3(0, 0, -1);
         player.VelocityZero();
@@ -222,8 +222,6 @@ public class GameManager : MonoBehaviour
         }
         stagePoint = 0;
         MapReset();
-        
-
     }
     public void MapReset() //죽고 다시시작할때 아이템 원상복귀
     {

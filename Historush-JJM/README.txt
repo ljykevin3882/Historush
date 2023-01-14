@@ -5,7 +5,7 @@ public int score;   스코어
 public bool[] items; 유물 리스트, 획득 여부를 bool 로 나타냄
 public int avatar; 곰일때는 0 사람일때는 1
 public int avatar_color; 아바타 색을 나타냄
-public int avatar_accessory; 아바타 머리장식을 나타냄
+public int avatar_accessory; 아바타 머리장식을 나타냄	0
 
 
 
@@ -53,3 +53,8 @@ public int avatar_accessory; 아바타 머리장식을 나타냄
 -커스텀 메뉴로 설정한 세팅값이 실제 DB에 저장되게 구현
 -커스텀 메뉴에서 곰 설정가능하게 구현
 -게임 시작 시 캐릭터 설정값을 불러와 DB에 맞는 아바타로 플레이 가능 
+
+1/14 이정엽
+- 게임 플레이 중 설정 버튼 누르고 메인화면 버튼 구현
+- 커스텀 메뉴에서 듀토리얼 진행 여부에 따라 곰/사람 전환 버튼 비활성화
+- 실제 플레이 해보니 짤리는 UI들 위치 및 pivot 조정
