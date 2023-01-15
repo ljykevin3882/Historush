@@ -6,32 +6,41 @@ using UnityEngine.UI;
 public class Boss : MonoBehaviour
 {
     public GameObject PurpleBullet, BlueBullet, GreenBullet;
-    public GameObject player;
-    public bool canShoot = true;
-    Rigidbody2D rigid;
 
     const float moveDelay = 5f; // 좌우 와리가리 거리
     float moveTimer = 0;
+    GameObject player;
 
-    public int patternIndex;
+    static public int patternIndex = -1;
     public int curPatternCount;
     public int[] maxPatternCount;
+    static public bool isWrong = false;
+    private int tempPIdx;
+    private int moveSpeedOne = 180;
+    private float moveSpeedTwo = 0.3f;
+    private int changeDir = 0;
 
-    // Start is called before the first frame update
+
     void Start()
     {
+        player = GameObject.Find("Player");
         Invoke("Think", 2);
+
     }
-    // Update is called once per frame
     void Update()
     {
-        Boss_Move();
-        Boss_Finish();
+        BossMoveOne();
     }
 
     void Think() // 보스 패턴 로직
     {
-        patternIndex = patternIndex == 3 ? 0 : patternIndex + 1;
+        if (isWrong == true) {
+            tempPIdx = patternIndex;
+            patternIndex = 4;
+        }
+        else {
+            patternIndex = patternIndex == 3 ? 0 : patternIndex + 1;
+        }
         curPatternCount = 0;
 
         switch (patternIndex)
@@ -50,6 +59,10 @@ public class Boss : MonoBehaviour
 
             case 3:
                 FireAround();
+                break;
+
+            case 4:
+                FireWrongAnswer();
                 break;
         }
     }
@@ -80,10 +93,14 @@ public class Boss : MonoBehaviour
         // Pattern Counting
         curPatternCount++;
 
-        if (curPatternCount < maxPatternCount[patternIndex])
+        if (curPatternCount < maxPatternCount[patternIndex]) {
             Invoke("FireForward", 1);
-        else
-            Invoke("Think", 3);
+        }
+        else {
+            BossStageManage.mode = "Quiz";
+            //Invoke("Think", 3);
+        }
+
     }
     void FireShot()
     {
@@ -104,9 +121,10 @@ public class Boss : MonoBehaviour
         curPatternCount++;
 
         if (curPatternCount < maxPatternCount[patternIndex])
-            Invoke("FireShot", 2);
+            Invoke("FireShot", 1.5f);
         else
-            Invoke("Think", 3);
+            BossStageManage.mode = "Quiz";
+            //Invoke("Think", 3);
 
     }
     void FireArc()
@@ -125,7 +143,8 @@ public class Boss : MonoBehaviour
         if (curPatternCount < maxPatternCount[patternIndex])
             Invoke("FireArc", 0.15f);
         else
-            Invoke("Think", 3);
+            BossStageManage.mode = "Quiz";
+            //Invoke("Think", 3);
 
     }
     void FireAround()
@@ -143,19 +162,42 @@ public class Boss : MonoBehaviour
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
             Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 2 * index / roundNum)
                                        , Mathf.Sin(Mathf.PI * 2 * index / roundNum));
-            rigid.AddForce(dirVec.normalized * 5, ForceMode2D.Impulse);
+            rigid.AddForce(dirVec.normalized * 7, ForceMode2D.Impulse);
         }
 
         // Pattern Counting
         curPatternCount++;
 
         if (curPatternCount < maxPatternCount[patternIndex])
-            Invoke("FireAround", 3);
+            Invoke("FireAround", 2);
         else
-            Invoke("Think", 3);
+            BossStageManage.mode = "Quiz";
+            //Invoke("Think", 3);
 
     }
-    void Boss_Move() // 보스 움직임 관리
+    void FireWrongAnswer() {
+        for (int index = 0; index < 10; index++)
+        {
+            GameObject bullet = Instantiate(BlueBullet, transform.position, transform.rotation); // 총알 생성 (생성 오브젝트, Vecter3 값, 회전값=기본값)
+            bullet.transform.position = transform.position;
+
+            Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
+            Vector2 dirVec = player.transform.position - transform.position;
+            Vector2 ranVec = new Vector2(Random.Range(-5f, 5f), Random.Range(0f, 2f));
+            dirVec += ranVec;
+            rigid.AddForce(dirVec.normalized * 50, ForceMode2D.Impulse);
+        }
+        curPatternCount++;
+        if (curPatternCount < maxPatternCount[patternIndex]) {
+            Invoke("FireWrongAnswer", 0.1f);
+        }
+        else {
+            patternIndex = tempPIdx;
+            isWrong = false;
+            Invoke("Think", 3.0f);
+        }
+    }
+    void BossMoveOne() // 보스 움직임 관리
     {
         if (moveTimer > moveDelay / 2)
         {
@@ -171,15 +213,26 @@ public class Boss : MonoBehaviour
         }
         moveTimer += Time.deltaTime;
     }
+    void BossMoveTwo() {
+        if (moveSpeedOne == 0) changeDir = 1;
+        else if (moveSpeedOne == 180) changeDir = 0;
 
-
-    void Boss_Finish() // 보스 클리어 조건 = 60초 버티기
-    {
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().bossStageTime > 60)
-        {
-            GameObject.Find("GameManager").GetComponent<GameManager>().NextStage();
-            Destroy(gameObject);
+        if (changeDir == 1) {
+            moveSpeedOne++;
+            transform.Translate(Vector3.right * Time.deltaTime * moveSpeedOne * moveSpeedTwo);
         }
-    }
-}
+        else if (changeDir == 0) {
+            moveSpeedOne--;
+            transform.Translate(Vector3.left * Time.deltaTime * moveSpeedOne * moveSpeedTwo);
+        }
+            // GameObject bullet = Instantiate(BlueBullet, transform.position, transform.rotation); // 총알 생성 (생성 오브젝트, Vecter3 값, 회전값=기본값)
+            // bullet.transform.position = transform.position;
 
+            // Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
+            // Vector2 dirVec = player.transform.position - transform.position;
+            // Vector2 ranVec = new Vector2(Random.Range(-5f, 5f), Random.Range(0f, 2f));
+            // dirVec += ranVec;
+            // rigid.AddForce(dirVec.normalized * 12, ForceMode2D.Impulse);
+    }
+
+}
