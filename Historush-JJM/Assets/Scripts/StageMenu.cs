@@ -14,11 +14,12 @@ public class StageMenu : MonoBehaviour
     public GameObject Stage1, Stage2, Stage3;
     public GameManager gameManager;
     public PlayerController playerController;
+    private GameObject CamObject;
     public void Start()
     {
-        
-        
-        
+
+        CamObject = GameObject.Find("Main Camera");
+
 
     }
 
@@ -64,6 +65,8 @@ public class StageMenu : MonoBehaviour
     // 단군신화 버튼
     public void ClickDangun()
     {
+        string bgmName = "3";
+        CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         print("단군신화 버튼 누름");
         Stage_Menu.SetActive(false);
         Stage1.SetActive(true);
@@ -79,6 +82,8 @@ public class StageMenu : MonoBehaviour
     // 고조선 버튼
     public void ClickGojoseon()
     {
+        string bgmName = "3";
+        CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         print("고조선 버튼 누름");
         Stage_Menu.SetActive(false);
         Stage2.SetActive(true);
@@ -94,6 +99,8 @@ public class StageMenu : MonoBehaviour
     // 삼국시대 버튼
     public void ClickThreeState()
     {
+        string bgmName = "3";
+        CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         print("삼국시대 버튼 누름");
         Stage_Menu.SetActive(false);
         Stage3.SetActive(true);
@@ -109,35 +116,47 @@ public class StageMenu : MonoBehaviour
     // 통일신라 버튼
     public void ClickUnifiedSilla()
     {
+        string bgmName = "3";
+        CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         print("통일신라 버튼 누름");
     }
 
     // 고려 버튼
     public void ClickKoryo()
     {
+        string bgmName = "3";
+        CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         print("고려 버튼 누름");
     }
 
     // 조선 버튼
     public void ClickJoseon()
     {
+        string bgmName = "3";
+        CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         print("조선 버튼 누름");
     }
 
     // 일제강점기 버튼
     public void ClickJapanOccupation()
     {
+        string bgmName = "3";
+        CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         print("일제강점기 버튼 누름");
     }
 
     // 현대사 버튼
     public void ClickMordernHistory()
     {
+        string bgmName = "3";
+        CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         print("고조선 버튼 누름");
     }
     //뒤로가기 버튼
     public void GoBack()
     {
+        string bgmName = "1";
+        CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         Stage_Menu.SetActive(false);
         Main_Menu.SetActive(true);
         print("뒤로가기 누름");

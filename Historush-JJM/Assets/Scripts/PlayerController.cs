@@ -266,7 +266,8 @@ public class PlayerController : MonoBehaviour
             bool isBronze = collision.gameObject.name.Contains("Bronze");
             bool isSilver = collision.gameObject.name.Contains("Silver");
             bool isGold = collision.gameObject.name.Contains("Gold");
-
+            AudioSource CoinSound = GetComponent<AudioSource>();
+            CoinSound.Play();
             if (isBronze)
                 gameManager.stagePoint += 50;
             else if (isSilver)

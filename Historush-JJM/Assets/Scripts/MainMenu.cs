@@ -13,9 +13,11 @@ public class MainMenu : MonoBehaviour
     public CustomMenu custom_Menu;
     public StageMenu StageMenu;
     public GameManager gameManager;
+    private GameObject CamObject;
     public void Start()
     {
-        
+        CamObject = GameObject.Find("Main Camera");
+
     }
 
     public void Update()
@@ -27,6 +29,8 @@ public class MainMenu : MonoBehaviour
  
     public void ClickStart()
     {
+        string bgmName = "2";
+        CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         Stage_Menu.SetActive(true);
         Main_Menu.SetActive(false);
         StageMenu.StartStageMenu();
