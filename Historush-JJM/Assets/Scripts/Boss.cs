@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
-    public GameObject PurpleBullet, BlueBullet, GreenBullet;
+    public GameObject Hangle_1, Hangle_2, Hangle_3, Hangle_4, Hangle_5, Hangle_6, Hangle_7, Hangle_8, Hangle_9, Hangle_10, Hangle_11, Hangle_12, Hangle_13, Hangle_14; 
 
-    const float moveDelay = 5f; // 좌우 와리가리 거리
+    const float moveDelay = 5f; // ?¿? ??????? ???
     float moveTimer = 0;
     GameObject player;
 
@@ -32,7 +32,7 @@ public class Boss : MonoBehaviour
         BossMoveOne();
     }
 
-    void Think() // 보스 패턴 로직
+    void Think() // ???? ???? ????
     {
         if (isWrong == true) {
             tempPIdx = patternIndex;
@@ -70,13 +70,13 @@ public class Boss : MonoBehaviour
     void FireForward()
     {
         // Fire 4 Bullet Forward
-        GameObject bulletR = Instantiate(BlueBullet, transform.position, transform.rotation); // 총알 생성 (생성 오브젝트, Vecter3 값, 회전값=기본값)
+        GameObject bulletR = Instantiate(Hangle_1, transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
         bulletR.transform.position = transform.position + Vector3.right * 1.5f;
-        GameObject bulletRR = Instantiate(BlueBullet, transform.position, transform.rotation);
+        GameObject bulletRR = Instantiate(Hangle_1, transform.position, transform.rotation);
         bulletRR.transform.position = transform.position + Vector3.right * 3.5f;
-        GameObject bulletL = Instantiate(BlueBullet, transform.position, transform.rotation);
+        GameObject bulletL = Instantiate(Hangle_1, transform.position, transform.rotation);
         bulletL.transform.position = transform.position + Vector3.left * 1.5f;
-        GameObject bulletLL = Instantiate(BlueBullet, transform.position, transform.rotation);
+        GameObject bulletLL = Instantiate(Hangle_1, transform.position, transform.rotation);
         bulletLL.transform.position = transform.position + Vector3.left * 3.5f;
 
         Rigidbody2D rigidR = bulletR.GetComponent<Rigidbody2D>();
@@ -107,7 +107,7 @@ public class Boss : MonoBehaviour
         // Fire 5 Random Shotgun Bullet to Player
         for (int index = 0; index < 7; index++)
         {
-            GameObject bullet = Instantiate(BlueBullet, transform.position, transform.rotation); // 총알 생성 (생성 오브젝트, Vecter3 값, 회전값=기본값)
+            GameObject bullet = Instantiate(Hangle_1, transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
             bullet.transform.position = transform.position;
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
@@ -130,7 +130,7 @@ public class Boss : MonoBehaviour
     void FireArc()
     {
         // Fire Arc Continue Fire
-        GameObject bullet = Instantiate(BlueBullet, transform.position, transform.rotation); // 총알 생성 (생성 오브젝트, Vecter3 값, 회전값=기본값)
+        GameObject bullet = Instantiate(Hangle_1, transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
         bullet.transform.position = transform.position;
 
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
@@ -156,7 +156,7 @@ public class Boss : MonoBehaviour
         // Fire Around
         for (int index = 0; index < roundNum; index++)
         {
-            GameObject bullet = Instantiate(BlueBullet, transform.position, transform.rotation); // 총알 생성 (생성 오브젝트, Vecter3 값, 회전값=기본값)
+            GameObject bullet = Instantiate(Hangle_1, transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
             bullet.transform.position = transform.position;
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
@@ -178,7 +178,7 @@ public class Boss : MonoBehaviour
     void FireWrongAnswer() {
         for (int index = 0; index < 10; index++)
         {
-            GameObject bullet = Instantiate(BlueBullet, transform.position, transform.rotation); // 총알 생성 (생성 오브젝트, Vecter3 값, 회전값=기본값)
+            GameObject bullet = Instantiate(Hangle_1, transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
             bullet.transform.position = transform.position;
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
@@ -197,15 +197,15 @@ public class Boss : MonoBehaviour
             Invoke("Think", 3.0f);
         }
     }
-    void BossMoveOne() // 보스 움직임 관리
+    void BossMoveOne() // ???? ?????? ????
     {
         if (moveTimer > moveDelay / 2)
         {
-            transform.Translate(Vector3.right * Time.deltaTime * 10); // 오른쪽
+            transform.Translate(Vector3.right * Time.deltaTime * 10); // ??????
         }
         else
         {
-            transform.Translate(Vector3.left * Time.deltaTime * 10); // 왼쪽
+            transform.Translate(Vector3.left * Time.deltaTime * 10); // ????
         }
         if (moveTimer > moveDelay)
         {
@@ -225,7 +225,7 @@ public class Boss : MonoBehaviour
             moveSpeedOne--;
             transform.Translate(Vector3.left * Time.deltaTime * moveSpeedOne * moveSpeedTwo);
         }
-            // GameObject bullet = Instantiate(BlueBullet, transform.position, transform.rotation); // 총알 생성 (생성 오브젝트, Vecter3 값, 회전값=기본값)
+            // GameObject bullet = Instantiate(BlueBullet, transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
             // bullet.transform.position = transform.position;
 
             // Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
