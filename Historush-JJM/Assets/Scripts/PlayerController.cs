@@ -238,8 +238,17 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-   
-    
+    void HumanChange()
+    {
+        spriteRenderer.sprite = Human1;
+        anim.runtimeAnimatorController = Human1_animator;
+    }
+    void BearChange()
+    {
+        spriteRenderer.sprite = Bear;
+        anim.runtimeAnimatorController = Bear_animator;
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Answer_O") BossStageManage.answer = true;
@@ -255,8 +264,9 @@ public class PlayerController : MonoBehaviour
                 gameManager.LoadPlayerDataFromJson();
                 gameManager.playerData.avatar = 1; //현재 아바타 데이터를 저장, 1 이면 사람
                 gameManager.SavePlayerDataToJson();
-                spriteRenderer.sprite = Human1;
-                anim.runtimeAnimatorController = Human1_animator;
+                //사람으로 변하는 애니메이션 
+                anim.SetTrigger("Change");
+                Invoke("HumanChange", 1);
             }
             collision.gameObject.SetActive(false);
         }

@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
         if (_mode == Define.CameraMode.QuaterView)
         {
             transform.position = _player.transform.position + _delta;
-            transform.LookAt(_player.transform);
+            //transform.LookAt(_player.transform);
         }
     }
 }
