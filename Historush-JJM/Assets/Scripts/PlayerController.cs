@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public RuntimeAnimatorController Bear_animator,Human1_animator;
     public int SookGarlic=0;
     public float maxSpeed;
+    public float maxFallSpeed; //낙하 속도 조정
+    public float Speed;
     public float jumpPower;
     public int jumpCount;
     public bool isSliding;
@@ -78,9 +80,13 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         //Move by control
-        float h = Input.GetAxisRaw("Horizontal");
-        h += fixjoy.Horizontal;
-        rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse);
+        float h = Input.GetAxisRaw("Horizontal"); //키보드 입력
+        h += fixjoy.Horizontal; //조이스틱 입력
+
+
+
+
+        rigid.AddForce(Vector2.right * h*Speed, ForceMode2D.Impulse);
         if (h > 0){ //오른쪽
             spriteRenderer.flipX = false;
         }
@@ -108,6 +114,11 @@ public class PlayerController : MonoBehaviour
             
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
             
+        }
+        if (rigid.velocity.y < maxFallSpeed) //낙하 최대속도를 초과해 떨어지면
+        {
+            
+            rigid.velocity = new Vector2(rigid.velocity.x, maxFallSpeed);
         }
 
         //PC 슬라이드-키입력
@@ -181,27 +192,32 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.DrawRay(rigid.position, Vector3.up*0.6f, new Color(0, 1, 0));
-        RaycastHit2D jumpPlatform = Physics2D.Raycast(rigid.position, Vector3.up*0.6f, 0.6f, LayerMask.GetMask("Platform"));
+        
+        Debug.DrawRay(rigid.position, Vector3.up, new Color(0, 1, 0));
+        RaycastHit2D jumpPlatform = Physics2D.Raycast(rigid.position, Vector3.up,1f, LayerMask.GetMask("Platform"));
         if (rigid.velocity.y > 0 && jumpCount<2)
         {
-            if (jumpPlatform.transform.gameObject.tag == "Platform" )
+            if (jumpPlatform.collider!=null&&jumpPlatform.collider.tag == "Platform" )
             {
                 print("dds");
                 capsuleCollider.isTrigger = true;
             }
 
         }
-        
-        
+
+
         //LandingPlatform
         if (rigid.velocity.y < 0)
         {
+            if (jumpPlatform.collider == null)
+            {
+                capsuleCollider.isTrigger = false; //캐릭터가 내려오면서 머리위에 아무것도 없으면 다시 물리적용되게
+            }
             //capsuleCollider.isTrigger = false; //내려올때는 다시 collider 만들기
             Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
             RaycastHit2D rayhit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
 
-            if (rayhit.collider.tag == "Platform")
+            if (rayhit.collider!=null&&rayhit.collider.tag == "Platform")
             {
                 if (rayhit.distance < 1f)
                 {
@@ -210,6 +226,22 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        Speed = 1;
+        RaycastHit2D leftslope = Physics2D.Raycast(rigid.position, Vector3.left, 1f, LayerMask.GetMask("Platform"));
+        RaycastHit2D rightslope = Physics2D.Raycast(rigid.position, Vector3.right, 1f, LayerMask.GetMask("Platform"));
+        //if (rightslope.collider.tag == "Platform" && rigid.velocity.x > 0) //우측에 경사가 있고, 우측으로 이동한다면 
+        if (rightslope.collider!=null&& rigid.velocity.x > 0)
+        {
+            Speed = 1.7f;
+        }
+        //if (leftslope.collider.tag == "Platform" && rigid.velocity.x < 0) //좌측에 경사가 있고, 좌측으로 이동한다면
+        if(leftslope.collider!=null&& rigid.velocity.x < 0)
+        {
+            Speed = 1.7f;
+        }
+        
+        
+        
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -258,6 +290,8 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "SookGarlic")
         {
+            AudioSource CoinSound = GetComponent<AudioSource>();
+            CoinSound.Play();
             SookGarlic++; 
             if(SookGarlic >= 10) //쑥마늘 먹으면 사람으로 변함
             {
@@ -291,6 +325,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Treasure")
         {
+
             gameManager.stagePoint += 500;
             gameManager.playerData.items.SetValue(true,int.Parse(collision.gameObject.name)); //DB에 먹은 유물 true로 만들기
             TreasurePopup.TreasurePopupNum = int.Parse(collision.gameObject.name);
@@ -315,12 +350,13 @@ public class PlayerController : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Platform") 
-            capsuleCollider.isTrigger = false; 
+        //if (collision.gameObject.tag == "Platform") 
+        //    capsuleCollider.isTrigger = false; 
     }
     void OnAttack(Transform enemy)
     {
-
+        AudioSource CoinSound = GetComponent<AudioSource>();
+        CoinSound.Play();
         rigid.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
         gameManager.stagePoint += 100;
         //적 죽음
@@ -338,7 +374,7 @@ public class PlayerController : MonoBehaviour
             //래이어 변경
             gameObject.layer = 11;
             //색변경
-            spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.4f);
             //넉백
             int dirc = transform.position.x - targetPos.x >= 0 ? 1 : -1;
             rigid.AddForce(new Vector2(dirc, 1) * 7, ForceMode2D.Impulse);
@@ -350,12 +386,12 @@ public class PlayerController : MonoBehaviour
     void OffDamaged()
     {
         gameObject.layer = 10;
-        spriteRenderer.color = new Color(1, 1, 1, 1);
+        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1);
     }
     public void OnDie()
     {
         //색 변경
-        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.4f);
         //y축 변경
         spriteRenderer.flipY = true;
         //콜라이더 비활성화
@@ -372,7 +408,7 @@ public class PlayerController : MonoBehaviour
     public void Respawn()  //3번 죽고 부활할때 위치 원위치. 색깔 원위치
     {
         spriteRenderer.flipY = false;
-        spriteRenderer.color = new Color(1, 1, 1, 1);
+        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1);
         capsuleCollider.enabled = true;
     }
     public void avatarChange()
