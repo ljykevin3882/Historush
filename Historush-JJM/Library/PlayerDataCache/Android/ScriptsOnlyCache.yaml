@@ -47,8 +47,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -111,79 +113,79 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 630}
+      Script: {instanceID: 632}
     - Class: 114
-      Script: {instanceID: 1462}
+      Script: {instanceID: 1464}
     - Class: 114
-      Script: {instanceID: 1526}
+      Script: {instanceID: 1528}
     - Class: 114
-      Script: {instanceID: 1542}
+      Script: {instanceID: 1544}
     - Class: 114
-      Script: {instanceID: 1548}
+      Script: {instanceID: 1550}
     - Class: 114
-      Script: {instanceID: 1614}
+      Script: {instanceID: 1616}
     - Class: 114
-      Script: {instanceID: 1640}
+      Script: {instanceID: 1642}
     - Class: 114
-      Script: {instanceID: 1710}
+      Script: {instanceID: 1712}
     - Class: 114
-      Script: {instanceID: 1806}
-    - Class: 114
-      Script: {instanceID: 2028}
+      Script: {instanceID: 1808}
     - Class: 114
       Script: {instanceID: 2030}
     - Class: 114
-      Script: {instanceID: 2088}
+      Script: {instanceID: 2032}
     - Class: 114
-      Script: {instanceID: 2094}
+      Script: {instanceID: 2090}
     - Class: 114
-      Script: {instanceID: 2126}
+      Script: {instanceID: 2096}
     - Class: 114
-      Script: {instanceID: 2136}
+      Script: {instanceID: 2128}
     - Class: 114
-      Script: {instanceID: 2358}
+      Script: {instanceID: 2138}
     - Class: 114
-      Script: {instanceID: 2512}
+      Script: {instanceID: 2360}
     - Class: 114
-      Script: {instanceID: 2662}
+      Script: {instanceID: 2514}
     - Class: 114
-      Script: {instanceID: 2766}
+      Script: {instanceID: 2664}
     - Class: 114
-      Script: {instanceID: 2836}
+      Script: {instanceID: 2768}
     - Class: 114
-      Script: {instanceID: 3050}
+      Script: {instanceID: 2838}
     - Class: 114
-      Script: {instanceID: 3136}
+      Script: {instanceID: 3052}
     - Class: 114
-      Script: {instanceID: 3162}
+      Script: {instanceID: 3138}
     - Class: 114
-      Script: {instanceID: 3308}
+      Script: {instanceID: 3164}
     - Class: 114
-      Script: {instanceID: 3356}
+      Script: {instanceID: 3310}
     - Class: 114
-      Script: {instanceID: 3636}
+      Script: {instanceID: 3358}
     - Class: 114
-      Script: {instanceID: 3820}
+      Script: {instanceID: 3638}
     - Class: 114
-      Script: {instanceID: 3836}
+      Script: {instanceID: 3822}
     - Class: 114
-      Script: {instanceID: 4000}
+      Script: {instanceID: 3838}
     - Class: 114
-      Script: {instanceID: 4048}
+      Script: {instanceID: 4002}
     - Class: 114
-      Script: {instanceID: 4226}
+      Script: {instanceID: 4050}
     - Class: 114
-      Script: {instanceID: 4324}
+      Script: {instanceID: 4228}
     - Class: 114
-      Script: {instanceID: 4580}
+      Script: {instanceID: 4326}
     - Class: 114
-      Script: {instanceID: 4664}
+      Script: {instanceID: 4582}
     - Class: 114
-      Script: {instanceID: 4700}
+      Script: {instanceID: 4666}
     - Class: 114
-      Script: {instanceID: 5006}
+      Script: {instanceID: 4702}
     - Class: 114
-      Script: {instanceID: 5102}
+      Script: {instanceID: 5008}
+    - Class: 114
+      Script: {instanceID: 5104}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1047,7 +1049,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: 128c8007bddbe385214fd6c3bbe153f7
+      Hash: f97ddddeae357ee1e3ad3dbc607ff072
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager

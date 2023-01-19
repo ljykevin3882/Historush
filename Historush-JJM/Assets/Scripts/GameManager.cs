@@ -16,8 +16,10 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
     public PlayerData playerData;
     public GameObject[] Stages;
-    public GameObject[] items; 
+    public GameObject[] items;
+    public Sprite[] BackGround;
     SpriteRenderer spriteRenderer;
+    public SpriteRenderer BackGroundSpriteRenderer;
 
     CapsuleCollider2D capsuleCollider;
     public Image[] UIhealth;
@@ -74,8 +76,9 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        UIPoint.text = (totalPoint + stagePoint).ToString();
-        SookGarlicCount.text = (player.SookGarlic).ToString();
+        //여기 최적화해서 웬만하면 다 빼자
+        //UIPoint.text = (totalPoint + stagePoint).ToString();
+        //SookGarlicCount.text = (player.SookGarlic).ToString();
         if (stageIndex % 4 == 0 && stageIndex != 0) bossStageTime += Time.deltaTime;
         else bossStageTime = 0;
     }
@@ -128,34 +131,42 @@ public class GameManager : MonoBehaviour
         if (stage_Index < 1)
         {
             UIStage.text = "단군신화";
+            BackGroundSpriteRenderer.sprite = BackGround[0]; 
         }
         else if (stage_Index < 5)
         {
             UIStage.text = "고조선"+ (stageIndex);
+            BackGroundSpriteRenderer.sprite = BackGround[1];
         }
         else if (stage_Index < 9)
         {
             UIStage.text = "삼국시대" + (stageIndex-4);
+            BackGroundSpriteRenderer.sprite = BackGround[2];
         }
         else if (stage_Index < 13)
         {
             UIStage.text = "통일신라" + (stageIndex-8);
+            BackGroundSpriteRenderer.sprite = BackGround[3];
         }
         else if (stage_Index < 17)
         {
             UIStage.text = "고려" + (stageIndex-12);
+            BackGroundSpriteRenderer.sprite = BackGround[4];
         }
         else if (stage_Index < 21)
         {
             UIStage.text = "조선" + (stageIndex-16);
+            BackGroundSpriteRenderer.sprite = BackGround[5];
         }
         else if (stage_Index < 25)
         {
             UIStage.text = "일제강점기" + (stageIndex-20);
+            BackGroundSpriteRenderer.sprite = BackGround[6];
         }
         else if (stage_Index < 29)
         {
             UIStage.text = "현대사" + (stageIndex-24);
+            BackGroundSpriteRenderer.sprite = BackGround[7];
         }
 
     }

@@ -251,7 +251,7 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.name == "Enemy")
             {
-                if (rigid.position.y>collision.gameObject.transform.position.y)
+                if (rigid.velocity.y<-0.01)
                 {
                     OnAttack(collision.transform);
                     
@@ -302,10 +302,12 @@ public class PlayerController : MonoBehaviour
                 anim.SetTrigger("Change");
                 Invoke("HumanChange", 1);
             }
+            gameManager.SookGarlicCount.text = (gameManager.player.SookGarlic).ToString();
             collision.gameObject.SetActive(false);
         }
         if (collision.gameObject.tag == "Item")
         {
+
             //점수얻기
             bool isBronze = collision.gameObject.name.Contains("Bronze");
             bool isSilver = collision.gameObject.name.Contains("Silver");
@@ -319,7 +321,7 @@ public class PlayerController : MonoBehaviour
             else if (isGold)
                 gameManager.stagePoint += 300;
 
-
+            gameManager.UIPoint.text = (gameManager.totalPoint + gameManager.stagePoint).ToString();
             //아이템 사라지기
             collision.gameObject.SetActive(false);
         }
@@ -331,7 +333,7 @@ public class PlayerController : MonoBehaviour
             TreasurePopup.TreasurePopupNum = int.Parse(collision.gameObject.name);
             TreasurePopup.TreasurePopupBool = true;
             TreasurePopupObject.SetActive(true);
-
+            gameManager.UIPoint.text = (gameManager.totalPoint + gameManager.stagePoint).ToString();
             collision.gameObject.SetActive(false);
 
         }
@@ -362,6 +364,7 @@ public class PlayerController : MonoBehaviour
         //적 죽음
         Enemy_Move enemyMove = enemy.GetComponent<Enemy_Move>();
         enemyMove.OnDamaged();
+        gameManager.UIPoint.text = (gameManager.totalPoint + gameManager.stagePoint).ToString();
     }
     void OnDamaged(Vector2 targetPos)
     {
