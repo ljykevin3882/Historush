@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
                 stageIndex++;  //다음스테이지로  보스 스테이지: 4, 8, 12, 16
                 SceneManager.LoadScene("BossStageScene");
                 StageName(stageIndex); //스테이지 이름변경
+                BossStageManage.curStage = stageIndex;
             }
             else
             {

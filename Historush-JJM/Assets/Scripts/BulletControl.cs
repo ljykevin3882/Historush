@@ -16,5 +16,8 @@ public class BulletControl : MonoBehaviour
     {
         Destroy(gameObject, 10);
     }
+    void Update() {
+        transform.eulerAngles += new Vector3(0,0,0.2f);
+    }
 
 }

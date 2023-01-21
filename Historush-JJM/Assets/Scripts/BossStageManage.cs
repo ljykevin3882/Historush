@@ -5,6 +5,9 @@ using TMPro;
 
 public class BossStageManage : MonoBehaviour
 {
+    public GameObject playerSpawnPosOne, playerSpawnPosTwo, playerSpawnPosThree, playerSpawnPosFour;
+    static public int curStage;
+
     float timer; 
     int sec;
     public GameObject player;
@@ -24,6 +27,7 @@ public class BossStageManage : MonoBehaviour
     void Start()
     {
         mainCamera.GetComponent<Camera>().orthographicSize = 12.0f; // 원래 값 6.12
+        PlayerSpawn();
     }
 
     void Update()
@@ -165,5 +169,11 @@ public class BossStageManage : MonoBehaviour
             answerTwo.GetComponent<TMP_Text>().outlineWidth = 0.2f;
             answerOne.GetComponent<TMP_Text>().outlineWidth = 0;
         }
+    }
+    private void PlayerSpawn() {
+        Debug.Log(curStage);
+
+        if (curStage == 4) player.transform.position = playerSpawnPosOne.transform.position;
+        else if (curStage == 8) player.transform.position = playerSpawnPosTwo.transform.position;
     }
 }
