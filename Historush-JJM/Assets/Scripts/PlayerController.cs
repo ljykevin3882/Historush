@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -348,6 +349,14 @@ public class PlayerController : MonoBehaviour
             
             gameManager.playerData.score = gameManager.totalPoint; //점수 갱신
             gameManager.SavePlayerDataToJson(); //DB에 저장
+        }
+        if (collision.gameObject.tag == "BossFinish") //깃발 먹으면
+        {
+            //다음 스테이지
+            SceneManager.LoadScene("SampleScene");
+            gameManager.LoadPlayerDataFromJson();
+            gameManager.playerData.MaxStageLevel = gameManager.playerData.MaxStageLevel + 1;
+            gameManager.SavePlayerDataToJson();
         }
     }
     void OnTriggerExit2D(Collider2D collision)

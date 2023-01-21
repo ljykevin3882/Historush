@@ -12,7 +12,7 @@ public class BossStageManage : MonoBehaviour
     public GameObject answerOne, answerOneBackground, answerTwo, answerTwoBackground;
     public GameObject mainCamera;
     public GameObject question, questionBackground, questionTimer;
-    public GameObject finishFlag;
+    public GameObject finishFlag,BossFinishFlag;
     public Transform finishFlagSpawnPos;
     private GameObject boss;
     private bool isChecked = false;
@@ -115,7 +115,8 @@ public class BossStageManage : MonoBehaviour
         }
     }
     private void ProcessClear() {
-        Instantiate(finishFlag, finishFlagSpawnPos.position, finishFlagSpawnPos.rotation);
+        //Instantiate(finishFlag, finishFlagSpawnPos.position, finishFlagSpawnPos.rotation);
+        BossFinishFlag.SetActive(true);
     }
     private void CheckAnswer() {
         switch(Boss.patternIndex) {

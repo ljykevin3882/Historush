@@ -97,12 +97,22 @@ public class GameManager : MonoBehaviour
     {
         if (stageIndex < Stages.Length-1)
         {
-            Stages[stageIndex].SetActive(false);
-            stageIndex++;  //다음스테이지로
-            Stages[stageIndex].SetActive(true);
-            PlayerReposition();
-            StageName(stageIndex); //스테이지 이름변경
-            ItemSet();
+            if ((stageIndex+1) %4==0) //다음스테이지가 보스스테이지면
+            {
+                Stages[stageIndex].SetActive(false);
+                stageIndex++;  //다음스테이지로  보스 스테이지: 4, 8, 12, 16
+                SceneManager.LoadScene("BossStageScene");
+                StageName(stageIndex); //스테이지 이름변경
+            }
+            else
+            {
+                Stages[stageIndex].SetActive(false);
+                stageIndex++;  
+                Stages[stageIndex].SetActive(true);
+                PlayerReposition();
+                StageName(stageIndex); //스테이지 이름변경
+                ItemSet();
+            }
         }
         else
         {
@@ -128,45 +138,73 @@ public class GameManager : MonoBehaviour
         {
             SookGarlic.SetActive(true); 
         }
-        if (stage_Index < 1)
+        if (stage_Index == 0)
         {
             UIStage.text = "단군신화";
             BackGroundSpriteRenderer.sprite = BackGround[0]; 
         }
-        else if (stage_Index < 5)
+        else if (stage_Index <= 3) // 1 2 3
         {
             UIStage.text = "고조선"+ (stageIndex);
             BackGroundSpriteRenderer.sprite = BackGround[1];
         }
-        else if (stage_Index < 9)
+        else if (stage_Index == 4)
+        {
+            UIStage.text = "고조선 보스" ;
+        }
+        else if (stage_Index <= 7)
         {
             UIStage.text = "삼국시대" + (stageIndex-4);
             BackGroundSpriteRenderer.sprite = BackGround[2];
         }
-        else if (stage_Index < 13)
+        else if (stage_Index == 8)
+        {
+            UIStage.text = "삼국시대 보스";
+        }
+        else if (stage_Index <=11)
         {
             UIStage.text = "통일신라" + (stageIndex-8);
             BackGroundSpriteRenderer.sprite = BackGround[3];
         }
-        else if (stage_Index < 17)
+        else if (stage_Index == 12)
+        {
+            UIStage.text = "통일 신라 보스";
+        }
+        else if (stage_Index <= 15)
         {
             UIStage.text = "고려" + (stageIndex-12);
             BackGroundSpriteRenderer.sprite = BackGround[4];
         }
-        else if (stage_Index < 21)
+        else if (stage_Index == 16)
+        {
+            UIStage.text = "고려 보스";
+        }
+        else if (stage_Index <= 19)
         {
             UIStage.text = "조선" + (stageIndex-16);
             BackGroundSpriteRenderer.sprite = BackGround[5];
         }
-        else if (stage_Index < 25)
+        else if (stage_Index == 20)
+        {
+            UIStage.text = "조선 보스";
+        }
+        else if (stage_Index <= 23)
         {
             UIStage.text = "일제강점기" + (stageIndex-20);
             BackGroundSpriteRenderer.sprite = BackGround[6];
         }
-        else if (stage_Index < 29)
+        else if (stage_Index == 24)
+        {
+            UIStage.text = "일제강점기 보스";
+        }
+        else if (stage_Index <= 27)
         {
             UIStage.text = "현대사" + (stageIndex-24);
             BackGroundSpriteRenderer.sprite = BackGround[7];
+        }
+        else if (stage_Index == 28)
+        {
+            UIStage.text = "현대사 보스";
         }
 
     }

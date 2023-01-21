@@ -10,6 +10,9 @@ TagManager:
   - Savepoint
   - Platform
   - SookGarlic
+  - Answer_O
+  - Answer_X
+  - BossFinish
   layers:
   - Default
   - TransparentFX
