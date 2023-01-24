@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3885963626887641175}
   - component: {fileID: 520221854363942132}
   - component: {fileID: 7588207546860346545}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Hangle_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}

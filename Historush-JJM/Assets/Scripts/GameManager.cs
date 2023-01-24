@@ -251,6 +251,7 @@ public class GameManager : MonoBehaviour
     public void Restart() //죽고 메인 메뉴로 가는 함수
     {
         Time.timeScale = 1;
+        if (stageIndex%4 == 0) SceneManager.LoadScene(0); // 보스 스테이지에서 죽을 시 바로 이동
         for(int i = 0; i < Stages.Length; i++)
         {
             Stages[i].SetActive(false);

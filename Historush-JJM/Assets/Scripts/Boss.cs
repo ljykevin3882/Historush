@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
-    public GameObject Hangle_1, Hangle_2, Hangle_3, Hangle_4, Hangle_5, Hangle_6, Hangle_7, Hangle_8, Hangle_9, Hangle_10, Hangle_11, Hangle_12, Hangle_13, Hangle_14; 
+    public GameObject[] hangles;
+    private int BulletIdx = 0;
 
-    const float moveDelay = 5f; // ?��? ??????? ???
-    float moveTimer = 0;
     GameObject player;
 
     static public int patternIndex = -1;
@@ -16,20 +15,27 @@ public class Boss : MonoBehaviour
     public int[] maxPatternCount;
     static public bool isWrong = false;
     private int tempPIdx;
-    private int moveSpeedOne = 180;
-    private float moveSpeedTwo = 0.3f;
-    private int changeDir = 0;
+
+    Vector3 pos; //현재위치
+    public float delta; // 좌(우)로 이동가능한 (x)최대값
+    public float maxSpeed; // 이동속도
+
+    Rigidbody2D rb;
 
 
     void Start()
     {
+        pos = transform.position;
+        rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
         Invoke("Think", 2);
+        MovePattern_2_1();
 
     }
     void Update()
     {
-        BossMoveOne();
+        // MovePattern_1();
+
     }
 
     void Think() // ???? ???? ????
@@ -70,13 +76,13 @@ public class Boss : MonoBehaviour
     void FireForward()
     {
         // Fire 4 Bullet Forward
-        GameObject bulletR = Instantiate(Hangle_1, transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
+        GameObject bulletR = Instantiate(hangles[3], transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
         bulletR.transform.position = transform.position + Vector3.right * 1.5f;
-        GameObject bulletRR = Instantiate(Hangle_1, transform.position, transform.rotation);
+        GameObject bulletRR = Instantiate(hangles[2], transform.position, transform.rotation);
         bulletRR.transform.position = transform.position + Vector3.right * 3.5f;
-        GameObject bulletL = Instantiate(Hangle_1, transform.position, transform.rotation);
+        GameObject bulletL = Instantiate(hangles[1], transform.position, transform.rotation);
         bulletL.transform.position = transform.position + Vector3.left * 1.5f;
-        GameObject bulletLL = Instantiate(Hangle_1, transform.position, transform.rotation);
+        GameObject bulletLL = Instantiate(hangles[0], transform.position, transform.rotation);
         bulletLL.transform.position = transform.position + Vector3.left * 3.5f;
 
         Rigidbody2D rigidR = bulletR.GetComponent<Rigidbody2D>();
@@ -104,10 +110,11 @@ public class Boss : MonoBehaviour
     }
     void FireShot()
     {
+
         // Fire 5 Random Shotgun Bullet to Player
         for (int index = 0; index < 7; index++)
         {
-            GameObject bullet = Instantiate(Hangle_1, transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
+            GameObject bullet = Instantiate(hangles[index], transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
             bullet.transform.position = transform.position;
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
@@ -130,7 +137,9 @@ public class Boss : MonoBehaviour
     void FireArc()
     {
         // Fire Arc Continue Fire
-        GameObject bullet = Instantiate(Hangle_1, transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
+        GameObject bullet = Instantiate(hangles[BulletIdx], transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
+        if (BulletIdx == 13) BulletIdx = 0;
+        else BulletIdx++;
         bullet.transform.position = transform.position;
 
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
@@ -156,7 +165,7 @@ public class Boss : MonoBehaviour
         // Fire Around
         for (int index = 0; index < roundNum; index++)
         {
-            GameObject bullet = Instantiate(Hangle_1, transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
+            GameObject bullet = Instantiate(hangles[13], transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
             bullet.transform.position = transform.position;
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
@@ -178,7 +187,7 @@ public class Boss : MonoBehaviour
     void FireWrongAnswer() {
         for (int index = 0; index < 10; index++)
         {
-            GameObject bullet = Instantiate(Hangle_1, transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
+            GameObject bullet = Instantiate(hangles[10], transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
             bullet.transform.position = transform.position;
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
@@ -197,42 +206,23 @@ public class Boss : MonoBehaviour
             Invoke("Think", 3.0f);
         }
     }
-    void BossMoveOne() // ???? ?????? ????
-    {
-        if (moveTimer > moveDelay / 2)
-        {
-            transform.Translate(Vector3.right * Time.deltaTime * 10); // ??????
-        }
-        else
-        {
-            transform.Translate(Vector3.left * Time.deltaTime * 10); // ????
-        }
-        if (moveTimer > moveDelay)
-        {
-            moveTimer = 0;
-        }
-        moveTimer += Time.deltaTime;
-    }
-    void BossMoveTwo() {
-        if (moveSpeedOne == 0) changeDir = 1;
-        else if (moveSpeedOne == 180) changeDir = 0;
 
-        if (changeDir == 1) {
-            moveSpeedOne++;
-            transform.Translate(Vector3.right * Time.deltaTime * moveSpeedOne * moveSpeedTwo);
-        }
-        else if (changeDir == 0) {
-            moveSpeedOne--;
-            transform.Translate(Vector3.left * Time.deltaTime * moveSpeedOne * moveSpeedTwo);
-        }
-            // GameObject bullet = Instantiate(BlueBullet, transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
-            // bullet.transform.position = transform.position;
-
-            // Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
-            // Vector2 dirVec = player.transform.position - transform.position;
-            // Vector2 ranVec = new Vector2(Random.Range(-5f, 5f), Random.Range(0f, 2f));
-            // dirVec += ranVec;
-            // rigid.AddForce(dirVec.normalized * 12, ForceMode2D.Impulse);
+    void MovePattern_1() { // 좌우로 반복 이동
+        Vector3 v = pos;
+        v.x += delta * Mathf.Sin(Time.time * maxSpeed);
+        transform.position = v;  
     }
 
+    void MovePattern_2_1() {
+        //if (Mathf.Abs(rb.velocity.x) < maxSpeed) rb.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
+        //else rb.velocity = new Vector2(maxSpeed, rb.velocity.y);
+        Vector2 dirVec = player.transform.position - transform.position;
+        rb.AddForce(dirVec.normalized * 20, ForceMode2D.Impulse);
+        Invoke("MovePattern_2_2", 2.0f);
+    }
+    void MovePattern_2_2() {
+        rb.velocity = new Vector2(0,0);
+
+        Invoke("MovePattern_2_1", 1.0f);
+    }
 }

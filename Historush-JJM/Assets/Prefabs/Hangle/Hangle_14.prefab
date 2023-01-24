@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7257769948621816953}
   m_Layer: 0
   m_Name: Hangle_14
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

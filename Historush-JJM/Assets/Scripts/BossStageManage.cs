@@ -5,8 +5,9 @@ using TMPro;
 
 public class BossStageManage : MonoBehaviour
 {
-    public GameObject playerSpawnPosOne, playerSpawnPosTwo, playerSpawnPosThree, playerSpawnPosFour;
-    static public int curStage;
+    public GameObject[] playerSpawnPos;
+    public GameObject[] bossSpawnPos;
+    static public int curStage = 4;
 
     float timer; 
     int sec;
@@ -35,7 +36,6 @@ public class BossStageManage : MonoBehaviour
         if (mode == "Quiz") timer -= Time.deltaTime;
         else timer = 10.0f; // 문제 5초 보여주고 5초 동안 답 고르기
         Process();
-        AnswerSpotlight();
     }
 
     private void Process() {
@@ -53,7 +53,7 @@ public class BossStageManage : MonoBehaviour
     }
     private void ProcessBoss() {
         if (isBossGen == false) {
-            boss = Instantiate(_boss, transform.position, transform.rotation);
+            boss = Instantiate(_boss, bossSpawnPos[(curStage/4)-1].transform.position, bossSpawnPos[(curStage/4)-1].transform.rotation);
         }
         isBossGen = true;
         answerOne.SetActive(false);
@@ -75,6 +75,18 @@ public class BossStageManage : MonoBehaviour
         questionBackground.SetActive(true);
         isBossGen = false;
         Destroy(boss);
+        // 정답 선택 효과
+        if (answer == true) {
+            answerOne.GetComponent<TMP_Text>().outlineColor = Color.black;
+            answerOne.GetComponent<TMP_Text>().outlineWidth = 0.2f;
+            answerTwo.GetComponent<TMP_Text>().outlineWidth = 0;
+
+        }
+        else if (answer == false) {
+            answerTwo.GetComponent<TMP_Text>().outlineColor = Color.black;
+            answerTwo.GetComponent<TMP_Text>().outlineWidth = 0.2f;
+            answerOne.GetComponent<TMP_Text>().outlineWidth = 0;
+        }
 
         // 문제 설정
         if (timer > 0 && timer < 10) {
@@ -157,23 +169,11 @@ public class BossStageManage : MonoBehaviour
                 break;
         }
     }
-    private void AnswerSpotlight() {
-        if (answer == true) {
-            answerOne.GetComponent<TMP_Text>().outlineColor = Color.black;
-            answerOne.GetComponent<TMP_Text>().outlineWidth = 0.2f;
-            answerTwo.GetComponent<TMP_Text>().outlineWidth = 0;
 
-        }
-        else if (answer == false) {
-            answerTwo.GetComponent<TMP_Text>().outlineColor = Color.black;
-            answerTwo.GetComponent<TMP_Text>().outlineWidth = 0.2f;
-            answerOne.GetComponent<TMP_Text>().outlineWidth = 0;
-        }
-    }
     private void PlayerSpawn() {
         Debug.Log(curStage);
 
-        if (curStage == 4) player.transform.position = playerSpawnPosOne.transform.position;
-        else if (curStage == 8) player.transform.position = playerSpawnPosTwo.transform.position;
+        if (curStage == 4) player.transform.position = playerSpawnPos[0].transform.position;
+        else if (curStage == 8) player.transform.position = playerSpawnPos[1].transform.position;
     }
 }

@@ -93,14 +93,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3475332253099841977}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -116,7 +116,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -134,19 +134,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f7c3501ad7df64e97ede926b9b8814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hangle_1: {fileID: 160858546888123262, guid: 9dd37be8a75ede7498fcd7ccc042bdce, type: 3}
-  Hangle_2: {fileID: 1296261219856575306, guid: 1e2dcdc976680d3448597ab80997473b, type: 3}
-  Hangle_3: {fileID: 4121801309059354612, guid: 03ca40863e11b4f4697a9862df58348e, type: 3}
-  Hangle_4: {fileID: 9213172250100000310, guid: 9aa82d130e1c6f14db3890d88ad9a9e1, type: 3}
-  Hangle_5: {fileID: 430426049293423482, guid: 6bf8117e2b383214eb964a1aca46727e, type: 3}
-  Hangle_6: {fileID: 7722009117655009526, guid: d123c50058d5cc2499277b5480da9e3e, type: 3}
-  Hangle_7: {fileID: 3299470846183919069, guid: 8212e14e3354fc44194a66dfccaa0074, type: 3}
-  Hangle_8: {fileID: 190521433719201235, guid: 1d26b6736a8067e4b898a2b360412a8a, type: 3}
-  Hangle_9: {fileID: 6134400104668255288, guid: 7cd54d931dc7c014c85b1b875dde043c, type: 3}
-  Hangle_10: {fileID: 8676250367162643002, guid: 8dd3b3bb2995647469fee0c98cd3f25f, type: 3}
-  Hangle_11: {fileID: 8581169043901875324, guid: 4878559aabb156146be890f97fa6ba0f, type: 3}
-  Hangle_12: {fileID: 6785835209351929708, guid: fb9fbe6caf517c447885d7b483aafb67, type: 3}
-  Hangle_13: {fileID: 1161647362522548489, guid: 6093f60c3daa89147a799d163a6b8df7, type: 3}
-  Hangle_14: {fileID: 4866035389413324679, guid: 9fd6ce31da58f19498201f20375b21be, type: 3}
+  hangles:
+  - {fileID: 160858546888123262, guid: 9dd37be8a75ede7498fcd7ccc042bdce, type: 3}
+  - {fileID: 1296261219856575306, guid: 1e2dcdc976680d3448597ab80997473b, type: 3}
+  - {fileID: 4121801309059354612, guid: 03ca40863e11b4f4697a9862df58348e, type: 3}
+  - {fileID: 9213172250100000310, guid: 9aa82d130e1c6f14db3890d88ad9a9e1, type: 3}
+  - {fileID: 430426049293423482, guid: 6bf8117e2b383214eb964a1aca46727e, type: 3}
+  - {fileID: 7722009117655009526, guid: d123c50058d5cc2499277b5480da9e3e, type: 3}
+  - {fileID: 3299470846183919069, guid: 8212e14e3354fc44194a66dfccaa0074, type: 3}
+  - {fileID: 190521433719201235, guid: 1d26b6736a8067e4b898a2b360412a8a, type: 3}
+  - {fileID: 6134400104668255288, guid: 7cd54d931dc7c014c85b1b875dde043c, type: 3}
+  - {fileID: 8676250367162643002, guid: 8dd3b3bb2995647469fee0c98cd3f25f, type: 3}
+  - {fileID: 8581169043901875324, guid: 4878559aabb156146be890f97fa6ba0f, type: 3}
+  - {fileID: 6785835209351929708, guid: fb9fbe6caf517c447885d7b483aafb67, type: 3}
+  - {fileID: 1161647362522548489, guid: 6093f60c3daa89147a799d163a6b8df7, type: 3}
+  - {fileID: 4866035389413324679, guid: 9fd6ce31da58f19498201f20375b21be, type: 3}
   curPatternCount: 0
-  maxPatternCount: 0300000003000000630000000500000005000000
+  maxPatternCount: 6400000003000000630000000500000005000000
+  delta: 15
+  maxSpeed: 5
