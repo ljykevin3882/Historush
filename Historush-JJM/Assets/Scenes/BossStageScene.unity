@@ -8199,7 +8199,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1651907957}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: SlideOn
           m_Mode: 1
@@ -8215,7 +8215,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1651907957}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: SlideOff
           m_Mode: 1
@@ -8684,7 +8684,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1651907957}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 1

@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
             rigid.velocity = new Vector2(rigid.velocity.x, maxFallSpeed);
         }
 
-        //PC 슬라이드-키입력
+        //PC 슬라이드-키입력.
         if (Input.GetButtonDown("Slide"))
         {
             if (spriteRenderer.flipX == false) //오른쪽으로 가고있을 때
