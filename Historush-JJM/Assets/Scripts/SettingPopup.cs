@@ -25,9 +25,12 @@ public class SettingPopup : MonoBehaviour
     public void GoMainMenu()
     {
         Time.timeScale = 1;
-        for (int i = 0; i < gameManager.Stages.Length; i++)
+        if (SceneManager.GetActiveScene().name == "SampleScene")
         {
-            gameManager.Stages[i].SetActive(false);
+            for (int i = 0; i < gameManager.Stages.Length; i++)
+            {
+                gameManager.Stages[i].SetActive(false);
+            }
         }
 
         SceneManager.LoadScene(0);

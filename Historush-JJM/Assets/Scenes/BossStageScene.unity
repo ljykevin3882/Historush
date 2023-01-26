@@ -10024,7 +10024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebcb34dec53257428a7e232865aa1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 102689445}
   Setting_Popup: {fileID: 1321820088}
 --- !u!1001 &1337853490
 PrefabInstance:
@@ -10495,7 +10495,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1651907957}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: settingButton
         m_Mode: 1
