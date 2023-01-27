@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     public Text UIStage;
     public GameObject UIRestartBtn,UIRespawnBtn,Player;
     public GameObject Main_Menu, Stage_Menu,Stage1,SookGarlic;
-    
+    public GameManager gamemanager;
     // Start is called before the first frame update
     /* 해상도 설정하는 함수 */
     private void Start()
@@ -99,9 +99,10 @@ public class GameManager : MonoBehaviour
         {
             if ((stageIndex+1) %4==0) //다음스테이지가 보스스테이지면
             {
+
                 Stages[stageIndex].SetActive(false);
                 stageIndex++;  //다음스테이지로  보스 스테이지: 4, 8, 12, 16
-                SceneManager.LoadScene("BossStageScene");
+                SceneManager.LoadScene("LoadingSceneToBoss");
                 StageName(stageIndex); //스테이지 이름변경
                 BossStageManage.curStage = stageIndex;
             }

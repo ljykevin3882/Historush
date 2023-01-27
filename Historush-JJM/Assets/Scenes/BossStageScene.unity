@@ -344,6 +344,7 @@ MonoBehaviour:
   Stage_Menu: {fileID: 0}
   Stage1: {fileID: 0}
   SookGarlic: {fileID: 267837072}
+  gamemanager: {fileID: 102689445}
 --- !u!4 &102689446
 Transform:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class SettingPopup : MonoBehaviour
     public void GoMainMenu()
     {
         Time.timeScale = 1;
-        if (SceneManager.GetActiveScene().name == "SampleScene")
+        if (SceneManager.GetActiveScene().name == "MainScene")
         {
             for (int i = 0; i < gameManager.Stages.Length; i++)
             {
@@ -33,6 +33,6 @@ public class SettingPopup : MonoBehaviour
             }
         }
 
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("LoadingSceneToMain");
     }
 }

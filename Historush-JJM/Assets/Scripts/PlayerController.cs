@@ -353,7 +353,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "BossFinish") //깃발 먹으면
         {
             //다음 스테이지
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("LoadingSceneToMain");
             gameManager.LoadPlayerDataFromJson();
             gameManager.playerData.MaxStageLevel = gameManager.playerData.MaxStageLevel + 1;
             gameManager.SavePlayerDataToJson();
