@@ -11,7 +11,7 @@ public class StageMenu : MonoBehaviour
     public GameObject[] LockImages;
     public Button[] StageButtons;
     public GameObject Stage_Menu, Player,Main_Menu;
-    public GameObject Stage1, Stage2, Stage3;
+    public GameObject Dangun_stage,GoJosun_stage, ThreeGuk_stage, TongilShila_stage, Korea_stage, Josun_stage, Japan_stage, Modern_stage;
     public GameManager gameManager;
     public PlayerController playerController;
     private GameObject CamObject;
@@ -67,9 +67,8 @@ public class StageMenu : MonoBehaviour
     {
         string bgmName = "3";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
-        print("단군신화 버튼 누름");
         Stage_Menu.SetActive(false);
-        Stage1.SetActive(true);
+        Dangun_stage.SetActive(true);
         Player.SetActive(true);
         gameManager.LoadPlayerDataFromJson();
         gameManager.ItemSet();
@@ -84,9 +83,8 @@ public class StageMenu : MonoBehaviour
     {
         string bgmName = "3";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
-        print("고조선 버튼 누름");
         Stage_Menu.SetActive(false);
-        Stage2.SetActive(true);
+        GoJosun_stage.SetActive(true);
         Player.SetActive(true);
         gameManager.LoadPlayerDataFromJson();
         gameManager.ItemSet();
@@ -101,9 +99,8 @@ public class StageMenu : MonoBehaviour
     {
         string bgmName = "3";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
-        print("삼국시대 버튼 누름");
         Stage_Menu.SetActive(false);
-        Stage3.SetActive(true);
+        ThreeGuk_stage.SetActive(true);
         Player.SetActive(true);
         gameManager.LoadPlayerDataFromJson();
         gameManager.ItemSet();
@@ -114,19 +111,35 @@ public class StageMenu : MonoBehaviour
     }
 
     // 통일신라 버튼
-    public void ClickUnifiedSilla()
+    public void ClickTongilSila()
     {
         string bgmName = "3";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
-        print("통일신라 버튼 누름");
+        Stage_Menu.SetActive(false);
+        TongilShila_stage.SetActive(true);
+        Player.SetActive(true);
+        gameManager.LoadPlayerDataFromJson();
+        gameManager.ItemSet();
+        gameManager.stageIndex = 9;
+        gameManager.StageName(gameManager.stageIndex);
+        playerController.avatarColorChange();
+        playerController.avatarChange();
     }
 
     // 고려 버튼
-    public void ClickKoryo()
+    public void ClickKorea()
     {
         string bgmName = "3";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
-        print("고려 버튼 누름");
+        Stage_Menu.SetActive(false);
+        Korea_stage.SetActive(true);
+        Player.SetActive(true);
+        gameManager.LoadPlayerDataFromJson();
+        gameManager.ItemSet();
+        gameManager.stageIndex = 13;
+        gameManager.StageName(gameManager.stageIndex);
+        playerController.avatarColorChange();
+        playerController.avatarChange();
     }
 
     // 조선 버튼
@@ -134,23 +147,47 @@ public class StageMenu : MonoBehaviour
     {
         string bgmName = "3";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
-        print("조선 버튼 누름");
+        Stage_Menu.SetActive(false);
+        Josun_stage.SetActive(true);
+        Player.SetActive(true);
+        gameManager.LoadPlayerDataFromJson();
+        gameManager.ItemSet();
+        gameManager.stageIndex = 17;
+        gameManager.StageName(gameManager.stageIndex);
+        playerController.avatarColorChange();
+        playerController.avatarChange();
     }
 
     // 일제강점기 버튼
-    public void ClickJapanOccupation()
+    public void ClickJapan()
     {
         string bgmName = "3";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
-        print("일제강점기 버튼 누름");
+        Stage_Menu.SetActive(false);
+        Japan_stage.SetActive(true);
+        Player.SetActive(true);
+        gameManager.LoadPlayerDataFromJson();
+        gameManager.ItemSet();
+        gameManager.stageIndex = 21;
+        gameManager.StageName(gameManager.stageIndex);
+        playerController.avatarColorChange();
+        playerController.avatarChange();
     }
 
     // 현대사 버튼
-    public void ClickMordernHistory()
+    public void ClickMordern()
     {
         string bgmName = "3";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
-        print("고조선 버튼 누름");
+        Stage_Menu.SetActive(false);
+        Modern_stage.SetActive(true);
+        Player.SetActive(true);
+        gameManager.LoadPlayerDataFromJson();
+        gameManager.ItemSet();
+        gameManager.stageIndex = 25;
+        gameManager.StageName(gameManager.stageIndex);
+        playerController.avatarColorChange();
+        playerController.avatarChange();
     }
     //뒤로가기 버튼
     public void GoBack()

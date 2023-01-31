@@ -218,7 +218,7 @@ public class PlayerController : MonoBehaviour
             Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
             RaycastHit2D rayhit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
 
-            if (rayhit.collider!=null&&rayhit.collider.tag == "Platform")
+            if (rayhit.collider!=null&&rayhit.collider.tag == "Platform"&&jumpPlatform.collider==null)
             {
                 if (rayhit.distance < 1f)
                 {

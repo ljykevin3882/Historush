@@ -25,25 +25,50 @@ public class TreasureMenu : MonoBehaviour
     {
         Gojoseon_Treasure.SetActive(true);
     }
-    public void ClickGo3Guk()
+    public void CloseGoJosun()
+    {
+        Gojoseon_Treasure.SetActive(false);
+    }
+
+    public void Click3Guk()
     {
         ThreeGuk_Treasure.SetActive(true);
     }
+    public void Close3Guk()
+    {
+        ThreeGuk_Treasure.SetActive(false);
+    }
+
     public void ClickKorea()
     {
         Korea_Treasure.SetActive(true);
+    }
+    public void CloseKorea()
+    {
+        Korea_Treasure.SetActive(false);
     }
     public void ClickJosun()
     {
         Joseon_Treasure.SetActive(true);
     }
+    public void CloseJosun()
+    {
+        Joseon_Treasure.SetActive(false);
+    }
     public void ClickJapan()
     {
         Japan_Treasure.SetActive(true);
+    }
+    public void CloseJapan()
+    {
+        Japan_Treasure.SetActive(false);
     }
     public void ClickModern()
     {
         Modern_Treasure.SetActive(true);
     }
-
+    public void CloseModern()
+    {
+        Modern_Treasure.SetActive(false);
+    }
 }
