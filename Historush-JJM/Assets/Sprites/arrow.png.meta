@@ -121,19 +121,14 @@ TextureImporter:
       name: arrow_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 100
-        width: 333
-        height: 160
+        x: 191
+        y: 78
+        width: 74
+        height: 344
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -139.5, y: -80}
-        - {x: -166.5, y: -12}
-        - {x: 97.5, y: 77}
-        - {x: 161.5, y: 80}
-        - {x: 121.5, y: 32}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []

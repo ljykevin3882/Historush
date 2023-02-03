@@ -560,7 +560,7 @@ SpriteRenderer:
   m_Size: {x: 9.95, y: 6.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &145145942
@@ -994,7 +994,7 @@ SpriteRenderer:
   m_Size: {x: 23, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &396535499
@@ -8380,7 +8380,11 @@ MonoBehaviour:
   - {fileID: 325658328}
   - {fileID: 756662693}
   player: {fileID: 1651907954}
-  _boss: {fileID: 3475332253099841977, guid: 8e136a114fd778949b0e7cb2f73aefd8, type: 3}
+  _boss:
+  - {fileID: 3475332253099841977, guid: 8e136a114fd778949b0e7cb2f73aefd8, type: 3}
+  - {fileID: 1450411737166604086, guid: 12b537adb4e04044591e6058d4e8e877, type: 3}
+  - {fileID: 1450411737166604086, guid: 12b537adb4e04044591e6058d4e8e877, type: 3}
+  - {fileID: 1450411737166604086, guid: 12b537adb4e04044591e6058d4e8e877, type: 3}
   answerOne: {fileID: 2004266494}
   answerOneBackground: {fileID: 145145939}
   answerTwo: {fileID: 1713923625}
@@ -9848,7 +9852,7 @@ SpriteRenderer:
   m_Size: {x: 9.95, y: 6.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1222958106

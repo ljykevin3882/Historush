@@ -7,12 +7,12 @@ public class BossStageManage : MonoBehaviour
 {
     public GameObject[] playerSpawnPos;
     public GameObject[] bossSpawnPos;
-    static public int curStage = 4;
+    static public int curStage = 8;
 
     float timer; 
     int sec;
     public GameObject player;
-    public GameObject _boss;
+    public GameObject[] _boss;
     public GameObject answerOne, answerOneBackground, answerTwo, answerTwoBackground;
     public GameObject mainCamera;
     public GameObject question, questionBackground, questionTimer;
@@ -24,6 +24,7 @@ public class BossStageManage : MonoBehaviour
     static public bool answer;
     static public string mode = "Boss";
     static private bool isBossGen = false;
+    static public bool isWrong = false;
 
     void Start()
     {
@@ -53,8 +54,10 @@ public class BossStageManage : MonoBehaviour
     }
     private void ProcessBoss() {
         if (isBossGen == false) {
-            boss = Instantiate(_boss, bossSpawnPos[(curStage/4)-1].transform.position, bossSpawnPos[(curStage/4)-1].transform.rotation);
+            boss = Instantiate(_boss[(curStage/4)-1], bossSpawnPos[(curStage/4)-1].transform.position, bossSpawnPos[(curStage/4)-1].transform.rotation);
+            Debug.Log($"curStage{curStage}");
         }
+
         isBossGen = true;
         answerOne.SetActive(false);
         answerTwo.SetActive(false);
@@ -90,7 +93,7 @@ public class BossStageManage : MonoBehaviour
 
         // 문제 설정
         if (timer > 0 && timer < 10) {
-            switch(Boss.patternIndex) {
+            switch(Boss_Sejong.patternIndex) {
                 case 0:
                     question.GetComponent<TMP_Text>().text = "Q1. 몽고의 침입을 막기 위한 염원으로 만든 이것은 무엇인가?";
                     answerOne.GetComponent<TMP_Text>().text = "팔만대장경";
@@ -135,26 +138,26 @@ public class BossStageManage : MonoBehaviour
         BossFinishFlag.SetActive(true);
     }
     private void CheckAnswer() {
-        switch(Boss.patternIndex) {
+        switch(Boss_Sejong.patternIndex) {
             case 0:
                 if (answer == true) question.GetComponent<TMP_Text>().text = "정답입니다 !!";
                 else {
                     question.GetComponent<TMP_Text>().text = "오답입니다...";
-                    Boss.isWrong = true;
+                    isWrong = true;
                 }
                 break;
             case 1:
                 if (answer == true) question.GetComponent<TMP_Text>().text = "정답입니다 !!";
                 else {
                     question.GetComponent<TMP_Text>().text = "오답입니다...";
-                    Boss.isWrong = true;
+                    isWrong = true;
                 }
                 break;
             case 2:
                 if (answer == true) question.GetComponent<TMP_Text>().text = "정답입니다 !!";
                 else {
                     question.GetComponent<TMP_Text>().text = "오답입니다...";
-                    Boss.isWrong = true;
+                    isWrong = true;
                 }
                 break;
             case 3:
@@ -164,14 +167,13 @@ public class BossStageManage : MonoBehaviour
                 }
                 else {
                     question.GetComponent<TMP_Text>().text = "오답입니다...";
-                    Boss.isWrong = true;
+                    isWrong = true;
                 }
                 break;
         }
     }
 
     private void PlayerSpawn() {
-        Debug.Log(curStage);
 
         if (curStage == 4) player.transform.position = playerSpawnPos[0].transform.position;
         else if (curStage == 8) player.transform.position = playerSpawnPos[1].transform.position;
