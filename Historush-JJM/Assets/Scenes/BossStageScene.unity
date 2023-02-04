@@ -254,6 +254,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8bdf1ceb809ac04a9457a7e45f94ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fontSize: 30
+  color: {r: 0, g: 0, b: 0, a: 1}
+  width: 0
+  height: 0
   bossStageTime: 0
   totalPoint: 0
   stagePoint: 0
@@ -758,7 +762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &244148519
 BoxCollider2D:
   m_ObjectHideFlags: 0
