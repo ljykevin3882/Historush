@@ -150,6 +150,6 @@ MonoBehaviour:
   - {fileID: 1161647362522548489, guid: 6093f60c3daa89147a799d163a6b8df7, type: 3}
   - {fileID: 4866035389413324679, guid: 9fd6ce31da58f19498201f20375b21be, type: 3}
   curPatternCount: 0
-  maxPatternCount: 6400000003000000630000000500000005000000
+  maxPatternCount: 03000000030000000a0000000300000005000000
   delta: 15
-  maxSpeed: 5
+  maxSpeed: 2

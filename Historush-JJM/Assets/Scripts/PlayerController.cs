@@ -284,8 +284,8 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Answer_O") BossStageManage.answer = true;
-        else if (collision.gameObject.tag == "Answer_X") BossStageManage.answer = false;
+        if (collision.gameObject.tag == "AnswerOne") BossStageManage.answer = 1;
+        else if (collision.gameObject.tag == "AnswerTwo") BossStageManage.answer = 2;
         if (collision.gameObject.tag == "Enemy") OnDamaged(collision.transform.position);
 
 

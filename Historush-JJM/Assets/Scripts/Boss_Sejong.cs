@@ -6,21 +6,15 @@ using UnityEngine.UI;
 public class Boss_Sejong : MonoBehaviour
 {
     public GameObject[] hangles;
-    private int BulletIdx = 0;
-
     GameObject player;
-
-    static public int patternIndex = -1;
-    public int curPatternCount;
-    public int[] maxPatternCount;
-    private int tempPIdx;
-
-    Vector3 pos; //현재위치
+    public int curPatternCount; // 현재 공격 패턴의 반복 횟수
+    public int[] maxPatternCount; // 공격 패턴 개수
+    private int tempPIdx; // 오답 처리 시에 BossStageManage.patternIndex 저장용
+    Vector3 pos; // 현재위치
     public float delta; // 좌(우)로 이동가능한 (x)최대값
     public float maxSpeed; // 이동속도
-
     Rigidbody2D rb;
-
+    private int BulletIdx = 0;
 
     void Start()
     {
@@ -35,18 +29,19 @@ public class Boss_Sejong : MonoBehaviour
         MovePattern_1();
     }
 
-    void Think() // ???? ???? ????
+    void Think() // 보스 공격 패턴 관리
     {
-        if (BossStageManage.isWrong == true) {
-            tempPIdx = patternIndex;
-            patternIndex = 4;
+        if (BossStageManage.isWrong == true) { // 틀렸을시
+            tempPIdx = BossStageManage.patternIndex;
+            BossStageManage.patternIndex = 4;
         }
         else {
-            patternIndex = patternIndex == 3 ? 0 : patternIndex + 1;
+            BossStageManage.patternIndex = BossStageManage.patternIndex == 3 ? 0 : BossStageManage.patternIndex + 1;
+            // 3이면 0, 아니면 ++
         }
         curPatternCount = 0;
 
-        switch (patternIndex)
+        switch (BossStageManage.patternIndex)
         {
             case 0:
                 FireForward();
@@ -70,10 +65,9 @@ public class Boss_Sejong : MonoBehaviour
         }
     }
 
-    void FireForward()
+    void FireForward() // 아래로 4발 발사
     {
-        // Fire 4 Bullet Forward
-        GameObject bulletR = Instantiate(hangles[3], transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
+        GameObject bulletR = Instantiate(hangles[3], transform.position, transform.rotation);
         bulletR.transform.position = transform.position + Vector3.right * 1.5f;
         GameObject bulletRR = Instantiate(hangles[2], transform.position, transform.rotation);
         bulletRR.transform.position = transform.position + Vector3.right * 3.5f;
@@ -96,22 +90,20 @@ public class Boss_Sejong : MonoBehaviour
         // Pattern Counting
         curPatternCount++;
 
-        if (curPatternCount < maxPatternCount[patternIndex]) {
+        if (curPatternCount < maxPatternCount[BossStageManage.patternIndex]) {
             Invoke("FireForward", 1);
         }
         else {
             BossStageManage.mode = "Quiz";
-            //Invoke("Think", 3);
         }
 
     }
-    void FireShot()
+    void FireShot() // 7발 플레이어에게 산탄으로 발사
     {
 
-        // Fire 5 Random Shotgun Bullet to Player
         for (int index = 0; index < 7; index++)
         {
-            GameObject bullet = Instantiate(hangles[index], transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
+            GameObject bullet = Instantiate(hangles[index], transform.position, transform.rotation);
             bullet.transform.position = transform.position;
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
@@ -124,36 +116,35 @@ public class Boss_Sejong : MonoBehaviour
         // Pattern Counting
         curPatternCount++;
 
-        if (curPatternCount < maxPatternCount[patternIndex])
+        if (curPatternCount < maxPatternCount[BossStageManage.patternIndex])
             Invoke("FireShot", 1.5f);
         else
             BossStageManage.mode = "Quiz";
-            //Invoke("Think", 3);
 
     }
-    void FireArc()
+    void FireArc() // 한발씩 시계방향으로 발사
     {
         // Fire Arc Continue Fire
-        GameObject bullet = Instantiate(hangles[BulletIdx], transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
+        GameObject bullet = Instantiate(hangles[BulletIdx], transform.position, transform.rotation);
         if (BulletIdx == 13) BulletIdx = 0;
         else BulletIdx++;
         bullet.transform.position = transform.position;
 
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
-        Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 10 * curPatternCount / maxPatternCount[patternIndex]), -1);
+        Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 10 * curPatternCount / maxPatternCount[BossStageManage.patternIndex]), -1);
         rigid.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
 
         // Pattern Counting
         curPatternCount++;
 
-        if (curPatternCount < maxPatternCount[patternIndex])
+        if (curPatternCount < maxPatternCount[BossStageManage.patternIndex])
             Invoke("FireArc", 0.15f);
         else
             BossStageManage.mode = "Quiz";
             //Invoke("Think", 3);
 
     }
-    void FireAround()
+    void FireAround() // 원형으로 발사
     {
         int roundNumA = 40;
         int roundNumB = 30;
@@ -162,7 +153,7 @@ public class Boss_Sejong : MonoBehaviour
         // Fire Around
         for (int index = 0; index < roundNum; index++)
         {
-            GameObject bullet = Instantiate(hangles[13], transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
+            GameObject bullet = Instantiate(hangles[13], transform.position, transform.rotation);
             bullet.transform.position = transform.position;
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
@@ -174,17 +165,16 @@ public class Boss_Sejong : MonoBehaviour
         // Pattern Counting
         curPatternCount++;
 
-        if (curPatternCount < maxPatternCount[patternIndex])
+        if (curPatternCount < maxPatternCount[BossStageManage.patternIndex])
             Invoke("FireAround", 2);
         else
             BossStageManage.mode = "Quiz";
-            //Invoke("Think", 3);
 
     }
-    void FireWrongAnswer() {
+    void FireWrongAnswer() { // 오답일 시 공격
         for (int index = 0; index < 10; index++)
         {
-            GameObject bullet = Instantiate(hangles[10], transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
+            GameObject bullet = Instantiate(hangles[10], transform.position, transform.rotation);
             bullet.transform.position = transform.position;
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
@@ -194,11 +184,11 @@ public class Boss_Sejong : MonoBehaviour
             rigid.AddForce(dirVec.normalized * 50, ForceMode2D.Impulse);
         }
         curPatternCount++;
-        if (curPatternCount < maxPatternCount[patternIndex]) {
+        if (curPatternCount < maxPatternCount[BossStageManage.patternIndex]) {
             Invoke("FireWrongAnswer", 0.1f);
         }
         else {
-            patternIndex = tempPIdx;
+            BossStageManage.patternIndex = tempPIdx;
             BossStageManage.isWrong = false;
             Invoke("Think", 3.0f);
         }
