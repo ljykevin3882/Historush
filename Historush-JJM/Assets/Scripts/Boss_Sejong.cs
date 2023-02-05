@@ -108,7 +108,7 @@ public class Boss_Sejong : MonoBehaviour
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
             Vector2 dirVec = player.transform.position - transform.position;
-            Vector2 ranVec = new Vector2(Random.Range(-5f, 5f), Random.Range(0f, 2f));
+            Vector2 ranVec = new Vector2(Random.Range(-15f, 15f), Random.Range(0f, 2f));
             dirVec += ranVec;
             rigid.AddForce(dirVec.normalized * 12, ForceMode2D.Impulse);
         }

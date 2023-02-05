@@ -21,6 +21,7 @@ public class Boss_Jumong : MonoBehaviour
     {
         FireEveryWhereMovePos = GameObject.Find("PlayerSpawnPos2");
         pos = transform.position;
+
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
         Invoke("Think", 2);
@@ -28,7 +29,16 @@ public class Boss_Jumong : MonoBehaviour
 
     void Update()
     {
-        if (BossStageManage.patternIndex == 2) MovePattern_1();
+        // if (BossStageManage.patternIndex == 1 || BossStageManage.patternIndex == 2) { // 살짝 아래로 이동
+        //     Vector2 movePos = new Vector2(pos.x, pos.y-10);
+        //     transform.position = Vector2.MoveTowards(transform.position, movePos, maxSpeed * Time.deltaTime * 10);
+        // }
+        // if (BossStageManage.patternIndex == 2) { // 좌우로 이동
+        //     Vector3 v = pos;
+        //     v.x += delta * Mathf.Sin(Time.time * maxSpeed);
+        //     transform.position = v;  
+        // }
+
     }
 
 
@@ -59,7 +69,7 @@ public class Boss_Jumong : MonoBehaviour
                 break;
 
             case 3:
-                PhaseThree();
+                PhaseFour();
                 break;
 
             case 4:
@@ -72,7 +82,7 @@ public class Boss_Jumong : MonoBehaviour
     private void PhaseOne() // 부채꼴 모양으로 화살 발사
     {
 
-        for (int index = 0; index < 4; index++)
+        for (int index = 0; index < 5; index++)
         {
             GameObject bullet = Instantiate(arrow, transform.position, transform.rotation);
             bullet.transform.position = transform.position;
@@ -93,39 +103,37 @@ public class Boss_Jumong : MonoBehaviour
             BossStageManage.mode = "Quiz";
     }
 
-    private void PhaseTwo() { // 위로 무작위 난사
-        Vector2 movePos = FireEveryWhereMovePos.transform.position;
-        transform.position = Vector2.MoveTowards(transform.position, movePos, maxSpeed * Time.deltaTime * 50);
-
+    private void PhaseTwo() { // 아래로 무작위 난사
+    
         GameObject bullet = Instantiate(arrow, transform.position, transform.rotation);
         bullet.transform.position = transform.position;
 
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
         Vector2 dirVec = transform.position;
-        Vector2 randVec = new Vector2(Random.Range(-1000f, 1000f), Random.Range(0, 1000f));
+        Vector2 randVec = new Vector2(Random.Range(-1000f, 1000f), Random.Range(-1000f, 0));
         dirVec += randVec;
-        rigid.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
+        rigid.AddForce(dirVec.normalized * 12, ForceMode2D.Impulse);
 
         // Pattern Counting
         curPatternCount++;
 
         if (curPatternCount < maxPatternCount[BossStageManage.patternIndex])
-            Invoke("PhaseTwo", 0.15f);
+            Invoke("PhaseTwo", 0.2f);
         else
             BossStageManage.mode = "Quiz";
     }
 
 
-    private void PhaseThree() // 좌우로 이동하면서 위로 발사
+    private void PhaseThree() // 아래로 10발 한번에 발사
     {
-        for (int index = 0; index < 4; index++)
+        for (int index = 0; index < 10; index++)
         {
             GameObject bullet = Instantiate(arrow, transform.position, transform.rotation);
             bullet.transform.position = transform.position;
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
             Vector2 dirVec = transform.position;
-            Vector2 randVec = new Vector2(Random.Range(-1000f, 1000f), Random.Range(0, 1000f));
+            Vector2 randVec = new Vector2(Random.Range(-1000f, 1000f), Random.Range(-1000f, 0));
             dirVec += randVec;
             rigid.AddForce(dirVec.normalized * 12, ForceMode2D.Impulse);
         }
@@ -138,6 +146,24 @@ public class Boss_Jumong : MonoBehaviour
         else
             BossStageManage.mode = "Quiz";
 
+    }
+    void PhaseFour() { // 플레이어에게 박치기
+        Vector2 dirVec = player.transform.position - transform.position;
+        rb.AddForce(dirVec.normalized * 20, ForceMode2D.Impulse);
+
+        // Pattern Counting
+        curPatternCount++;
+
+        if (curPatternCount < maxPatternCount[BossStageManage.patternIndex])
+            Invoke("PhaseFour_2", 2f);
+        else
+            BossStageManage.mode = "Quiz";
+
+    }
+    void PhaseFour_2() {
+        rb.velocity = new Vector2(0,0);
+
+        Invoke("PhaseFour", 1.0f);
     }
     void FireWrongAnswer() {
         for (int index = 0; index < 10; index++)
@@ -160,24 +186,6 @@ public class Boss_Jumong : MonoBehaviour
             BossStageManage.isWrong = false;
             Invoke("Think", 3.0f);
         }
-    }
-
-    void MovePattern_1() { // 좌우로 반복 이동
-        Vector3 v = pos;
-        v.x += delta * Mathf.Sin(Time.time * maxSpeed);
-        transform.position = v;  
-    }
-    void MovePattern_2_1() { // 플레이어에게 박치기
-        //if (Mathf.Abs(rb.velocity.x) < maxSpeed) rb.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
-        //else rb.velocity = new Vector2(maxSpeed, rb.velocity.y);
-        Vector2 dirVec = player.transform.position - transform.position;
-        rb.AddForce(dirVec.normalized * 20, ForceMode2D.Impulse);
-        Invoke("MovePattern_2_2", 2.0f);
-    }
-    void MovePattern_2_2() {
-        rb.velocity = new Vector2(0,0);
-
-        Invoke("MovePattern_2_1", 1.0f);
     }
 
 }
