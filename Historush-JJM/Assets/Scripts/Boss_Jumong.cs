@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Boss_Jumong : MonoBehaviour
 {
-    public GameObject FireEveryWhereMovePos;
     public GameObject arrow;
     GameObject player;
     public int curPatternCount; // 현재 공격 패턴의 반복 횟수
@@ -19,7 +18,6 @@ public class Boss_Jumong : MonoBehaviour
 
     void Start()
     {
-        FireEveryWhereMovePos = GameObject.Find("PlayerSpawnPos2");
         pos = transform.position;
 
         rb = GetComponent<Rigidbody2D>();

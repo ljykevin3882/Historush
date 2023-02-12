@@ -58,9 +58,9 @@ public class BossStageManage : MonoBehaviour
         {443, "1"},
 
         // 삼국시대 퀴즈
-        {810, "Q1. 관려전을 지급하고, 녹읍을 폐지한 왕은?"},
-        {811, "진흥왕"},
-        {812, "신문왕"},
+        {810, "Q1. 정사암에 모여 재상을 선출한 나라는?"},
+        {811, "고구려"},
+        {812, "백제"},
         {813, "2"},
 
         {820, "Q2. 마립간이라는 칭호를 처음 사용한 왕은?"},
@@ -79,6 +79,26 @@ public class BossStageManage : MonoBehaviour
         {843, "1"},
 
         // 통일신라 퀴즈
+        {1210, "Q1. 신라 최고 교육기관인 국학을 설치한 왕은 신문왕이다."},
+        {1211, "O"},
+        {1212, "X"},
+        {1213, "1"},
+
+        {1220, "Q2. 통일 신라는 행정구역을 9주 5소경으로 나누었다."},
+        {1221, "O"},
+        {1222, "X"},
+        {1223, "1"},
+
+        {1230, "Q3. 삼국을 통일한 신라의 왕은?"},
+        {1231, "무열왕"},
+        {1232, "문무왕"},
+        {1233, "2"},
+
+        {1240, "Q4. 김흠돌의 난을 진압한 신라의 왕은?"},
+        {1241, "성덕왕"},
+        {1242, "신문왕"},
+        {1243, "2"},
+
         // 고려 퀴즈
         // 조선 퀴즈
         // 일제강점기 퀴즈
@@ -89,7 +109,7 @@ public class BossStageManage : MonoBehaviour
     void Start()
     {
         mainCamera.GetComponent<Camera>().orthographicSize = 12.0f; // 원래 값 6.12
-        PlayerSpawn();
+        PlayerSpawn(curStage);
     }
 
     void Update()
@@ -197,15 +217,10 @@ public class BossStageManage : MonoBehaviour
         }
     }
 
-    private void PlayerSpawn() {
-        if (curStage == 4) {
-            player.transform.position = playerSpawnPos[0].transform.position;
-            qna.transform.position = playerSpawnPos[0].transform.position;
-        }
-        else if (curStage == 8) {
-            player.transform.position = playerSpawnPos[1].transform.position;
-            qna.transform.position = playerSpawnPos[1].transform.position;
-        }
+    // Player 스폰 위치 설정
+    private void PlayerSpawn(int curStage) {
+        player.transform.position = playerSpawnPos[curStage/4-1].transform.position;
+        qna.transform.position = playerSpawnPos[curStage/4-1].transform.position;
     }
 
 }
