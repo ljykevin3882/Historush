@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TreasureMenu : MonoBehaviour
 {
-    public GameObject Treasure_Menu, Main_Menu, Gojoseon_Treasure, ThreeGuk_Treasure, Korea_Treasure, Joseon_Treasure, Japan_Treasure, Modern_Treasure;
+    public GameObject Treasure_Menu, Main_Menu, Collection;
+    public Text Collection_title;
+    public Image Collection_treasure_1_1, Collection_treasure_1_2, Collection_treasure_2_1, Collection_treasure_2_2, Collection_treasure_3_1, Collection_treasure_3_2;
+    public GameManager gamemanager;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,54 +25,50 @@ public class TreasureMenu : MonoBehaviour
         Main_Menu.SetActive(true);
         Treasure_Menu.SetActive(false);
     }
+    public void CloseCollection()
+    {
+        Collection.SetActive(false);
+    }
     public void ClickGoJosun()
     {
-        Gojoseon_Treasure.SetActive(true);
+        Collection.SetActive(true);
+        Collection_title.text = "고조선의 유물";
+        //Collection_treasure_1_1 = Resourece.load 이런거 써보자
     }
-    public void CloseGoJosun()
-    {
-        Gojoseon_Treasure.SetActive(false);
-    }
+
 
     public void Click3Guk()
     {
-        ThreeGuk_Treasure.SetActive(true);
+        Collection.SetActive(true);
+        Collection_title.text = "삼국시대의 유물";
     }
-    public void Close3Guk()
+    public void ClickTongil()
     {
-        ThreeGuk_Treasure.SetActive(false);
+        Collection.SetActive(true);
+        Collection_title.text = "통일신라시대의 유물";
     }
-
     public void ClickKorea()
     {
-        Korea_Treasure.SetActive(true);
+        Collection.SetActive(true);
+        Collection_title.text = "고려시대의 유물";
     }
-    public void CloseKorea()
-    {
-        Korea_Treasure.SetActive(false);
-    }
+
     public void ClickJosun()
     {
-        Joseon_Treasure.SetActive(true);
+        Collection.SetActive(true);
+        Collection_title.text = "조선시대의 유물";
     }
-    public void CloseJosun()
-    {
-        Joseon_Treasure.SetActive(false);
-    }
+
     public void ClickJapan()
     {
-        Japan_Treasure.SetActive(true);
+        Collection.SetActive(true);
+        Collection_title.text = "일제강점기의 유물";
     }
-    public void CloseJapan()
-    {
-        Japan_Treasure.SetActive(false);
-    }
+
     public void ClickModern()
     {
-        Modern_Treasure.SetActive(true);
+        Collection.SetActive(true);
+        Collection_title.text = "현대시대의 유물";
     }
-    public void CloseModern()
-    {
-        Modern_Treasure.SetActive(false);
-    }
+
 }
