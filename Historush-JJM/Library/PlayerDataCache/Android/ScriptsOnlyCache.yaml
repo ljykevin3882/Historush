@@ -1,10 +1,12 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - Arrow
     - BookEach
-    - Boss
     - BossStageManage
-    - BulletControl
+    - Boss_Dangun
+    - Boss_Jumong
+    - Boss_Sejong
     - CameraController
     - CameraResolution
     - CustomMenu
@@ -12,13 +14,17 @@ ScriptsOnlyBuild:
     - FixedJoystick
     - FloatingJoystick
     - GameManager
+    - Garlic
+    - Hangle
     - ItemMoving
+    - LoadingToBoss
+    - LoadingToMain
     - MainMenu
     - PlayBGMOpe
     - PlayerController
-    - SceneLoad
     - SettingMenu
     - SettingPopup
+    - Sook
     - StageMenu
     - TreasureMenu
     - TreasurePopUp
@@ -37,9 +43,6 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
     - UnityEditor.Tilemaps.TilemapPrefabStageHelper
-    Unity.CollabProxy.Editor.dll:
-    - Unity.Cloud.Collaborate.UserInterface.CollaborateWindow
-    - Unity.Cloud.Collaborate.UserInterface.WindowCache
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -49,12 +52,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshPro
     - TMPro.TextMeshProUGUI
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -98,6 +95,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 50
       Script: {instanceID: 0}
+    - Class: 60
+      Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
     - Class: 62
@@ -137,33 +136,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2138}
     - Class: 114
-      Script: {instanceID: 2514}
+      Script: {instanceID: 2516}
     - Class: 114
-      Script: {instanceID: 2664}
+      Script: {instanceID: 2666}
     - Class: 114
-      Script: {instanceID: 2706}
+      Script: {instanceID: 2708}
     - Class: 114
-      Script: {instanceID: 2768}
+      Script: {instanceID: 2770}
     - Class: 114
-      Script: {instanceID: 2838}
+      Script: {instanceID: 2840}
     - Class: 114
-      Script: {instanceID: 3052}
+      Script: {instanceID: 3054}
     - Class: 114
-      Script: {instanceID: 3164}
+      Script: {instanceID: 3166}
     - Class: 114
-      Script: {instanceID: 3344}
+      Script: {instanceID: 3180}
     - Class: 114
-      Script: {instanceID: 3656}
+      Script: {instanceID: 3348}
     - Class: 114
-      Script: {instanceID: 3698}
+      Script: {instanceID: 3490}
     - Class: 114
-      Script: {instanceID: 3822}
+      Script: {instanceID: 3664}
     - Class: 114
-      Script: {instanceID: 3838}
+      Script: {instanceID: 3706}
     - Class: 114
-      Script: {instanceID: 4702}
+      Script: {instanceID: 3830}
     - Class: 114
-      Script: {instanceID: 5008}
+      Script: {instanceID: 3846}
+    - Class: 114
+      Script: {instanceID: 4710}
+    - Class: 114
+      Script: {instanceID: 4814}
+    - Class: 114
+      Script: {instanceID: 4862}
+    - Class: 114
+      Script: {instanceID: 4968}
+    - Class: 114
+      Script: {instanceID: 5022}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -190,7 +199,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 1839735485
       Script: {instanceID: 0}
-    Assets/Scenes/LoadingScene.unity:
+    Assets/Scenes/LoadingSceneToBoss.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -214,15 +223,64 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2138}
     - Class: 114
-      Script: {instanceID: 2514}
+      Script: {instanceID: 2264}
     - Class: 114
-      Script: {instanceID: 2664}
+      Script: {instanceID: 2516}
     - Class: 114
-      Script: {instanceID: 2838}
+      Script: {instanceID: 2666}
     - Class: 114
-      Script: {instanceID: 3052}
+      Script: {instanceID: 2840}
     - Class: 114
-      Script: {instanceID: 24640}
+      Script: {instanceID: 3054}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/LoadingSceneToMain.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1464}
+    - Class: 114
+      Script: {instanceID: 1700}
+    - Class: 114
+      Script: {instanceID: 2138}
+    - Class: 114
+      Script: {instanceID: 2516}
+    - Class: 114
+      Script: {instanceID: 2666}
+    - Class: 114
+      Script: {instanceID: 2840}
+    - Class: 114
+      Script: {instanceID: 3054}
+    - Class: 114
+      Script: {instanceID: 3574}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -309,49 +367,49 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2138}
     - Class: 114
-      Script: {instanceID: 2360}
+      Script: {instanceID: 2362}
     - Class: 114
-      Script: {instanceID: 2514}
+      Script: {instanceID: 2516}
     - Class: 114
-      Script: {instanceID: 2664}
+      Script: {instanceID: 2666}
     - Class: 114
-      Script: {instanceID: 2768}
+      Script: {instanceID: 2770}
     - Class: 114
-      Script: {instanceID: 2838}
+      Script: {instanceID: 2840}
     - Class: 114
-      Script: {instanceID: 3052}
+      Script: {instanceID: 3054}
     - Class: 114
-      Script: {instanceID: 3138}
+      Script: {instanceID: 3140}
     - Class: 114
-      Script: {instanceID: 3164}
+      Script: {instanceID: 3166}
     - Class: 114
-      Script: {instanceID: 3310}
+      Script: {instanceID: 3314}
     - Class: 114
-      Script: {instanceID: 3358}
+      Script: {instanceID: 3362}
     - Class: 114
-      Script: {instanceID: 3638}
+      Script: {instanceID: 3646}
     - Class: 114
-      Script: {instanceID: 3822}
+      Script: {instanceID: 3830}
     - Class: 114
-      Script: {instanceID: 3838}
+      Script: {instanceID: 3846}
     - Class: 114
-      Script: {instanceID: 4002}
+      Script: {instanceID: 4010}
     - Class: 114
-      Script: {instanceID: 4050}
+      Script: {instanceID: 4058}
     - Class: 114
-      Script: {instanceID: 4228}
+      Script: {instanceID: 4236}
     - Class: 114
-      Script: {instanceID: 4326}
+      Script: {instanceID: 4334}
     - Class: 114
-      Script: {instanceID: 4582}
+      Script: {instanceID: 4590}
     - Class: 114
-      Script: {instanceID: 4666}
+      Script: {instanceID: 4674}
     - Class: 114
-      Script: {instanceID: 4702}
+      Script: {instanceID: 4710}
     - Class: 114
-      Script: {instanceID: 5008}
+      Script: {instanceID: 5022}
     - Class: 114
-      Script: {instanceID: 5104}
+      Script: {instanceID: 5118}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -393,7 +451,7 @@ ScriptsOnlyBuild:
     className: DynamicJoystick
   - hash:
       serializedVersion: 2
-      Hash: 540b79ca40b639b975ceff36b1410f0a
+      Hash: e181e5d06a0b4fc9ac0ee79327c38548
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BossStageManage
@@ -405,7 +463,7 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 69c48f08f5f1916a00ea0730140b37ce
+      Hash: fabebff1f8a01b427d91f8cc593a220e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StageMenu
@@ -543,7 +601,7 @@ ScriptsOnlyBuild:
     className: FixedJoystick
   - hash:
       serializedVersion: 2
-      Hash: d108760ae6e286b9a4a7688fecf6f1a1
+      Hash: 8a118fee7fcd131793ef7ec67b9dd24a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TreasureMenu
@@ -595,6 +653,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.PixelPerfect.dll
     namespaceName: UnityEngine.U2D
     className: CinemachinePixelPerfect
+  - hash:
+      serializedVersion: 2
+      Hash: 88f3cdc1aa1f0f8616982e24d3a6629b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LoadingToBoss
   - hash:
       serializedVersion: 2
       Hash: c1d728126ff1918728036c59106d32b2
@@ -813,6 +877,12 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
+      Hash: a46fad4109fbfd54293fcce7fa06d990
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Boss_Dangun
+  - hash:
+      serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -855,6 +925,12 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
+      Hash: 05161f776ebc981908b7cae74bb9b322
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Boss_Jumong
+  - hash:
+      serializedVersion: 2
       Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -877,6 +953,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: BaseInput
+  - hash:
+      serializedVersion: 2
+      Hash: 88f3cdc1aa1f0f8616982e24d3a6629b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LoadingToMain
   - hash:
       serializedVersion: 2
       Hash: e63944317d2f5958e31963668bb29158
@@ -930,7 +1012,7 @@ ScriptsOnlyBuild:
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: BulletControl
+    className: Hangle
   - hash:
       serializedVersion: 2
       Hash: 87ff43d2baf3385cba327d8f803a4ebb
@@ -1164,7 +1246,7 @@ ScriptsOnlyBuild:
       Hash: 95c001e1fb5fdc377fec0d9ba2f7316e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Boss
+    className: Boss_Sejong
   - hash:
       serializedVersion: 2
       Hash: e7a73f5f78ba6445195ec23b74a1ce2d
@@ -1191,6 +1273,12 @@ ScriptsOnlyBuild:
     className: TextConsoleSimulator
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Sook
+  - hash:
+      serializedVersion: 2
       Hash: e63944317d2f5958e31963668bb29158
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -1201,6 +1289,18 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: ObjectSpin
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Garlic
+  - hash:
+      serializedVersion: 2
+      Hash: 37c2817f112bfe365f1579d769decb8d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Arrow
   - hash:
       serializedVersion: 2
       Hash: b6514f552bd2ee9e736a5678aa7f7de3
@@ -1215,7 +1315,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: f97ddddeae357ee1e3ad3dbc607ff072
+      Hash: fb2f7c25622a88280daab1296853a8be
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -1255,15 +1355,10 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: TMP_TextEventCheck
-  - hash:
-      serializedVersion: 2
-      Hash: 88f3cdc1aa1f0f8616982e24d3a6629b
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SceneLoad
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene.unity
   - Assets/Scenes/BossStageScene.unity
-  - Assets/Scenes/LoadingScene.unity
+  - Assets/Scenes/LoadingSceneToBoss.unity
+  - Assets/Scenes/LoadingSceneToMain.unity
   playerPath: "C:/Users/ljyke/Desktop/\uC774\uC815\uC5FD/Historush.apk"
