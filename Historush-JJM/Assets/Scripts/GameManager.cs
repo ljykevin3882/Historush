@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < playerData.items.Length; i++)
         {
-            playerData.items[i] = false;
+            playerData.items[0] = false;
         }
         playerData.score = 0;
         playerData.MaxStageLevel = 0;
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
     public void ItemSet()
     {
         //먹은 유물 비활성화
-        for (int i = 0; i < 43; i++)
+        for (int i = 0; i < 30; i++)
         {
             if (playerData.items[i] == true) //이미 먹었으면
             {

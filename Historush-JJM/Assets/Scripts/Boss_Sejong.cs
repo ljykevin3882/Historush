@@ -29,7 +29,7 @@ public class Boss_Sejong : MonoBehaviour
         MovePattern_1();
     }
 
-    void Think() // 보스 공격 패턴 관리
+    private void Think() // 보스 공격 패턴 관리
     {
         if (BossStageManage.isWrong == true) { // 틀렸을시
             tempPIdx = BossStageManage.patternIndex;
@@ -44,28 +44,28 @@ public class Boss_Sejong : MonoBehaviour
         switch (BossStageManage.patternIndex)
         {
             case 0:
-                FireForward();
+                PhaseOne();
                 break;
 
             case 1:
-                FireShot();
+                PhaseTwo();
                 break;
 
             case 2:
-                FireArc();
+                PhaseThree();
                 break;
 
             case 3:
-                FireAround();
+                PhaseFour();
                 break;
 
             case 4:
-                FireWrongAnswer();
+                Wrong();
                 break;
         }
     }
 
-    void FireForward() // 아래로 4발 발사
+    private void PhaseOne() // 아래로 4발 발사
     {
         GameObject bulletR = Instantiate(hangles[3], transform.position, transform.rotation);
         bulletR.transform.position = transform.position + Vector3.right * 1.5f;
@@ -91,14 +91,14 @@ public class Boss_Sejong : MonoBehaviour
         curPatternCount++;
 
         if (curPatternCount < maxPatternCount[BossStageManage.patternIndex]) {
-            Invoke("FireForward", 1);
+            Invoke("PhaseOne", 1);
         }
         else {
             BossStageManage.mode = "Quiz";
         }
 
     }
-    void FireShot() // 7발 플레이어에게 산탄으로 발사
+    private void PhaseTwo() // 7발 플레이어에게 산탄으로 발사
     {
 
         for (int index = 0; index < 7; index++)
@@ -117,12 +117,12 @@ public class Boss_Sejong : MonoBehaviour
         curPatternCount++;
 
         if (curPatternCount < maxPatternCount[BossStageManage.patternIndex])
-            Invoke("FireShot", 1.5f);
+            Invoke("PhaseTwo", 1.5f);
         else
             BossStageManage.mode = "Quiz";
 
     }
-    void FireArc() // 한발씩 시계방향으로 발사
+    private void PhaseThree() // 한발씩 시계방향으로 발사
     {
         // Fire Arc Continue Fire
         GameObject bullet = Instantiate(hangles[BulletIdx], transform.position, transform.rotation);
@@ -138,13 +138,13 @@ public class Boss_Sejong : MonoBehaviour
         curPatternCount++;
 
         if (curPatternCount < maxPatternCount[BossStageManage.patternIndex])
-            Invoke("FireArc", 0.15f);
+            Invoke("PhaseThree", 0.15f);
         else
             BossStageManage.mode = "Quiz";
             //Invoke("Think", 3);
 
     }
-    void FireAround() // 원형으로 발사
+    private void PhaseFour() // 원형으로 발사
     {
         int roundNumA = 40;
         int roundNumB = 30;
@@ -166,12 +166,12 @@ public class Boss_Sejong : MonoBehaviour
         curPatternCount++;
 
         if (curPatternCount < maxPatternCount[BossStageManage.patternIndex])
-            Invoke("FireAround", 2);
+            Invoke("PhaseFour", 2);
         else
             BossStageManage.mode = "Quiz";
 
     }
-    void FireWrongAnswer() { // 오답일 시 공격
+    private void Wrong() { // 오답일 시 공격
         for (int index = 0; index < 10; index++)
         {
             GameObject bullet = Instantiate(hangles[10], transform.position, transform.rotation);
@@ -185,7 +185,7 @@ public class Boss_Sejong : MonoBehaviour
         }
         curPatternCount++;
         if (curPatternCount < maxPatternCount[BossStageManage.patternIndex]) {
-            Invoke("FireWrongAnswer", 0.1f);
+            Invoke("Wrong", 0.1f);
         }
         else {
             BossStageManage.patternIndex = tempPIdx;
@@ -194,7 +194,7 @@ public class Boss_Sejong : MonoBehaviour
         }
     }
 
-    void MovePattern_1() { // 좌우로 반복 이동
+    private void MovePattern_1() { // 좌우로 반복 이동
         Vector3 v = pos;
         v.x += delta * Mathf.Sin(Time.time * maxSpeed);
         transform.position = v;  

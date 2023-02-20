@@ -166,7 +166,7 @@ public class Boss_Jumong : MonoBehaviour
     void FireWrongAnswer() {
         for (int index = 0; index < 10; index++)
         {
-            GameObject bullet = Instantiate(arrow, transform.position, transform.rotation); // ??? ???? (???? ???????, Vecter3 ??, ?????=????)
+            GameObject bullet = Instantiate(arrow, transform.position, transform.rotation); 
             bullet.transform.position = transform.position;
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();

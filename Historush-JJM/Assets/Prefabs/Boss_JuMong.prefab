@@ -134,9 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38ea865aaf20d6479262cb8249b48be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireEveryWhereMovePos: {fileID: 0}
   arrow: {fileID: 2238668088127485676, guid: 3df3d2739c0aa3044b487714e781daa5, type: 3}
   curPatternCount: 0
-  maxPatternCount: 03000000320000000a0000000300000003000000
+  maxPatternCount: 0a000000630000000a0000000700000005000000
   delta: 15
   maxSpeed: 2

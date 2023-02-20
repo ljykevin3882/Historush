@@ -5,8 +5,9 @@ using UnityEngine;
 public class Boss_Dangun : MonoBehaviour
 {
     public GameObject garlic, sook;
-    Vector2[] garlic_pos = new Vector2[] {new Vector2(133,7), new Vector2(141,7), new Vector2(150,7), new Vector2(159,7)}; // 랜덤 마늘 공격 위치
-    Vector2[] sook_pos = new Vector2[] {new Vector2(127, -5), new Vector2(164,-5)}; // 랜덤 쑥 공격 위치
+    Vector2[] garlic_pos = new Vector2[] {new Vector2(-1,7), new Vector2(7,7), new Vector2(16,7), new Vector2(25,7)}; // 랜덤 마늘 공격 위치
+    // -134
+    Vector2[] sook_pos = new Vector2[] {new Vector2(-6, -5), new Vector2(31,-5)}; // 랜덤 쑥 공격 위치
     GameObject player;
     public int curPatternCount; // 현재 공격 패턴의 반복 횟수
     public int[] maxPatternCount; // 공격 패턴 개수
@@ -18,7 +19,7 @@ public class Boss_Dangun : MonoBehaviour
 
  
 
-    void Start()
+    private void Start()
     {
         pos = transform.position;
 
@@ -27,7 +28,7 @@ public class Boss_Dangun : MonoBehaviour
         Invoke("Think", 2);
     }
 
-    void Update()
+    private void Update()
     {
         // if (BossStageManage.patternIndex == 1 || BossStageManage.patternIndex == 2) { // 살짝 아래로 이동
         //     Vector2 movePos = new Vector2(pos.x, pos.y-10);
@@ -73,12 +74,11 @@ public class Boss_Dangun : MonoBehaviour
                 break;
 
             case 4:
-                FireWrongAnswer();
+                Wrong();
                 break;
         }
     }
 
- 
     private void PhaseOne() // 마늘 떨어트리기
     {
         GameObject bullet = Instantiate(garlic, transform.position, transform.rotation);
@@ -113,8 +113,7 @@ public class Boss_Dangun : MonoBehaviour
             BossStageManage.mode = "Quiz";
     }
 
-
-    void FireWrongAnswer() {
+    private void Wrong() {
         for (int index = 0; index < 3; index++)
         {
             GameObject bullet = Instantiate(garlic, transform.position, transform.rotation);
@@ -128,7 +127,7 @@ public class Boss_Dangun : MonoBehaviour
         }
         curPatternCount++;
         if (curPatternCount < maxPatternCount[BossStageManage.patternIndex]) {
-            Invoke("FireWrongAnswer", 0.1f);
+            Invoke("Wrong", 0.1f);
         }
         else {
             BossStageManage.patternIndex = tempPIdx;

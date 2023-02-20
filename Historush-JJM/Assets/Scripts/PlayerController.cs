@@ -200,6 +200,7 @@ public class PlayerController : MonoBehaviour
         {
             if (jumpPlatform.collider!=null&&jumpPlatform.collider.tag == "Platform" )
             {
+                print("dds");
                 capsuleCollider.isTrigger = true;
             }
 
