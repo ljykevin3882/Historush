@@ -5,7 +5,11 @@ ScriptsOnlyBuild:
     - BookEach
     - BossStageManage
     - Boss_Dangun
+    - Boss_Ganggamchan
+    - Boss_Itohiro
+    - Boss_Jangbogo
     - Boss_Jumong
+    - Boss_Kim
     - Boss_Sejong
     - CameraController
     - CameraResolution
@@ -26,19 +30,19 @@ ScriptsOnlyBuild:
     - SettingPopup
     - Sook
     - StageMenu
+    - Sword
     - TreasureMenu
     - TreasurePopUp
+    - WaterDrop
+    - bomb
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
-    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
-    - UnityEditor.Tilemaps.GridPaletteBrushes
-    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -95,6 +99,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 50
       Script: {instanceID: 0}
+    - Class: 58
+      Script: {instanceID: 0}
     - Class: 60
       Script: {instanceID: 0}
     - Class: 61
@@ -130,49 +136,63 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1808}
     - Class: 114
-      Script: {instanceID: 2030}
+      Script: {instanceID: 1994}
     - Class: 114
-      Script: {instanceID: 2096}
+      Script: {instanceID: 2032}
     - Class: 114
-      Script: {instanceID: 2138}
+      Script: {instanceID: 2098}
     - Class: 114
-      Script: {instanceID: 2516}
+      Script: {instanceID: 2140}
     - Class: 114
-      Script: {instanceID: 2666}
+      Script: {instanceID: 2332}
     - Class: 114
-      Script: {instanceID: 2708}
+      Script: {instanceID: 2402}
     - Class: 114
-      Script: {instanceID: 2770}
+      Script: {instanceID: 2522}
     - Class: 114
-      Script: {instanceID: 2840}
+      Script: {instanceID: 2672}
     - Class: 114
-      Script: {instanceID: 3054}
+      Script: {instanceID: 2714}
     - Class: 114
-      Script: {instanceID: 3166}
+      Script: {instanceID: 2776}
     - Class: 114
-      Script: {instanceID: 3180}
+      Script: {instanceID: 2846}
     - Class: 114
-      Script: {instanceID: 3348}
+      Script: {instanceID: 3060}
     - Class: 114
-      Script: {instanceID: 3490}
+      Script: {instanceID: 3172}
     - Class: 114
-      Script: {instanceID: 3664}
+      Script: {instanceID: 3186}
     - Class: 114
-      Script: {instanceID: 3706}
+      Script: {instanceID: 3268}
     - Class: 114
-      Script: {instanceID: 3830}
+      Script: {instanceID: 3356}
+    - Class: 114
+      Script: {instanceID: 3498}
+    - Class: 114
+      Script: {instanceID: 3672}
+    - Class: 114
+      Script: {instanceID: 3714}
+    - Class: 114
+      Script: {instanceID: 3838}
     - Class: 114
       Script: {instanceID: 3846}
     - Class: 114
-      Script: {instanceID: 4710}
+      Script: {instanceID: 3856}
     - Class: 114
-      Script: {instanceID: 4814}
+      Script: {instanceID: 4440}
     - Class: 114
-      Script: {instanceID: 4862}
+      Script: {instanceID: 4722}
     - Class: 114
-      Script: {instanceID: 4968}
+      Script: {instanceID: 4780}
     - Class: 114
-      Script: {instanceID: 5022}
+      Script: {instanceID: 4828}
+    - Class: 114
+      Script: {instanceID: 4876}
+    - Class: 114
+      Script: {instanceID: 4982}
+    - Class: 114
+      Script: {instanceID: 5036}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -221,17 +241,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1700}
     - Class: 114
-      Script: {instanceID: 2138}
+      Script: {instanceID: 2140}
     - Class: 114
-      Script: {instanceID: 2264}
+      Script: {instanceID: 2266}
     - Class: 114
-      Script: {instanceID: 2516}
+      Script: {instanceID: 2522}
     - Class: 114
-      Script: {instanceID: 2666}
+      Script: {instanceID: 2672}
     - Class: 114
-      Script: {instanceID: 2840}
+      Script: {instanceID: 2846}
     - Class: 114
-      Script: {instanceID: 3054}
+      Script: {instanceID: 3060}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -270,17 +290,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1700}
     - Class: 114
-      Script: {instanceID: 2138}
+      Script: {instanceID: 2140}
     - Class: 114
-      Script: {instanceID: 2516}
+      Script: {instanceID: 2522}
     - Class: 114
-      Script: {instanceID: 2666}
+      Script: {instanceID: 2672}
     - Class: 114
-      Script: {instanceID: 2840}
+      Script: {instanceID: 2846}
     - Class: 114
-      Script: {instanceID: 3054}
+      Script: {instanceID: 3060}
     - Class: 114
-      Script: {instanceID: 3574}
+      Script: {instanceID: 3582}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -355,61 +375,61 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1808}
     - Class: 114
-      Script: {instanceID: 2030}
-    - Class: 114
       Script: {instanceID: 2032}
     - Class: 114
-      Script: {instanceID: 2090}
+      Script: {instanceID: 2034}
     - Class: 114
-      Script: {instanceID: 2096}
+      Script: {instanceID: 2092}
     - Class: 114
-      Script: {instanceID: 2128}
+      Script: {instanceID: 2098}
     - Class: 114
-      Script: {instanceID: 2138}
+      Script: {instanceID: 2130}
     - Class: 114
-      Script: {instanceID: 2362}
+      Script: {instanceID: 2140}
     - Class: 114
-      Script: {instanceID: 2516}
+      Script: {instanceID: 2366}
     - Class: 114
-      Script: {instanceID: 2666}
+      Script: {instanceID: 2522}
     - Class: 114
-      Script: {instanceID: 2770}
+      Script: {instanceID: 2672}
     - Class: 114
-      Script: {instanceID: 2840}
+      Script: {instanceID: 2776}
     - Class: 114
-      Script: {instanceID: 3054}
+      Script: {instanceID: 2846}
     - Class: 114
-      Script: {instanceID: 3140}
+      Script: {instanceID: 3060}
     - Class: 114
-      Script: {instanceID: 3166}
+      Script: {instanceID: 3146}
     - Class: 114
-      Script: {instanceID: 3314}
+      Script: {instanceID: 3172}
     - Class: 114
-      Script: {instanceID: 3362}
+      Script: {instanceID: 3322}
     - Class: 114
-      Script: {instanceID: 3646}
+      Script: {instanceID: 3370}
     - Class: 114
-      Script: {instanceID: 3830}
+      Script: {instanceID: 3654}
     - Class: 114
-      Script: {instanceID: 3846}
+      Script: {instanceID: 3838}
     - Class: 114
-      Script: {instanceID: 4010}
+      Script: {instanceID: 3856}
     - Class: 114
-      Script: {instanceID: 4058}
+      Script: {instanceID: 4020}
     - Class: 114
-      Script: {instanceID: 4236}
+      Script: {instanceID: 4068}
     - Class: 114
-      Script: {instanceID: 4334}
+      Script: {instanceID: 4246}
     - Class: 114
-      Script: {instanceID: 4590}
+      Script: {instanceID: 4344}
     - Class: 114
-      Script: {instanceID: 4674}
+      Script: {instanceID: 4602}
     - Class: 114
-      Script: {instanceID: 4710}
+      Script: {instanceID: 4686}
     - Class: 114
-      Script: {instanceID: 5022}
+      Script: {instanceID: 4722}
     - Class: 114
-      Script: {instanceID: 5118}
+      Script: {instanceID: 5036}
+    - Class: 114
+      Script: {instanceID: 5132}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -475,7 +495,7 @@ ScriptsOnlyBuild:
     className: CameraController
   - hash:
       serializedVersion: 2
-      Hash: 45ac84f1178595928b2a6e94877ca2c8
+      Hash: 2ff925f860c9966f6cb6522adc56086f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ItemMoving
@@ -595,6 +615,12 @@ ScriptsOnlyBuild:
     className: TMP_DigitValidator
   - hash:
       serializedVersion: 2
+      Hash: 0c587b137d746c5da3014c7988be52dd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Sword
+  - hash:
+      serializedVersion: 2
       Hash: ce669872a2be11bc686ea22961d8a3bb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -667,6 +693,12 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
+      Hash: 8d62eb667c606b8046f381a064e87273
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Boss_Itohiro
+  - hash:
+      serializedVersion: 2
       Hash: cfdd0010efd7b54c2b7512656dbc9119
     assemblyName: Unity.2D.IK.Runtime.dll
     namespaceName: UnityEngine.U2D.IK
@@ -677,6 +709,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SettingMenu
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WaterDrop
   - hash:
       serializedVersion: 2
       Hash: 12639a6968509f2b4c8dc7347fbff1ee
@@ -889,6 +927,12 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
+      Hash: b2d5aaf0ad80cc1f633dea79d7f0ad1f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Boss_Ganggamchan
+  - hash:
+      serializedVersion: 2
       Hash: a08a2b0ab3fbe076af16d8c152c60e03
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1039,6 +1083,12 @@ ScriptsOnlyBuild:
     className: EventTrigger
   - hash:
       serializedVersion: 2
+      Hash: b0f56f97fd61687c9857564f3bc27ca7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: bomb
+  - hash:
+      serializedVersion: 2
       Hash: ce669872a2be11bc686ea22961d8a3bb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1183,6 +1233,12 @@ ScriptsOnlyBuild:
     className: SpriteSkinEntity
   - hash:
       serializedVersion: 2
+      Hash: fd3383bdbff2b02f8f75c08ba2858631
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Boss_Jangbogo
+  - hash:
+      serializedVersion: 2
       Hash: 528e9858840cb8370d93939fff6b42d9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1265,6 +1321,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: TMP_ExampleScript_01
+  - hash:
+      serializedVersion: 2
+      Hash: 4952d3c42e544a0c3a0edbb69814f084
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Boss_Kim
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
