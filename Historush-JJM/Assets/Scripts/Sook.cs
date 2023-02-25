@@ -7,13 +7,13 @@ public class Sook : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 1.5f);
+        Destroy(gameObject, 2f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(0,0,-40) * Time.deltaTime); // 휘두르기
+        transform.Rotate(new Vector3(0,0,-30) * Time.deltaTime); // 휘두르기
 
     }
 

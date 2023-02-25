@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public Color color = new Color(.0f, .0f, .0f, 1.0f);
     public float width, height;
     //---------------------
-    public float bossStageTime = 0;
     public int totalPoint;
     public int stagePoint;
     public Text SookGarlicCount;
@@ -34,6 +33,8 @@ public class GameManager : MonoBehaviour
     public GameObject UIRestartBtn,UIRespawnBtn,Player;
     public GameObject Main_Menu, Stage_Menu,Stage1,SookGarlic;
     public GameManager gamemanager;
+    public GameObject BossStageManager; // 보스 스테이지 오브젝트
+
     // Start is called before the first frame update
     /* 해상도 설정하는 함수 */
     private void Start()
@@ -100,8 +101,7 @@ public class GameManager : MonoBehaviour
         //여기 최적화해서 웬만하면 다 빼자
         //UIPoint.text = (totalPoint + stagePoint).ToString();
         //SookGarlicCount.text = (player.SookGarlic).ToString();
-        if (stageIndex % 4 == 0 && stageIndex != 0) bossStageTime += Time.deltaTime;
-        else bossStageTime = 0;
+
     }
     public void ItemSet()
     {
@@ -266,14 +266,18 @@ public class GameManager : MonoBehaviour
     
     // Update is called once per frame
     public void PlayerReposition()
-    {
+    {   if (stageIndex % 4 == 0) { // 보스 스테이지 일 경우
+            BossStageManager.GetComponent<BossStageManage>().PlayerSpawn(BossStageManage.curStage);
+            player.VelocityZero();
+            return;
+        }
         player.transform.position = new Vector3(0, 0, -1);
         player.VelocityZero();
     }
     public void Restart() //죽고 메인 메뉴로 가는 함수
     {
         Time.timeScale = 1;
-        if (stageIndex%4 == 0) SceneManager.LoadScene(0); // 보스 스테이지에서 죽을 시 바로 이동
+        if (stageIndex % 4 == 0) SceneManager.LoadScene(0); // 보스 스테이지에서 죽을 시 바로 이동
         for(int i = 0; i < Stages.Length; i++)
         {
             Stages[i].SetActive(false);
@@ -283,6 +287,9 @@ public class GameManager : MonoBehaviour
     }
     public void Regame() //죽고 다시시작하는 함수
     {
+        if (stageIndex % 4 == 0) { // 보스 스테이지일 경우
+            BossStageManager.GetComponent<BossStageManage>().Respawn();
+        }
         LoadPlayerDataFromJson(); //DB 저장된 부분까지 초기화 시키기
         PlayerReposition();
         player.Respawn();
@@ -297,7 +304,7 @@ public class GameManager : MonoBehaviour
         MapReset();
     }
     public void MapReset() //죽고 다시시작할때 아이템 원상복귀
-    {
+    {   if(stageIndex % 4 == 0) return; // 보스 스테이지면 실행 X
         int child_num = Stages[stageIndex].transform.childCount;
         for (int i = 0; i < child_num; ++i)
         {

@@ -11,12 +11,12 @@ public class BossStageManage : MonoBehaviour
 
     float timer; 
     public GameObject player, qna;
-    public GameObject[] _boss;
+    public GameObject[] _boss; // 보스들
     public GameObject answerOne, answerOneBackground, answerTwo, answerTwoBackground;
     public GameObject mainCamera;
     public GameObject question, questionBackground, questionTimer;
     public GameObject BossFinishFlag;
-    private GameObject boss;
+    public GameObject boss; // 현재 스테이지에 스폰되어 있는 보스 오브젝트
     private bool isChecked = false;
 
     static public int answer;
@@ -214,7 +214,6 @@ public class BossStageManage : MonoBehaviour
     private void ProcessBoss() {
         if (isBossGen == false) {
             boss = Instantiate(_boss[(curStage/4)-1], bossSpawnPos[(curStage/4)-1].transform.position, bossSpawnPos[(curStage/4)-1].transform.rotation);
-            Debug.Log($"CurrentStage : {curStage}");
         }
 
         isBossGen = true;
@@ -297,9 +296,29 @@ public class BossStageManage : MonoBehaviour
     }
 
     // Player 스폰 위치 설정
-    private void PlayerSpawn(int curStage) {
+    public void PlayerSpawn(int curStage) {
         player.transform.position = playerSpawnPos[curStage/4-1].transform.position;
         qna.transform.position = playerSpawnPos[curStage/4-1].transform.position;
+        patternIndex = -1;
+        mode = "Boss";
+        isBossGen = false;
+        Debug.Log($"CurStage : {curStage}");
+        Debug.Log($"patterIdx : {patternIndex}");
+
+    }
+
+    public void Respawn() {
+        Destroy(boss);
+        mode = "Boss";
+        isBossGen = false;
+        answerOne.SetActive(false);
+        answerTwo.SetActive(false);
+        answerOneBackground.SetActive(false);
+        answerTwoBackground.SetActive(false);
+        question.SetActive(false);
+        questionTimer.SetActive(false);
+        questionBackground.SetActive(false);
+        patternIndex = -1;
     }
 
 }

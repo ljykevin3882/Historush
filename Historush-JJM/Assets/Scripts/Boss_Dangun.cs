@@ -5,9 +5,9 @@ using UnityEngine;
 public class Boss_Dangun : MonoBehaviour
 {
     public GameObject garlic, sook;
-    Vector2[] garlic_pos = new Vector2[] {new Vector2(-1,7), new Vector2(7,7), new Vector2(16,7), new Vector2(25,7)}; // 랜덤 마늘 공격 위치
+    Vector2[] garlic_pos = new Vector2[] {new Vector2(-1.77f, 8.5f), new Vector2(7.56f, 8.5f), new Vector2(16.96f, 8.5f), new Vector2(26.23f, 8.5f)}; // 랜덤 마늘 공격 위치
     // -134
-    Vector2[] sook_pos = new Vector2[] {new Vector2(-6, -5), new Vector2(31,-5)}; // 랜덤 쑥 공격 위치
+    Vector2[] sook_pos = new Vector2[] {new Vector2(-6, 0), new Vector2(31,0)}; // 랜덤 쑥 공격 위치
     GameObject player;
     public int curPatternCount; // 현재 공격 패턴의 반복 횟수
     public int[] maxPatternCount; // 공격 패턴 개수
