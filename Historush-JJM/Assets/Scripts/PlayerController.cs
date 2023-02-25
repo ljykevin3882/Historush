@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public FixedJoystick fixjoy;
     public Sprite Bear,Human1;
     public GameManager gameManager;
+    public GameObject portal;
     public RuntimeAnimatorController Bear_animator,Human1_animator;
     public int SookGarlic=0;
     public float maxSpeed;
@@ -200,7 +201,6 @@ public class PlayerController : MonoBehaviour
         {
             if (jumpPlatform.collider!=null&&jumpPlatform.collider.tag == "Platform" )
             {
-                print("dds");
                 capsuleCollider.isTrigger = true;
             }
 
@@ -302,6 +302,8 @@ public class PlayerController : MonoBehaviour
                 //사람으로 변하는 애니메이션 
                 anim.SetTrigger("Change");
                 Invoke("HumanChange", 1);
+                //
+                portal.SetActive(true);
             }
             gameManager.SookGarlicCount.text = (gameManager.player.SookGarlic).ToString();
             collision.gameObject.SetActive(false);
@@ -322,7 +324,7 @@ public class PlayerController : MonoBehaviour
             else if (isGold)
                 gameManager.stagePoint += 300;
 
-            gameManager.UIPoint.text = (gameManager.totalPoint + gameManager.stagePoint).ToString();
+            gameManager.UIPoint.text = (gameManager.stagePoint).ToString();
             //아이템 사라지기
             collision.gameObject.SetActive(false);
         }
@@ -334,20 +336,27 @@ public class PlayerController : MonoBehaviour
             TreasurePopup.TreasurePopupNum = int.Parse(collision.gameObject.name);
             TreasurePopup.TreasurePopupBool = true;
             TreasurePopupObject.SetActive(true);
-            gameManager.UIPoint.text = (gameManager.totalPoint + gameManager.stagePoint).ToString();
+            gameManager.UIPoint.text = (gameManager.stagePoint).ToString();
             collision.gameObject.SetActive(false);
 
         }
         if (collision.gameObject.tag == "Finish") //깃발 먹으면
         {
+            //점수 갱신
+            if (gameManager.playerData.stagePoints[gameManager.stageIndex] < gameManager.stagePoint)
+            { //기존 기록보다 지금 점수가 크면
+                gameManager.playerData.stagePoints[gameManager.stageIndex] = gameManager.stagePoint; //json 데이터베이스에 스테이지 점수 저장 
+            }
+            gameManager.stagePoint = 0;
+            gameManager.UIPoint.text = (gameManager.stagePoint).ToString();
             //다음 스테이지
             gameManager.NextStage(); //다음스테이지로 이동, 
             if (gameManager.playerData.MaxStageLevel < gameManager.stageIndex) //DB의 저장된 최고 스테이지보다 현재스테이지가 크면
             {
                 gameManager.playerData.MaxStageLevel = gameManager.stageIndex; //갱신
             }
+
             
-            gameManager.playerData.score = gameManager.totalPoint; //점수 갱신
             gameManager.SavePlayerDataToJson(); //DB에 저장
         }
         if (collision.gameObject.tag == "BossFinish") //깃발 먹으면
@@ -373,7 +382,7 @@ public class PlayerController : MonoBehaviour
         //적 죽음
         Enemy_Move enemyMove = enemy.GetComponent<Enemy_Move>();
         enemyMove.OnDamaged();
-        gameManager.UIPoint.text = (gameManager.totalPoint + gameManager.stagePoint).ToString();
+        gameManager.UIPoint.text = ( gameManager.stagePoint).ToString();
     }
     void OnDamaged(Vector2 targetPos)
     {

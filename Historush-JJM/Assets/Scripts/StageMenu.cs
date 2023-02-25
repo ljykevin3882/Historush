@@ -10,10 +10,14 @@ public class StageMenu : MonoBehaviour
     public Image[] ButtonImages;
     public GameObject[] LockImages;
     public Button[] StageButtons;
-    public GameObject Stage_Menu, Player,Main_Menu;
+    public GameObject Stage_Menu, Player,Main_Menu,stage_Detail;
     public GameObject Dangun_stage,GoJosun_stage, ThreeGuk_stage, TongilShila_stage, Korea_stage, Josun_stage, Japan_stage, Modern_stage;
+    public Image Treasure1_1, Treasure1_2, Treasure2_1, Treasure2_2, Treasure3_1, Treasure3_2;
+    public Text Stage1_Point, Stage2_Point, Stage3_Point;
     public GameManager gameManager;
     public PlayerController playerController;
+    public TreasureMenu Treasure_Menu;
+    public Button Play_Button;
     private GameObject CamObject;
     public void Start()
     {
@@ -46,7 +50,7 @@ public class StageMenu : MonoBehaviour
         { //한번 플레이해서 DB가 만들어졌으면
             for (int i = 1; i < Mathf.CeilToInt((MaxStageindex - 1) / 4) + 2; i++)
             {
-                ButtonImages[i].color = white;
+                ButtonImages[i].color = Color.white;
                 StageButtons[i].interactable = true;
                 LockImages[i].SetActive(false);
             }
@@ -77,11 +81,85 @@ public class StageMenu : MonoBehaviour
         playerController.avatarColorChange();
         playerController.avatarChange();
     }
-
+    //stagedetail 세팅 함수
+    public void SettingStageDetail(int stagenum) //stagenum은 1 5 9 13 17 21 25 로 주어짐
+    {
+        int startnum = (stagenum-1)/4*6+1; //startnum은 유물 번호로 1 7 13 19 25 31 37 로 주어짐 
+        //유물 모양 변경
+        Treasure1_1.sprite = Treasure_Menu.treasure_list[startnum];
+        Treasure1_2.sprite = Treasure_Menu.treasure_list[startnum+1];
+        Treasure2_1.sprite = Treasure_Menu.treasure_list[startnum+2];
+        Treasure2_2.sprite = Treasure_Menu.treasure_list[startnum+3];
+        Treasure3_1.sprite = Treasure_Menu.treasure_list[startnum+4];
+        Treasure3_2.sprite = Treasure_Menu.treasure_list[startnum+5];
+        //획득하지 않은 유물 검정 처리
+        gameManager.LoadPlayerDataFromJson();
+        if (gameManager.playerData.items[startnum] == false)
+        {
+            Treasure1_1.color = Color.black;
+        }
+        else
+        {
+            Treasure1_1.color = Color.white;
+        }
+        if (gameManager.playerData.items[startnum+1] == false)
+        {
+            Treasure1_2.color = Color.black;
+        }
+        else
+        {
+            Treasure1_2.color = Color.white;
+        }
+        if (gameManager.playerData.items[startnum+2] == false)
+        {
+            Treasure2_1.color = Color.black;
+        }
+        else
+        {
+            Treasure2_1.color = Color.white;
+        }
+        if (gameManager.playerData.items[startnum+3] == false)
+        {
+            Treasure2_2.color = Color.black;
+        }
+        else
+        {
+            Treasure2_2.color = Color.white;
+        }
+        if (gameManager.playerData.items[startnum+4] == false)
+        {
+            Treasure3_1.color = Color.black;
+        }
+        else
+        {
+            Treasure3_1.color = Color.white;
+        }
+        if (gameManager.playerData.items[startnum+5] == false)
+        {
+            Treasure3_2.color = Color.black;
+        }
+        else
+        {
+            Treasure3_2.color = Color.white;
+        }
+        //점수 불러오기 
+        Stage1_Point.text = gameManager.playerData.stagePoints[stagenum].ToString(); // startnum 은 1,
+        Stage2_Point.text = gameManager.playerData.stagePoints[stagenum+1].ToString();
+        Stage3_Point.text = gameManager.playerData.stagePoints[stagenum+2].ToString();
+        //실행
+        stage_Detail.SetActive(true);
+    }
     // 고조선 버튼
     public void ClickGojoseon()
     {
-        string bgmName = "3";
+
+        SettingStageDetail(1);
+        Play_Button.onClick.RemoveAllListeners();
+        Play_Button.onClick.AddListener(ClickGojoseonPlay);
+    }
+    public void ClickGojoseonPlay()
+    {
+        string bgmName = "4";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         Stage_Menu.SetActive(false);
         GoJosun_stage.SetActive(true);
@@ -97,7 +175,13 @@ public class StageMenu : MonoBehaviour
     // 삼국시대 버튼
     public void ClickThreeState()
     {
-        string bgmName = "3";
+        SettingStageDetail(5);
+        Play_Button.onClick.RemoveAllListeners();
+        Play_Button.onClick.AddListener(ClickThreeStatePlay);
+    }
+    public void ClickThreeStatePlay()
+    {
+        string bgmName = "5";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         Stage_Menu.SetActive(false);
         ThreeGuk_stage.SetActive(true);
@@ -112,6 +196,12 @@ public class StageMenu : MonoBehaviour
 
     // 통일신라 버튼
     public void ClickTongilSila()
+    {
+        SettingStageDetail(9);
+        Play_Button.onClick.RemoveAllListeners();
+        Play_Button.onClick.AddListener(ClickTongilSilaPlay);
+    }
+    public void ClickTongilSilaPlay()
     {
         string bgmName = "3";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
@@ -129,7 +219,13 @@ public class StageMenu : MonoBehaviour
     // 고려 버튼
     public void ClickKorea()
     {
-        string bgmName = "3";
+        SettingStageDetail(13);
+        Play_Button.onClick.RemoveAllListeners();
+        Play_Button.onClick.AddListener(ClickKoreaPlay);
+    }
+    public void ClickKoreaPlay()
+    {
+        string bgmName = "4";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         Stage_Menu.SetActive(false);
         Korea_stage.SetActive(true);
@@ -145,7 +241,13 @@ public class StageMenu : MonoBehaviour
     // 조선 버튼
     public void ClickJoseon()
     {
-        string bgmName = "3";
+        SettingStageDetail(17);
+        Play_Button.onClick.RemoveAllListeners();
+        Play_Button.onClick.AddListener(ClickJoseonPlay);
+    }
+    public void ClickJoseonPlay()
+    {
+        string bgmName = "5";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         Stage_Menu.SetActive(false);
         Josun_stage.SetActive(true);
@@ -161,6 +263,11 @@ public class StageMenu : MonoBehaviour
     // 일제강점기 버튼
     public void ClickJapan()
     {
+        SettingStageDetail(21);
+        Play_Button.onClick.AddListener(ClickJapanPlay);
+    }
+    public void ClickJapanPlay()
+    {
         string bgmName = "3";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         Stage_Menu.SetActive(false);
@@ -175,9 +282,14 @@ public class StageMenu : MonoBehaviour
     }
 
     // 현대사 버튼
-    public void ClickMordern()
+    public void ClickModern()
     {
-        string bgmName = "3";
+        SettingStageDetail(25);
+        Play_Button.onClick.AddListener(ClickModernPlay);
+    }
+    public void ClickModernPlay()
+    {
+        string bgmName = "4";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         Stage_Menu.SetActive(false);
         Modern_stage.SetActive(true);
@@ -188,6 +300,10 @@ public class StageMenu : MonoBehaviour
         gameManager.StageName(gameManager.stageIndex);
         playerController.avatarColorChange();
         playerController.avatarChange();
+    }
+    public void CloseDetail()
+    {
+        stage_Detail.SetActive(false);
     }
     //뒤로가기 버튼
     public void GoBack()

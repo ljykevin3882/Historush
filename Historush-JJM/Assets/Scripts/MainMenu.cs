@@ -14,10 +14,28 @@ public class MainMenu : MonoBehaviour
     public StageMenu StageMenu;
     public GameManager gameManager;
     private GameObject CamObject;
+    public AudioSource BGM, Effect;
+
     public void Start()
     {
         CamObject = GameObject.Find("Main Camera");
-
+        gameManager.LoadPlayerDataFromJson();
+        if (gameManager.playerData.BGM == false)
+        {
+            BGM.mute = true;
+        }
+        else
+        {
+            BGM.mute = false;
+        }
+        if (gameManager.playerData.SoundEffect == false)
+        {
+            Effect.mute = true;
+        }
+        else
+        {
+            Effect.mute = false;
+        }
     }
 
     public void Update()

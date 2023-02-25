@@ -13,12 +13,12 @@ public class PlayBGMOpe : MonoBehaviour
 
     public BgmType[] BGMList;
 
-    private AudioSource BGM;
+    public AudioSource BGM;
     private string NowBGMname = "";
 
     void Start()
     {
-        BGM = gameObject.AddComponent<AudioSource>();
+        //BGM = gameObject.AddComponent<AudioSource>();
         BGM.loop = true;
         if (BGMList.Length > 0) PlayBGM(BGMList[0].name);
     }

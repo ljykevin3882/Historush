@@ -12,8 +12,7 @@ public class GameManager : MonoBehaviour
     public Color color = new Color(.0f, .0f, .0f, 1.0f);
     public float width, height;
     //---------------------
-    public int totalPoint;
-    public int stagePoint;
+    public int stagePoint; //현재 점수
     public Text SookGarlicCount;
 
     public int stageIndex; //현재 스테이지
@@ -78,13 +77,19 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < playerData.items.Length; i++)
         {
-            playerData.items[0] = false;
+            playerData.items[i] = false;
         }
-        playerData.score = 0;
+        for (int i = 0; i < playerData.stagePoints.Length; i++)
+        {
+            playerData.stagePoints[i] = 0;
+        }
+        
         playerData.MaxStageLevel = 0;
         playerData.avatar_color = 0;
         playerData.avatar = 0;
         playerData.avatar_accessory = 0;
+        playerData.BGM = true;
+        playerData.SoundEffect = true;
         string jsonData = JsonUtility.ToJson(playerData, true);
         string path = Path.Combine(Application.persistentDataPath, "playerData.json");
         File.WriteAllText(path, jsonData);
@@ -148,7 +153,7 @@ public class GameManager : MonoBehaviour
             UIRestartBtn.SetActive(true);
         }
         //Calculalte Point
-        totalPoint += stagePoint;
+        //totalPoint += stagePoint;
         stagePoint = 0;
     }
     public void StageName(int stage_Index) //화면 중간 위에 뜨는 현재 스테이지 이름 지정 함수
@@ -266,7 +271,7 @@ public class GameManager : MonoBehaviour
     
     // Update is called once per frame
     public void PlayerReposition()
-    {   if (stageIndex % 4 == 0) { // 보스 스테이지 일 경우
+    {   if (stageIndex % 4 == 0&&stageIndex>0) { // 보스 스테이지 일 경우
             BossStageManager.GetComponent<BossStageManage>().PlayerSpawn(BossStageManage.curStage);
             player.VelocityZero();
             return;
@@ -318,9 +323,11 @@ public class GameManager : MonoBehaviour
 public class PlayerData //사용자 데이터 베이스 
 {
     public int MaxStageLevel;
-    public int score;
+    public int[] stagePoints;
     public bool[] items;
     public int avatar; //곰일때는 0, 사람일때는 1
     public int avatar_color; //아바타 색 나타내는 값
     public int avatar_accessory; //아바타 머리장식 나타내는 값
+    public bool BGM;
+    public bool SoundEffect;
 }

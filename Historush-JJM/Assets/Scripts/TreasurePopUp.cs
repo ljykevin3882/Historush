@@ -22,7 +22,7 @@ public class TreasurePopUp : MonoBehaviour
     {
         if (TreasurePopupBool == true)
         {
-            print("¿€µø«‘");
+
             DetailImage.sprite = TreasureDetailList[TreasurePopupNum];
             Time.timeScale = 0;
         }
