@@ -46,8 +46,9 @@ public class StageMenu : MonoBehaviour
         }
         gameManager.LoadPlayerDataFromJson(); //DB 불러오기 
         int MaxStageindex = gameManager.playerData.MaxStageLevel;
-        if (MaxStageindex > 0)
-        { //한번 플레이해서 DB가 만들어졌으면
+
+        if (MaxStageindex > 0)//한번 플레이해서 DB가 만들어졌으면
+        { 
             for (int i = 1; i < Mathf.CeilToInt((MaxStageindex - 1) / 4) + 2; i++)
             {
                 ButtonImages[i].color = Color.white;
@@ -62,8 +63,10 @@ public class StageMenu : MonoBehaviour
                 LockImages[i].SetActive(true);
             }
         }
-        // 아바타 변경
-        //어쩌고 저쩌고
+        else//한번도 플레이한적 없으면 
+        {
+            gameManager.ResetJson(); //db 만들기
+        }
     }
 
     // 단군신화 버튼

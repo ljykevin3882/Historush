@@ -75,6 +75,8 @@ public class GameManager : MonoBehaviour
     [ContextMenu("Reset Json Data")]
     public void ResetJson() //DB 초기화함수
     {
+        playerData.stagePoints = new int[31];
+        playerData.items = new bool[44];
         for (int i = 0; i < playerData.items.Length; i++)
         {
             playerData.items[i] = false;
@@ -282,7 +284,7 @@ public class GameManager : MonoBehaviour
     public void Restart() //죽고 메인 메뉴로 가는 함수
     {
         Time.timeScale = 1;
-        if (stageIndex % 4 == 0) SceneManager.LoadScene(0); // 보스 스테이지에서 죽을 시 바로 이동
+        if (stageIndex % 4 == 0 && stageIndex > 0) SceneManager.LoadScene(0); // 보스 스테이지에서 죽을 시 바로 이동
         for(int i = 0; i < Stages.Length; i++)
         {
             Stages[i].SetActive(false);
@@ -292,7 +294,7 @@ public class GameManager : MonoBehaviour
     }
     public void Regame() //죽고 다시시작하는 함수
     {
-        if (stageIndex % 4 == 0) { // 보스 스테이지일 경우
+        if (stageIndex % 4 == 0&&stageIndex>0) { // 보스 스테이지일 경우
             BossStageManager.GetComponent<BossStageManage>().Respawn();
         }
         LoadPlayerDataFromJson(); //DB 저장된 부분까지 초기화 시키기
@@ -309,7 +311,7 @@ public class GameManager : MonoBehaviour
         MapReset();
     }
     public void MapReset() //죽고 다시시작할때 아이템 원상복귀
-    {   if(stageIndex % 4 == 0) return; // 보스 스테이지면 실행 X
+    {   if(stageIndex % 4 == 0&&stageIndex>0) return; // 보스 스테이지면 실행 X
         int child_num = Stages[stageIndex].transform.childCount;
         for (int i = 0; i < child_num; ++i)
         {
@@ -323,8 +325,8 @@ public class GameManager : MonoBehaviour
 public class PlayerData //사용자 데이터 베이스 
 {
     public int MaxStageLevel;
-    public int[] stagePoints;
-    public bool[] items;
+    public int[] stagePoints=new int[31];
+    public bool[] items=new bool[44];
     public int avatar; //곰일때는 0, 사람일때는 1
     public int avatar_color; //아바타 색 나타내는 값
     public int avatar_accessory; //아바타 머리장식 나타내는 값

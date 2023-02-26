@@ -342,10 +342,11 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Finish") //깃발 먹으면
         {
-            //점수 갱신
+            //점수 갱신 
             if (gameManager.playerData.stagePoints[gameManager.stageIndex] < gameManager.stagePoint)
             { //기존 기록보다 지금 점수가 크면
-                gameManager.playerData.stagePoints[gameManager.stageIndex] = gameManager.stagePoint; //json 데이터베이스에 스테이지 점수 저장 
+                gameManager.playerData.stagePoints.SetValue(gameManager.stagePoint, gameManager.stageIndex);
+                //gameManager.playerData.stagePoints[gameManager.stageIndex] = gameManager.stagePoint; //json 데이터베이스에 스테이지 점수 저장 
             }
             gameManager.stagePoint = 0;
             gameManager.UIPoint.text = (gameManager.stagePoint).ToString();
@@ -355,8 +356,6 @@ public class PlayerController : MonoBehaviour
             {
                 gameManager.playerData.MaxStageLevel = gameManager.stageIndex; //갱신
             }
-
-            
             gameManager.SavePlayerDataToJson(); //DB에 저장
         }
         if (collision.gameObject.tag == "BossFinish") //깃발 먹으면
