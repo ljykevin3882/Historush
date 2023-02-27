@@ -13,6 +13,8 @@ public class Enemy_Move : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        
+        Enemy = gameObject;
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
