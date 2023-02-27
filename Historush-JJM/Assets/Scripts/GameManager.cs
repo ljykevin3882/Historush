@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     public void SavePlayerDataToJson() //DB저장함수
     {
         string jsonData = JsonUtility.ToJson(playerData, true);
-        string path = Path.Combine(Application.persistentDataPath, "playerData.json");
+        string path = Path.Combine(Application.persistentDataPath, "playerData1.json");
         File.WriteAllText(path, jsonData);
     }
     [ContextMenu("Reset Json Data")]
@@ -93,15 +93,50 @@ public class GameManager : MonoBehaviour
         playerData.BGM = true;
         playerData.SoundEffect = true;
         string jsonData = JsonUtility.ToJson(playerData, true);
-        string path = Path.Combine(Application.persistentDataPath, "playerData.json");
+        string path = Path.Combine(Application.persistentDataPath, "playerData1.json");
         File.WriteAllText(path, jsonData);
     }
     [ContextMenu("From Json Data")]
     public  void LoadPlayerDataFromJson() //DB 불러오기 함수
     {
-        string path = Path.Combine(Application.persistentDataPath, "playerData.json");
-        string jsonData = File.ReadAllText(path);
-        playerData = JsonUtility.FromJson<PlayerData>(jsonData);
+
+        string path = Path.Combine(Application.persistentDataPath, "playerData1.json");
+
+        FileInfo fileInfo = new FileInfo(path);
+
+        if (fileInfo.Exists)//DB 존재하면 
+        {
+            print("DB 존재합니다");
+            string jsonData = File.ReadAllText(path);
+            playerData = JsonUtility.FromJson<PlayerData>(jsonData);
+        }
+        else //DB 없음
+        {
+            print("DB 없습니다.");
+            ResetJson();
+            string jsonData = File.ReadAllText(path);
+            playerData = JsonUtility.FromJson<PlayerData>(jsonData);
+        }
+        
+        
+        
+
+        
+
+        //print(System.IO.File.Exists(path) + "-> 존재여부");
+        //if (System.IO.File.Exists(path))
+        //{
+        //    string jsonData = File.ReadAllText(path);
+        //    playerData = JsonUtility.FromJson<PlayerData>(jsonData);
+        //}
+        //else
+        //{
+        //    ResetJson();
+        //    string jsonData = File.ReadAllText(path);
+        //    playerData = JsonUtility.FromJson<PlayerData>(jsonData);
+        //}
+
+
     }
     private void Update()
     {

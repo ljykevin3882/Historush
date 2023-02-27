@@ -81,6 +81,12 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+        
+        
+    }
+
+    private void FixedUpdate()
+    {
         //Move by control
         float h = Input.GetAxisRaw("Horizontal"); //키보드 입력
         h += fixjoy.Horizontal; //조이스틱 입력
@@ -88,11 +94,12 @@ public class PlayerController : MonoBehaviour
 
 
 
-        rigid.AddForce(Vector2.right * h*Speed, ForceMode2D.Impulse);
-        if (h > 0){ //오른쪽
+        rigid.AddForce(Vector2.right * h * Speed, ForceMode2D.Impulse);
+        if (h > 0)
+        { //오른쪽
             spriteRenderer.flipX = false;
         }
-        else if(h<0) //왼쪽
+        else if (h < 0) //왼쪽
         {
             spriteRenderer.flipX = true;
         }
@@ -100,7 +107,7 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-        else if(rigid.velocity.x < 0)
+        else if (rigid.velocity.x < 0)
         {
             spriteRenderer.flipX = true;
         }
@@ -113,13 +120,13 @@ public class PlayerController : MonoBehaviour
 
         else if (rigid.velocity.x < maxSpeed * (-1)) //왼쪽 최대속도
         {
-            
+
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
-            
+
         }
         if (rigid.velocity.y < maxFallSpeed) //낙하 최대속도를 초과해 떨어지면
         {
-            
+
             rigid.velocity = new Vector2(rigid.velocity.x, maxFallSpeed);
         }
 
@@ -169,12 +176,12 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isJumping", true);
         }
         //방향키 떼서 멈출때 
-        if (Input.GetButtonUp("Horizontal")||h==0)
+        if (Input.GetButtonUp("Horizontal") || h == 0)
         {
 
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.2f, rigid.velocity.y);
         }
-        
+
         //방향전환
         //       if (Input.GetButton("Horizontal"))
         //           spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
@@ -189,12 +196,6 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("IsWalking", true);
         }
-        
-    }
-
-    private void FixedUpdate()
-    {
-        
         Debug.DrawRay(rigid.position, Vector3.up, new Color(0, 1, 0));
         RaycastHit2D jumpPlatform = Physics2D.Raycast(rigid.position, Vector3.up,1f, LayerMask.GetMask("Platform"));
         if (rigid.velocity.y > 0 && jumpCount<2)

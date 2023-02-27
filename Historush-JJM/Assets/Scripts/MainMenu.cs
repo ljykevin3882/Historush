@@ -19,6 +19,7 @@ public class MainMenu : MonoBehaviour
     public void Start()
     {
         CamObject = GameObject.Find("Main Camera");
+
         gameManager.LoadPlayerDataFromJson();
         if (gameManager.playerData.BGM == false)
         {
@@ -36,6 +37,7 @@ public class MainMenu : MonoBehaviour
         {
             Effect.mute = false;
         }
+        
     }
 
     public void Update()

@@ -33,10 +33,9 @@ public class StageMenu : MonoBehaviour
     }
     public void StartStageMenu()
     {
-        
 
-        //시작할때 DB없어서 듀토리얼만 가능
-        
+
+
         for (int i = 1; i < 8; i++)
         {
             ButtonImages[i].color = black;
@@ -63,10 +62,8 @@ public class StageMenu : MonoBehaviour
                 LockImages[i].SetActive(true);
             }
         }
-        else//한번도 플레이한적 없으면 
-        {
-            gameManager.ResetJson(); //db 만들기
-        }
+        
+
     }
 
     // 단군신화 버튼
