@@ -23,7 +23,7 @@ public class BossStageManage : MonoBehaviour
     static public string mode = "Boss";
     static private bool isBossGen = false;
     static public bool isWrong = false;
-    static public int curStage = 4; // 4, 8, 12, 16, 20, 24, 28
+    static public int curStage; // 4, 8, 12, 16, 20, 24, 28
     static public int patternIndex = -1; // 기본값 -1
 
     // 퀴즈

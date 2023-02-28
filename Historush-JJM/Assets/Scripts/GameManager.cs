@@ -177,6 +177,7 @@ public class GameManager : MonoBehaviour
                 PlayerReposition();
                 StageName(stageIndex); //스테이지 이름변경
                 ItemSet();
+                BossStageManage.curStage = stageIndex;
             }
         }
         else
@@ -308,7 +309,7 @@ public class GameManager : MonoBehaviour
     
     // Update is called once per frame
     public void PlayerReposition()
-    {   if (stageIndex % 4 == 0&&stageIndex>0) { // 보스 스테이지 일 경우
+    {   if (BossStageManage.curStage % 4 == 0 && BossStageManage.curStage > 0) { // 보스 스테이지 일 경우
             BossStageManager.GetComponent<BossStageManage>().PlayerSpawn(BossStageManage.curStage);
             player.VelocityZero();
             return;
@@ -319,7 +320,7 @@ public class GameManager : MonoBehaviour
     public void Restart() //죽고 메인 메뉴로 가는 함수
     {
         Time.timeScale = 1;
-        if (stageIndex % 4 == 0 && stageIndex > 0) SceneManager.LoadScene(0); // 보스 스테이지에서 죽을 시 바로 이동
+        if (BossStageManage.curStage % 4 == 0 && BossStageManage.curStage > 0) SceneManager.LoadScene(0); // 보스 스테이지에서 죽을 시 바로 이동
         for(int i = 0; i < Stages.Length; i++)
         {
             Stages[i].SetActive(false);
@@ -329,7 +330,7 @@ public class GameManager : MonoBehaviour
     }
     public void Regame() //죽고 다시시작하는 함수
     {
-        if (stageIndex % 4 == 0&&stageIndex>0) { // 보스 스테이지일 경우
+        if (BossStageManage.curStage % 4 == 0 && BossStageManage.curStage > 0) { // 보스 스테이지일 경우
             BossStageManager.GetComponent<BossStageManage>().Respawn();
         }
         LoadPlayerDataFromJson(); //DB 저장된 부분까지 초기화 시키기
@@ -346,7 +347,8 @@ public class GameManager : MonoBehaviour
         MapReset();
     }
     public void MapReset() //죽고 다시시작할때 아이템 원상복귀
-    {   if(stageIndex % 4 == 0&&stageIndex>0) return; // 보스 스테이지면 실행 X
+    {   
+        if(BossStageManage.curStage % 4 == 0 && BossStageManage.curStage > 0) return; // 보스 스테이지면 실행 X
         int child_num = Stages[stageIndex].transform.childCount;
         for (int i = 0; i < child_num; ++i)
         {
