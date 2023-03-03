@@ -309,7 +309,7 @@ public class GameManager : MonoBehaviour
     
     // Update is called once per frame
     public void PlayerReposition()
-    {   if (BossStageManage.curStage % 4 == 0 && BossStageManage.curStage > 0) { // 보스 스테이지 일 경우
+    {   if (BossStageManage.curStage % 4 == 0 && BossStageManage.curStage > 0&&stageIndex%4==0) { // 보스 스테이지 일 경우
             BossStageManager.GetComponent<BossStageManage>().PlayerSpawn(BossStageManage.curStage);
             player.VelocityZero();
             return;
@@ -320,17 +320,20 @@ public class GameManager : MonoBehaviour
     public void Restart() //죽고 메인 메뉴로 가는 함수
     {
         Time.timeScale = 1;
-        if (BossStageManage.curStage % 4 == 0 && BossStageManage.curStage > 0) SceneManager.LoadScene(0); // 보스 스테이지에서 죽을 시 바로 이동
-        for(int i = 0; i < Stages.Length; i++)
+        if (BossStageManage.curStage % 4 == 0 && BossStageManage.curStage > 0 && stageIndex % 4 == 0) SceneManager.LoadScene(0); // 보스 스테이지에서 죽을 시 바로 이동
+        else
         {
-            Stages[i].SetActive(false);
+            for (int i = 0; i < Stages.Length; i++)
+            {
+                Stages[i].SetActive(false);
+            }
         }
 
         SceneManager.LoadScene(0);
     }
     public void Regame() //죽고 다시시작하는 함수
     {
-        if (BossStageManage.curStage % 4 == 0 && BossStageManage.curStage > 0) { // 보스 스테이지일 경우
+        if (BossStageManage.curStage % 4 == 0 && BossStageManage.curStage > 0 && stageIndex % 4 == 0) { // 보스 스테이지일 경우
             BossStageManager.GetComponent<BossStageManage>().Respawn();
         }
         LoadPlayerDataFromJson(); //DB 저장된 부분까지 초기화 시키기
