@@ -81,8 +81,14 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        
-        
+        //점프할때
+        if (Input.GetButtonDown("Jump") && jumpCount > 0)//&&!anim.GetBool("isJumping")
+        {
+            jumpCount--;
+            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            anim.SetBool("isJumping", true);
+        }
+
     }
 
     private void FixedUpdate()
@@ -168,13 +174,7 @@ public class PlayerController : MonoBehaviour
                 transform.localEulerAngles = new Vector3(0, 0, -90);
             }
         }
-        //점프할때
-        if (Input.GetButtonDown("Jump") && jumpCount > 0)//&&!anim.GetBool("isJumping")
-        {
-            jumpCount--;
-            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            anim.SetBool("isJumping", true);
-        }
+        
         //방향키 떼서 멈출때 
         if (Input.GetButtonUp("Horizontal") || h == 0)
         {
