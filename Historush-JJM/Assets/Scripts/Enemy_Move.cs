@@ -66,11 +66,15 @@ public class Enemy_Move : MonoBehaviour
         //죽는 점프 효과
         rigid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
         //1초뒤 삭제
-        Invoke("Disappear", 1);
+        Invoke("Disappear", 0.5f);
 
     }
     public void Disappear()
     {
         Enemy.SetActive(false);
+        capsuleCollider.enabled = true;
+        spriteRenderer.flipY = false;
+        spriteRenderer.color = new Color(1, 1, 1,1f);
+        //Enemy.transform.position= new Vector2(rigid.position.x , rigid.position.y+10);
     }
 }

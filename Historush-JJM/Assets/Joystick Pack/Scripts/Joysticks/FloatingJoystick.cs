@@ -9,10 +9,13 @@ public class FloatingJoystick : Joystick
     {
         base.Start();
         background.gameObject.SetActive(false);
+        
     }
 
     public override void OnPointerDown(PointerEventData eventData)
     {
+
+        base.OnPointerDown(eventData);
         background.anchoredPosition = ScreenPointToAnchoredPosition(eventData.position);
         background.gameObject.SetActive(true);
         base.OnPointerDown(eventData);
@@ -21,6 +24,8 @@ public class FloatingJoystick : Joystick
     public override void OnPointerUp(PointerEventData eventData)
     {
         background.gameObject.SetActive(false);
+        
         base.OnPointerUp(eventData);
+
     }
 }

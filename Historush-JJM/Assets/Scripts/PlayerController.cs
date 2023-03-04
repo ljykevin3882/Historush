@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public PlayerData playerData;
@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public FixedJoystick fixjoy;
     public Sprite Bear,Human1;
     public GameManager gameManager;
-    public GameObject portal;
+    public GameObject portal, StageClearBoard;
     public RuntimeAnimatorController Bear_animator,Human1_animator;
     public int SookGarlic=0;
     public float maxSpeed;
@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
     CapsuleCollider2D capsuleCollider;
     BoxCollider2D boxCollider;
     public float speed_Character = 5f;
+    public Image StageClearTreasure1, StageClearTreasure2;
+    public Text StageClearScore;
+    public TreasureMenu Treasure_Menu;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -95,8 +98,9 @@ public class PlayerController : MonoBehaviour
     {
         //Move by control
         float h = Input.GetAxisRaw("Horizontal"); //키보드 입력
-        h += fixjoy.Horizontal; //조이스틱 입력
 
+        h += fixjoy.Horizontal; // 고정된 조이스틱 입력
+        h += joy.Horizontal; // 동적 조이스틱 입력
 
 
 
@@ -282,7 +286,168 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.sprite = Bear;
         anim.runtimeAnimatorController = Bear_animator;
     }
+    public void OpenStageClear() //깃발먹었을때 스테이지 클리어 창 열기
+    {
+        gameManager.SavePlayerDataToJson();
+        gameManager.LoadPlayerDataFromJson();
+        
+        StageClearScore.text = gameManager.stagePoint.ToString();
+        int treasureNum1=1, treasureNum2=1;
+        if (gameManager.stageIndex == 1)
+        {
+            treasureNum1 = 1;
+            treasureNum2 = 2;
+        }else if (gameManager.stageIndex == 2)
+        {
+            treasureNum1 = 3;
+            treasureNum2 = 4;
+        }
+        else if (gameManager.stageIndex == 3)
+        {
+            treasureNum1 = 5;
+            treasureNum2 = 6;
+        }
+        else if (gameManager.stageIndex == 5)
+        {
+            treasureNum1 = 7;
+            treasureNum2 = 8;
+        }
+        else if (gameManager.stageIndex ==6)
+        {
+            treasureNum1 = 9;
+            treasureNum2 = 10;
+        }
+        else if (gameManager.stageIndex == 7)
+        {
+            treasureNum1 = 11;
+            treasureNum2 = 12;
+        }
+        else if (gameManager.stageIndex == 9)
+        {
+            treasureNum1 = 13;
+            treasureNum2 = 14;
+        }
+        else if (gameManager.stageIndex == 10)
+        {
+            treasureNum1 = 15;
+            treasureNum2 = 16;
+        }
+        else if (gameManager.stageIndex == 11)
+        {
+            treasureNum1 = 17;
+            treasureNum2 = 18;
+        }
+        else if (gameManager.stageIndex == 13)
+        {
+            treasureNum1 = 19;
+            treasureNum2 = 20;
+        }
+        else if (gameManager.stageIndex == 14)
+        {
+            treasureNum1 = 21;
+            treasureNum2 = 22;
+        }
+        else if (gameManager.stageIndex == 15)
+        {
+            treasureNum1 = 23;
+            treasureNum2 = 24;
+        }
+        else if (gameManager.stageIndex == 17)
+        {
+            treasureNum1 = 25;
+            treasureNum2 = 26;
+        }
+        else if (gameManager.stageIndex == 18)
+        {
+            treasureNum1 = 27;
+            treasureNum2 = 28;
+        }
+        else if (gameManager.stageIndex == 19)
+        {
+            treasureNum1 = 29;
+            treasureNum2 = 30;
+        }
+        else if (gameManager.stageIndex == 21)
+        {
+            treasureNum1 = 31;
+            treasureNum2 = 32;
+        }
+        else if (gameManager.stageIndex == 22)
+        {
+            treasureNum1 = 33;
+            treasureNum2 = 34;
+        }
+        else if (gameManager.stageIndex == 23)
+        {
+            treasureNum1 = 35;
+            treasureNum2 = 36;
+        }
+        else if (gameManager.stageIndex == 25)
+        {
+            treasureNum1 = 37;
+            treasureNum2 = 38;
+        }
+        else if (gameManager.stageIndex == 26)
+        {
+            treasureNum1 = 39;
+            treasureNum2 = 40;
+        }
+        else if (gameManager.stageIndex == 27)
+        {
+            treasureNum1 = 41;
+            treasureNum2 = 42;
+        }
 
+
+        if (gameManager.playerData.items[treasureNum1])// 첫번째 유물 먹었으면 
+        {
+            StageClearTreasure1.color = Color.white;
+        }
+        else
+        {
+            StageClearTreasure1.color = Color.black;
+        }
+        if (gameManager.playerData.items[treasureNum2])// 두번째 유물 먹었으면 
+        {
+            StageClearTreasure2.color = Color.white;
+        }
+        else
+        {
+            StageClearTreasure2.color = Color.black;
+        }
+        StageClearTreasure1.sprite = Treasure_Menu.treasure_list[treasureNum1];
+        StageClearTreasure2.sprite= Treasure_Menu.treasure_list[treasureNum2];
+        StageClearBoard.SetActive(true);
+        Time.timeScale = 0;
+    }
+    public void StageClear_nextStage()
+    {
+        StageClearBoard.SetActive(false);
+        
+
+
+
+        //점수 갱신 
+        if (gameManager.playerData.stagePoints[gameManager.stageIndex] < gameManager.stagePoint)
+        { //기존 기록보다 지금 점수가 크면
+            gameManager.playerData.stagePoints.SetValue(gameManager.stagePoint, gameManager.stageIndex);
+            //gameManager.playerData.stagePoints[gameManager.stageIndex] = gameManager.stagePoint; //json 데이터베이스에 스테이지 점수 저장 
+        }
+        gameManager.stagePoint = 0;
+        gameManager.UIPoint.text = (gameManager.stagePoint).ToString();
+        //다음 스테이지
+        gameManager.NextStage(); //다음스테이지로 이동, 
+        if (gameManager.playerData.MaxStageLevel < gameManager.stageIndex) //DB의 저장된 최고 스테이지보다 현재스테이지가 크면
+        {
+            gameManager.playerData.MaxStageLevel = gameManager.stageIndex; //갱신
+        }
+        gameManager.SavePlayerDataToJson(); //DB에 저장
+        Time.timeScale = 1;
+
+
+
+
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "AnswerOne") BossStageManage.answer = 1;
@@ -343,21 +508,28 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Finish") //깃발 먹으면
         {
-            //점수 갱신 
-            if (gameManager.playerData.stagePoints[gameManager.stageIndex] < gameManager.stagePoint)
-            { //기존 기록보다 지금 점수가 크면
-                gameManager.playerData.stagePoints.SetValue(gameManager.stagePoint, gameManager.stageIndex);
-                //gameManager.playerData.stagePoints[gameManager.stageIndex] = gameManager.stagePoint; //json 데이터베이스에 스테이지 점수 저장 
-            }
-            gameManager.stagePoint = 0;
-            gameManager.UIPoint.text = (gameManager.stagePoint).ToString();
-            //다음 스테이지
-            gameManager.NextStage(); //다음스테이지로 이동, 
-            if (gameManager.playerData.MaxStageLevel < gameManager.stageIndex) //DB의 저장된 최고 스테이지보다 현재스테이지가 크면
+            if (gameManager.stageIndex == 0) //듀토리얼이면
             {
-                gameManager.playerData.MaxStageLevel = gameManager.stageIndex; //갱신
+                //점수 갱신 
+                if (gameManager.playerData.stagePoints[gameManager.stageIndex] < gameManager.stagePoint)
+                { //기존 기록보다 지금 점수가 크면
+                    gameManager.playerData.stagePoints.SetValue(gameManager.stagePoint, gameManager.stageIndex);
+                    //gameManager.playerData.stagePoints[gameManager.stageIndex] = gameManager.stagePoint; //json 데이터베이스에 스테이지 점수 저장 
+                }
+                gameManager.stagePoint = 0;
+                gameManager.UIPoint.text = (gameManager.stagePoint).ToString();
+                //다음 스테이지
+                gameManager.NextStage(); //다음스테이지로 이동, 
+                if (gameManager.playerData.MaxStageLevel < gameManager.stageIndex) //DB의 저장된 최고 스테이지보다 현재스테이지가 크면
+                {
+                    gameManager.playerData.MaxStageLevel = gameManager.stageIndex; //갱신
+                }
+                gameManager.SavePlayerDataToJson(); //DB에 저장
             }
-            gameManager.SavePlayerDataToJson(); //DB에 저장
+            else //듀토리얼 아니면
+            {
+                OpenStageClear();
+            }
         }
         if (collision.gameObject.tag == "BossFinish") //깃발 먹으면
         {

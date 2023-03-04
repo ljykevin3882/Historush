@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public PlayerData playerData;
     public GameObject[] Stages;
     public GameObject[] items;
+    public GameObject[] Golds;
+    public GameObject[] Enemies;
     public Sprite[] BackGround;
     SpriteRenderer spriteRenderer;
     public SpriteRenderer BackGroundSpriteRenderer;
@@ -29,41 +31,41 @@ public class GameManager : MonoBehaviour
     public Image[] UIhealth;
     public Text UIPoint;
     public Text UIStage;
-    public GameObject UIRestartBtn,UIRespawnBtn,Player;
-    public GameObject Main_Menu, Stage_Menu,Stage1,SookGarlic;
+    public GameObject UIRestartBtn, UIRespawnBtn, Player;
+    public GameObject Main_Menu, Stage_Menu, Stage1, SookGarlic;
     public GameManager gamemanager;
     public GameObject BossStageManager; // 보스 스테이지 오브젝트
-
+    
     // Start is called before the first frame update
     /* 해상도 설정하는 함수 */
     private void Start()
     {
-        
+
     }
-    void OnGUI() //FPS 표시
-    {
-        Rect position = new Rect(width, height, Screen.width, Screen.height);
+    //void OnGUI() //FPS 표시
+    //{
+    //    Rect position = new Rect(width, height, Screen.width, Screen.height);
 
-        float fps = 1.0f / Time.deltaTime;
-        float ms = Time.deltaTime * 1000.0f;
-        string text = string.Format("{0:N1} FPS ({1:N1}ms)", fps, ms);
+    //    float fps = 1.0f / Time.deltaTime;
+    //    float ms = Time.deltaTime * 1000.0f;
+    //    string text = string.Format("{0:N1} FPS ({1:N1}ms)", fps, ms);
 
-        GUIStyle style = new GUIStyle();
+    //    GUIStyle style = new GUIStyle();
 
-        style.fontSize = fontSize;
-        style.normal.textColor = color;
+    //    style.fontSize = fontSize;
+    //    style.normal.textColor = color;
 
-        GUI.Label(position, text, style);
-    }
+    //    GUI.Label(position, text, style);
+    //}
     public void SetResolution()
     {
         int setWidth = 1920; // 사용자 설정 너비
         int setHeight = 1080; // 사용자 설정 높이
         int deviceWidth = Screen.width; // 기기 너비 저장
         int deviceHeight = Screen.height; // 기기 높이 저장
-        Screen.SetResolution(setWidth,setHeight, true); // SetResolution 함수 제대로 사용하기
+        Screen.SetResolution(setWidth, setHeight, true); // SetResolution 함수 제대로 사용하기
 
-        
+
     }
     [ContextMenu("To Json Data")]
     public void SavePlayerDataToJson() //DB저장함수
@@ -85,7 +87,7 @@ public class GameManager : MonoBehaviour
         {
             playerData.stagePoints[i] = 0;
         }
-        
+
         playerData.MaxStageLevel = 0;
         playerData.avatar_color = 0;
         playerData.avatar = 0;
@@ -97,7 +99,7 @@ public class GameManager : MonoBehaviour
         File.WriteAllText(path, jsonData);
     }
     [ContextMenu("From Json Data")]
-    public  void LoadPlayerDataFromJson() //DB 불러오기 함수
+    public void LoadPlayerDataFromJson() //DB 불러오기 함수
     {
 
         string path = Path.Combine(Application.persistentDataPath, "playerData1.json");
@@ -117,11 +119,11 @@ public class GameManager : MonoBehaviour
             string jsonData = File.ReadAllText(path);
             playerData = JsonUtility.FromJson<PlayerData>(jsonData);
         }
-        
-        
-        
 
-        
+
+
+
+
 
         //print(System.IO.File.Exists(path) + "-> 존재여부");
         //if (System.IO.File.Exists(path))
@@ -156,6 +158,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
     public void NextStage()
     {
         if (stageIndex < Stages.Length-1)
@@ -339,6 +342,15 @@ public class GameManager : MonoBehaviour
         LoadPlayerDataFromJson(); //DB 저장된 부분까지 초기화 시키기
         PlayerReposition();
         player.Respawn();
+        for (int i = 0; i < Golds[stageIndex].transform.childCount; i++)
+        {
+            Golds[stageIndex].transform.GetChild(i).gameObject.SetActive(true);
+        }
+        for (int i = 0; i < Enemies[stageIndex].transform.childCount; i++)
+        {
+            Enemies[stageIndex].transform.GetChild(i).gameObject.SetActive(true);
+        }
+
         UIRespawnBtn.SetActive(false);
         UIRestartBtn.SetActive(false);
         health = 3;
@@ -347,6 +359,7 @@ public class GameManager : MonoBehaviour
             UIhealth[i].color = new Color(1,1, 1, 1);
         }
         stagePoint = 0;
+        UIPoint.text = "0";
         MapReset();
     }
     public void MapReset() //죽고 다시시작할때 아이템 원상복귀
