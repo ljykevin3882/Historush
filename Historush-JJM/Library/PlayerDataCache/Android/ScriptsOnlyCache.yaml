@@ -12,7 +12,6 @@ ScriptsOnlyBuild:
     - Boss_Kim
     - Boss_Sejong
     - CameraController
-    - CameraResolution
     - CustomMenu
     - Enemy_Move
     - FixedJoystick
@@ -39,6 +38,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
@@ -170,19 +170,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3268}
     - Class: 114
-      Script: {instanceID: 3356}
-    - Class: 114
       Script: {instanceID: 3498}
     - Class: 114
       Script: {instanceID: 3672}
     - Class: 114
       Script: {instanceID: 3714}
     - Class: 114
-      Script: {instanceID: 3838}
-    - Class: 114
       Script: {instanceID: 3846}
     - Class: 114
       Script: {instanceID: 3856}
+    - Class: 114
+      Script: {instanceID: 4020}
     - Class: 114
       Script: {instanceID: 4440}
     - Class: 114
@@ -475,7 +473,7 @@ ScriptsOnlyBuild:
     className: DynamicJoystick
   - hash:
       serializedVersion: 2
-      Hash: d0d4344565f69da1bd7b91836a60cd61
+      Hash: 2d496eb48b68186d18dc9b653e67a7e8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BossStageManage
@@ -493,7 +491,7 @@ ScriptsOnlyBuild:
     className: StageMenu
   - hash:
       serializedVersion: 2
-      Hash: 70aa2a327067285d3b3ae64975c1a430
+      Hash: 21a6620681313e26d2ad9f2c9b06e8ec
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraController
@@ -649,7 +647,7 @@ ScriptsOnlyBuild:
     className: MainMenu
   - hash:
       serializedVersion: 2
-      Hash: f830c723f862bde9c6b6a140541bda86
+      Hash: 1e420ee67849bc80f05ae3cc8d255e92
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -1381,7 +1379,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: 32c3d49e78de49d48969b77e86bd065d
+      Hash: ef2cf6dce916cfd9e19912e530ec0048
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager

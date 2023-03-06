@@ -17,6 +17,8 @@ public class BossStageManage : MonoBehaviour
     public GameObject question, questionBackground, questionTimer;
     public GameObject BossFinishFlag;
     public GameObject boss; // 현재 스테이지에 스폰되어 있는 보스 오브젝트
+    public SpriteRenderer BackGroundSpriteRenderer; // 배경화면
+    public Sprite[] BackGround;
     private bool isChecked = false;
 
     static public int answer;
@@ -189,6 +191,14 @@ public class BossStageManage : MonoBehaviour
     {
         mainCamera.GetComponent<Camera>().orthographicSize = 12.0f; // 원래 값 6.12
         PlayerSpawn(curStage);
+        BackGroundSet();
+    }
+    void BackGroundSet()
+    {
+        if (curStage > 0)
+        {
+            BackGroundSpriteRenderer.sprite = BackGround[curStage / 4];
+        }
     }
 
     void Update()
