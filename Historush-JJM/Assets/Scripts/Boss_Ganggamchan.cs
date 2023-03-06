@@ -89,7 +89,7 @@ public class Boss_Ganggamchan : MonoBehaviour
             Vector2 dirVec = player.transform.position - transform.position;
             Vector2 ranVec = new Vector2(Random.Range(-10f, 10f), Random.Range(0f, 2f));
             dirVec += ranVec;
-            rigid.AddForce(dirVec.normalized * 12, ForceMode2D.Impulse);
+            rigid.AddForce(dirVec.normalized * 18, ForceMode2D.Impulse);
         }
 
         // Pattern Counting
@@ -110,7 +110,7 @@ public class Boss_Ganggamchan : MonoBehaviour
         Vector2 dirVec = transform.position;
         Vector2 randVec = new Vector2(Random.Range(-1000f, 1000f), Random.Range(-1000f, 0));
         dirVec += randVec;
-        rigid.AddForce(dirVec.normalized * 12, ForceMode2D.Impulse);
+        rigid.AddForce(dirVec.normalized * 15, ForceMode2D.Impulse);
 
         // Pattern Counting
         curPatternCount++;

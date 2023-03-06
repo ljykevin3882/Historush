@@ -136,6 +136,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrow: {fileID: 2238668088127485676, guid: 3df3d2739c0aa3044b487714e781daa5, type: 3}
   curPatternCount: 0
-  maxPatternCount: 0a000000630000000a0000000700000005000000
+  maxPatternCount: 0a000000630000000a0000000700000003000000
   delta: 15
   maxSpeed: 2
