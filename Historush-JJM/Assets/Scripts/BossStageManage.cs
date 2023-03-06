@@ -20,7 +20,8 @@ public class BossStageManage : MonoBehaviour
     public SpriteRenderer BackGroundSpriteRenderer; // 배경화면
     public Sprite[] BackGround;
     private bool isChecked = false;
-
+    public PlayerController playerController;
+    public GameManager gameManager;
     static public int answer;
     static public string mode = "Boss";
     static private bool isBossGen = false;
@@ -192,6 +193,11 @@ public class BossStageManage : MonoBehaviour
         mainCamera.GetComponent<Camera>().orthographicSize = 12.0f; // 원래 값 6.12
         PlayerSpawn(curStage);
         BackGroundSet();
+        gameManager.LoadPlayerDataFromJson();
+        playerController.avatarColorChange();
+        playerController.avatarChange();
+        
+
     }
     void BackGroundSet()
     {

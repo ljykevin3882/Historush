@@ -170,6 +170,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3268}
     - Class: 114
+      Script: {instanceID: 3322}
+    - Class: 114
       Script: {instanceID: 3498}
     - Class: 114
       Script: {instanceID: 3672}
@@ -473,7 +475,7 @@ ScriptsOnlyBuild:
     className: DynamicJoystick
   - hash:
       serializedVersion: 2
-      Hash: 2d496eb48b68186d18dc9b653e67a7e8
+      Hash: ef05ad0d67a9785bd88d92afc4226aa2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BossStageManage

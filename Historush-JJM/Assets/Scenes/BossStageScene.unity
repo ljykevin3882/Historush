@@ -466,7 +466,7 @@ Transform:
   - {fileID: 1222958106}
   - {fileID: 244148521}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &145145939
 GameObject:
@@ -1076,6 +1076,90 @@ Transform:
   m_Children:
   - {fileID: 863556152}
   - {fileID: 249543640}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &223390446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 223390448}
+  - component: {fileID: 223390447}
+  m_Layer: 0
+  m_Name: AvatarChange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &223390447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223390446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9e29b3d46ac0548b20acd0d060e56a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  red_toggle: {fileID: 0}
+  orange_toggle: {fileID: 0}
+  yellow_toggle: {fileID: 0}
+  lightgreen_toggle: {fileID: 0}
+  green_toggle: {fileID: 0}
+  skyblue_toggle: {fileID: 0}
+  blue_toggle: {fileID: 0}
+  nam_toggle: {fileID: 0}
+  purple_toggle: {fileID: 0}
+  gray_toggle: {fileID: 0}
+  white_toggle: {fileID: 0}
+  blank: {fileID: 0}
+  garlic: {fileID: 0}
+  one: {fileID: 0}
+  two: {fileID: 0}
+  three: {fileID: 0}
+  red: {r: 1, g: 0.0990566, b: 0.0990566, a: 1}
+  orange: {r: 1, g: 0.4579748, b: 0.023584902, a: 1}
+  yellow: {r: 1, g: 0.86465466, b: 0.1462264, a: 1}
+  lightgreen: {r: 0.61960787, g: 0.9607843, b: 0, a: 1}
+  green: {r: 0, g: 0.9607843, b: 0.5372549, a: 1}
+  skyblue: {r: 0.039215688, g: 0.91764706, b: 0.92156863, a: 1}
+  blue: {r: 0, g: 0.5176471, b: 0.9607843, a: 1}
+  nam: {r: 0, g: 0.01720545, b: 0.6509434, a: 1}
+  purple: {r: 0.5168646, g: 0.15566039, b: 1, a: 1}
+  gray: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 1}
+  white: {r: 1, g: 1, b: 1, a: 1}
+  avatar: {fileID: 0}
+  head: {fileID: 0}
+  garlic_sprite: {fileID: 0}
+  bowl: {fileID: 0}
+  what: {fileID: 0}
+  koreajungja: {fileID: 0}
+  heart: {fileID: 0}
+  gameManager: {fileID: 0}
+  Main_menu: {fileID: 0}
+  Custom_menu: {fileID: 0}
+  Bear_custom: {fileID: 0}
+  Human_custom: {fileID: 0}
+  change_lock: {fileID: 0}
+  change_Button: {fileID: 0}
+--- !u!4 &223390448
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223390446}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.2536144, y: -0.90754664, z: 1224.5336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25087,6 +25171,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: da16370c351f8854eb68ad4bb7652612, type: 3}
   - {fileID: 21300000, guid: 654b8e3d6f7036349b6345ac0334f312, type: 3}
   - {fileID: 21300000, guid: 85e4182268479bc4a90624c6d17aa446, type: 3}
+  playerController: {fileID: 1651907957}
+  gameManager: {fileID: 102689445}
 --- !u!4 &780235373
 Transform:
   m_ObjectHideFlags: 0
@@ -25289,7 +25375,7 @@ RectTransform:
   - {fileID: 1437316942}
   - {fileID: 1631310417}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -25713,7 +25799,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1095300957
 GameObject:
@@ -27210,7 +27296,7 @@ Transform:
   - {fileID: 1965008567}
   - {fileID: 1416087133}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1532138432
 GameObject:
@@ -27363,7 +27449,7 @@ Transform:
   m_Children:
   - {fileID: 621235346}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1614449652
 GameObject:
@@ -27699,7 +27785,7 @@ MonoBehaviour:
   jumpPower: 15
   jumpCount: 2
   isSliding: 0
-  Custom_Menu: {fileID: 0}
+  Custom_Menu: {fileID: 223390447}
   TreasurePopup: {fileID: 0}
   TreasurePopupObject: {fileID: 0}
   SettingPopup: {fileID: 415242948}
@@ -27787,7 +27873,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 8422526885444454810, guid: 1c2579ed8bd9bc445a8e90e6187e31eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -27808,11 +27894,11 @@ Transform:
   m_GameObject: {fileID: 1651907954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.81, y: 0.82, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_Children:
   - {fileID: 796048956}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1707578286
 GameObject:
@@ -28448,7 +28534,7 @@ Transform:
   - {fileID: 170639988}
   - {fileID: 932552771}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2004266494
 GameObject:
@@ -28685,7 +28771,7 @@ Transform:
   - {fileID: 1385897416}
   - {fileID: 1095300958}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2145402187
 GameObject:
