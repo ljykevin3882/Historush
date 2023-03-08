@@ -353,9 +353,12 @@ public class GameManager : MonoBehaviour
             {
                 Golds[stageIndex].transform.GetChild(i).gameObject.SetActive(true); //먹었던 골드 복구 시키기
             }
-            for (int i = 0; i < Enemies[stageIndex].transform.childCount; i++)
+            if (Enemies[stageIndex] != null)
             {
-                Enemies[stageIndex].transform.GetChild(i).gameObject.SetActive(true); //죽였던 몬스터 복구 시키기
+                for (int i = 0; i < Enemies[stageIndex].transform.childCount; i++)
+                {
+                    Enemies[stageIndex].transform.GetChild(i).gameObject.SetActive(true); //죽였던 몬스터 복구 시키기
+                }   
             }
         }
 
