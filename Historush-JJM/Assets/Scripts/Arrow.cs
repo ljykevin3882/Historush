@@ -6,9 +6,13 @@ public class Arrow : MonoBehaviour
 {
     Rigidbody2D rigid;
     public GameObject stickArrow;
+    public AudioClip clip; // 오디오 클립
+    private AudioSource source; // AudioSource 컴포넌트
 
     void Start()
     {
+        source = GetComponent<AudioSource>();
+        source.PlayOneShot(clip); // 효과음 재생
         rigid = GetComponent<Rigidbody2D>();
         Destroy(gameObject, 5);
     }

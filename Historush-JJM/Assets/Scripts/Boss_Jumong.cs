@@ -80,14 +80,14 @@ public class Boss_Jumong : MonoBehaviour
     private void PhaseOne() // 부채꼴 모양으로 화살 발사
     {
 
-        for (int index = 0; index < 5; index++)
+        for (int index = 0; index < 4; index++)
         {
             GameObject bullet = Instantiate(arrow, transform.position, transform.rotation);
             bullet.transform.position = transform.position;
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
             Vector2 dirVec = player.transform.position - transform.position;
-            Vector2 ranVec = new Vector2(Random.Range(-10f, 10f), Random.Range(0f, 2f));
+            Vector2 ranVec = new Vector2(Random.Range(-15f, 15f), Random.Range(0f, 2f));
             dirVec += ranVec;
             rigid.AddForce(dirVec.normalized * 18, ForceMode2D.Impulse);
         }
@@ -116,7 +116,7 @@ public class Boss_Jumong : MonoBehaviour
         curPatternCount++;
 
         if (curPatternCount < maxPatternCount[BossStageManage.patternIndex])
-            Invoke("PhaseTwo", 0.2f);
+            Invoke("PhaseTwo", 0.3f);
         else
             BossStageManage.mode = "Quiz";
     }

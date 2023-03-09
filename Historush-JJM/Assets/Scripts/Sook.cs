@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Sook : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public AudioClip clip; // 오디오 클립
+    private AudioSource source; // AudioSource 컴포넌트
     void Start()
     {
+        source = GetComponent<AudioSource>();
+        source.PlayOneShot(clip); // 효과음 재생
         Destroy(gameObject, 2f);
     }
 

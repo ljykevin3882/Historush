@@ -136,6 +136,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   water_drop: {fileID: 1257468059821857962, guid: 9cc4cfe5b9844944e94694ec5b10dedb, type: 3}
   curPatternCount: 0
-  maxPatternCount: 0a00000007000000630000000700000003000000
+  maxPatternCount: 0e00000007000000630000000700000002000000
   delta: 15
-  maxSpeed: 2
+  maxSpeed: 1.5

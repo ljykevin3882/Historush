@@ -16,7 +16,7 @@ public class BossStageManage : MonoBehaviour
     public GameObject mainCamera;
     public GameObject question, questionBackground, questionTimer;
     public GameObject BossFinishFlag;
-    public GameObject boss; // 현재 스테이지에 스폰되어 있는 보스 오브젝트
+    private GameObject boss; // 현재 스테이지에 스폰되어 있는 보스 오브젝트
     public SpriteRenderer BackGroundSpriteRenderer; // 배경화면
     public Sprite[] BackGround;
     private bool isChecked = false;
@@ -26,7 +26,7 @@ public class BossStageManage : MonoBehaviour
     static public string mode = "Boss";
     static private bool isBossGen = false;
     static public bool isWrong = false;
-    static public int curStage = 4; // 4, 8, 12, 16, 20, 24, 28
+    static public int curStage = 28; // 4, 8, 12, 16, 20, 24, 28
     static public int patternIndex = -1; // 기본값 -1
 
     // 퀴즈
@@ -125,7 +125,7 @@ public class BossStageManage : MonoBehaviour
 
         // 조선 퀴즈
         {2010, "Q1. 조선시대 8대 왕은?"},
-        {2011, "세조"},
+        {2011, "예종"},
         {2012, "태종"},
         {2013, "1"},
 

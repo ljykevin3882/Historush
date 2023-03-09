@@ -25160,7 +25160,6 @@ MonoBehaviour:
   questionBackground: {fileID: 396535497}
   questionTimer: {fileID: 1492157757}
   BossFinishFlag: {fileID: 244148518}
-  boss: {fileID: 0}
   BackGroundSpriteRenderer: {fileID: 863556153}
   BackGround:
   - {fileID: 21300000, guid: 4cfbcca9033c06145b8d531ccf7944cf, type: 3}
