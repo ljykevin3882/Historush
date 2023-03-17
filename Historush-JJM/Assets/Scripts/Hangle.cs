@@ -18,6 +18,7 @@ public class Hangle : MonoBehaviour
     void Start()
     {
         source = GetComponent<AudioSource>();
+        source.volume = 0.05f;
         source.PlayOneShot(clip); // 효과음 재생
         Destroy(gameObject, 10);
     }

@@ -10,6 +10,7 @@ public class Sook : MonoBehaviour
     void Start()
     {
         source = GetComponent<AudioSource>();
+        source.volume = 1f;
         source.PlayOneShot(clip); // 효과음 재생
         Destroy(gameObject, 2f);
     }

@@ -21,6 +21,7 @@ public class Garlic : MonoBehaviour
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Platform") {
             if (isSound == false) {
                 source = GetComponent<AudioSource>();
+                source.volume = 0.5f;
                 source.PlayOneShot(clip); // 효과음 재생
                 isSound = true;
             }

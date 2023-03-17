@@ -181,7 +181,7 @@ public class StageMenu : MonoBehaviour
     }
     public void ClickThreeStatePlay()
     {
-        string bgmName = "5";
+        string bgmName = "3";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         Stage_Menu.SetActive(false);
         ThreeGuk_stage.SetActive(true);
@@ -203,7 +203,7 @@ public class StageMenu : MonoBehaviour
     }
     public void ClickTongilSilaPlay()
     {
-        string bgmName = "3";
+        string bgmName = "4";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         Stage_Menu.SetActive(false);
         TongilShila_stage.SetActive(true);
@@ -225,7 +225,7 @@ public class StageMenu : MonoBehaviour
     }
     public void ClickKoreaPlay()
     {
-        string bgmName = "4";
+        string bgmName = "3";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         Stage_Menu.SetActive(false);
         Korea_stage.SetActive(true);
@@ -247,7 +247,7 @@ public class StageMenu : MonoBehaviour
     }
     public void ClickJoseonPlay()
     {
-        string bgmName = "5";
+        string bgmName = "4";
         CamObject.GetComponent<PlayBGMOpe>().PlayBGM(bgmName);
         Stage_Menu.SetActive(false);
         Josun_stage.SetActive(true);

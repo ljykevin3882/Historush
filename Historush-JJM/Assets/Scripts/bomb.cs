@@ -12,6 +12,7 @@ public class bomb : MonoBehaviour
     void Start()
     {
         source = GetComponent<AudioSource>();
+        source.volume = 0.1f;
         source.PlayOneShot(clip); // 효과음 재생
         rigid = GetComponent<Rigidbody2D>();
         Destroy(gameObject, 5);
