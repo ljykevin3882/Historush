@@ -38,6 +38,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
@@ -57,6 +58,12 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshPro
     - TMPro.TextMeshProUGUI
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -474,7 +481,7 @@ ScriptsOnlyBuild:
     className: DynamicJoystick
   - hash:
       serializedVersion: 2
-      Hash: ef05ad0d67a9785bd88d92afc4226aa2
+      Hash: 823e1da50b9e69c96833d90c5e24ae82
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BossStageManage
@@ -618,7 +625,7 @@ ScriptsOnlyBuild:
     className: TMP_DigitValidator
   - hash:
       serializedVersion: 2
-      Hash: 0c587b137d746c5da3014c7988be52dd
+      Hash: dfd67f95593f93eafe28064de34bada8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Sword
@@ -714,7 +721,7 @@ ScriptsOnlyBuild:
     className: SettingMenu
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 18c152473ea259b38afa9f6b7c7a6966
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WaterDrop
@@ -1056,7 +1063,7 @@ ScriptsOnlyBuild:
     className: PositionAsUV1
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 18c152473ea259b38afa9f6b7c7a6966
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Hangle
@@ -1086,7 +1093,7 @@ ScriptsOnlyBuild:
     className: EventTrigger
   - hash:
       serializedVersion: 2
-      Hash: b0f56f97fd61687c9857564f3bc27ca7
+      Hash: e418c358fb499b509e3656d4603c0fe2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: bomb
@@ -1338,7 +1345,7 @@ ScriptsOnlyBuild:
     className: TextConsoleSimulator
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 18c152473ea259b38afa9f6b7c7a6966
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Sook
@@ -1356,13 +1363,13 @@ ScriptsOnlyBuild:
     className: ObjectSpin
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 18c152473ea259b38afa9f6b7c7a6966
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Garlic
   - hash:
       serializedVersion: 2
-      Hash: 37c2817f112bfe365f1579d769decb8d
+      Hash: 718cf41a840475d10ea0c39f73e9bcb2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Arrow

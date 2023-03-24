@@ -309,16 +309,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+
     // Update is called once per frame
     public void PlayerReposition()
-    {   if (BossStageManage.curStage % 4 == 0 && BossStageManage.curStage > 0&&stageIndex%4==0) { // 보스 스테이지 일 경우
+    {
+        print(BossStageManage.curStage);
+        print(stageIndex);
+        if(UIStage.text == "단군신화") //듀토리얼 임시로 예외처리
+        {
+            player.transform.position = new Vector3(0, 0, -1);
+            player.VelocityZero();
+        }
+        else if (BossStageManage.curStage % 4 == 0 && BossStageManage.curStage > 0 && stageIndex % 4 == 0 )
+        { // 보스 스테이지 일 경우
+            
             BossStageManager.GetComponent<BossStageManage>().PlayerSpawn(BossStageManage.curStage);
             player.VelocityZero();
             return;
         }
-        player.transform.position = new Vector3(0, 0, -1);
-        player.VelocityZero();
+        else
+        {
+            player.transform.position = new Vector3(0, 0, -1);
+            player.VelocityZero();
+        }
     }
     public void Restart() //죽고 메인 메뉴로 가는 함수
     {
@@ -341,6 +354,7 @@ public class GameManager : MonoBehaviour
     }
     public void Regame() //죽고 다시시작하는 함수
     {
+
         if (BossStageManage.curStage % 4 == 0 && BossStageManage.curStage > 0 && stageIndex % 4 == 0)
         { // 보스 스테이지일 경우
  
